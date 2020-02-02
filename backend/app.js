@@ -4,15 +4,14 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+const dotenv = require('dotenv');
 const MongoClient = require('mongodb').MongoClient;
-const dburl = "mongodb://localhost:27017/users";
-let db;
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+// const usersRouter = require('./routes/users');
+const shopRoute = require('./routes/shopRoute');
 
 const app = express();
-
 
 app.use(logger('dev'));
 app.use(cors());
@@ -20,6 +19,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+dotenv.config();
+const dburl = "mongodb+srv://"+process.env.dbname+":"+process.env.dbpass+"@cluster0-fetd1.mongodb.net/test";
+let db;
 
 app.use(async (req, res, next) => {
 	try {
@@ -42,7 +45,8 @@ app.use(async (req, res, next) => {
 });
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
+app.use('/shop', shopRoute);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

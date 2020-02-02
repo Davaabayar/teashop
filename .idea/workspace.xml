@@ -1,4 +1,206 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6d53c960-29bd-4c89-a7d4-192d76a36352" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/mongoSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/mwa-homework-14-angular-04-Orshih71.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/angular.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/browserslist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/e2e/protractor.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/e2e/src/app.e2e-spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/e2e/src/app.po.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/e2e/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/app/app.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/app/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/app/sign-in.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/app/sign-up.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/app/user-service.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/assets/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/environments/environment.prod.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/environments/environment.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/polyfills.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/tsconfig.spec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/tslint.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/bin/www" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/public/stylesheets/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/routes/signin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/routes/signup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/routes/users.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/testPost.http" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/routes/shopRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/teashop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/teashop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1XEDT0Hau6kmbhpCFWBwGttHZvR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.13.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="ts.external.directory.path" value="C:\Users\Dios\WebstormProjects\mwa-homework-14-angular-04-Orshih71\client\hw14\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dios\WebstormProjects\teashop\backend" />
+      <recent name="C:\Users\Dios\WebstormProjects\teashop\backend\routes" />
+    </key>
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:3000/shop/add" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;name&quot;: &quot;dios&quot;,&#10;  &quot;user&quot;: {&#10;    &quot;id&quot;:&quot;1&quot;,&#10;    &quot;name&quot;:&quot;Test&quot;,&#10;    &quot;email&quot;:&quot;gg@gmail.com&quot;,&#10;    &quot;phone&quot;:&quot;12345679&quot;&#10;  },&#10;  &quot;location&quot;: [-10,10]&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="testShopAdd#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/backend/testShopAdd.http" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.testShopAdd#1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6d53c960-29bd-4c89-a7d4-192d76a36352" name="Default Changelist" comment="" />
+      <created>1580608763164</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580608763164</updated>
+      <workItem from="1580608765053" duration="1430000" />
+      <workItem from="1580610228099" duration="1063000" />
+      <workItem from="1580611316600" duration="1398000" />
+      <workItem from="1580612788387" duration="867000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="283" y="63" key="#Usage_Scope" timestamp="1580610890792">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="283" y="63" key="#Usage_Scope/0.0.1366.768@0.0.1366.768" timestamp="1580610890792" />
+    <state x="456" y="173" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580611284520">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="456" y="173" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1580611284520" />
+    <state x="306" y="0" key="CommitChangelistDialog2" timestamp="1580613723399">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="306" y="0" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1580613723399" />
+    <state x="463" y="138" key="FileChooserDialogImpl" timestamp="1580612715316">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="463" y="138" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1580612715316" />
+    <state width="1323" height="171" key="GridCell.Tab.0.bottom" timestamp="1580613398430">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="171" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1580613398430" />
+    <state width="1323" height="171" key="GridCell.Tab.0.center" timestamp="1580613398430">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="171" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1580613398430" />
+    <state width="1323" height="171" key="GridCell.Tab.0.left" timestamp="1580613398429">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="171" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1580613398429" />
+    <state width="1323" height="171" key="GridCell.Tab.0.right" timestamp="1580613398430">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="1323" height="171" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1580613398430" />
+    <state x="481" y="9" key="RollbackChangesDialog" timestamp="1580611787633">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="481" y="9" key="RollbackChangesDialog/0.0.1366.768@0.0.1366.768" timestamp="1580611787633" />
+    <state x="192" y="47" key="SettingsEditor" timestamp="1580610955959">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="192" y="47" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1580610955959" />
+  </component>
 </project>
