@@ -10,7 +10,6 @@ const MongoClient = require('mongodb').MongoClient;
 const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users');
 const shopRoute = require('./routes/shopRoute');
-const usersRouter = require('./routes/users');
 const blogRouter = require('./routes/blogRoute');
 
 const app = express();
@@ -18,26 +17,26 @@ const app = express();
 app.use(logger('dev'));
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 dotenv.config();
-const dburl = "mongodb+srv://"+process.env.dbname+":"+process.env.dbpass+"@cluster0-fetd1.mongodb.net/test";
+const dburl = "mongodb+srv://" + process.env.dbname + ":" + process.env.dbpass + "@cluster0-fetd1.mongodb.net/test";
 let db;
 
 app.use(async (req, res, next) => {
 	try {
 		if (!db) {
-			await MongoClient.connect(dburl, {promiseLibrary: Promise})
-			.catch(err => {
-				console.error(err.stack);
-				return next(err);
-			})
-			.then(client => {
-				console.log("Db connection successful");
-				db = client.db();
-			});
+			await MongoClient.connect(dburl, { promiseLibrary: Promise })
+				.catch(err => {
+					console.error(err.stack);
+					return next(err);
+				})
+				.then(client => {
+					console.log("Db connection successful");
+					db = client.db();
+				});
 		}
 		req.db = db;
 		next();
@@ -49,7 +48,6 @@ app.use(async (req, res, next) => {
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/shop', shopRoute);
-app.use('/users', usersRouter);
 app.use('/blogs', blogRouter)
 
 // catch 404 and forward to error handler
