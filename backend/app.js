@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 dotenv.config();
-const dburl = "mongodb+srv://" + process.env.dbname + ":" + process.env.dbpass + "@cluster0-fetd1.mongodb.net/test";
+const dburl = "mongodb+srv://" + process.env.dbname + ":" + process.env.dbpass + "@cluster0-fetd1.mongodb.net/tshot";
 let db;
 
 app.use(async (req, res, next) => {
@@ -48,7 +48,7 @@ app.use(async (req, res, next) => {
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/shop', shopRoute);
-app.use('/blogs', blogRouter)
+app.use('/blog', blogRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
