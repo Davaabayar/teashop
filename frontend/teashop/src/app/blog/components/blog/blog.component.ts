@@ -8,8 +8,6 @@ import { PostComponent } from '../post/post.component';
 })
 export class BlogComponent implements OnInit {
 
-  title = "blog";
-
   constructor() { }
 
   ngOnInit() {
