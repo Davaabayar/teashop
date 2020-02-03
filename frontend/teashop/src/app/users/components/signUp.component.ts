@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
                         <input class="input-style" type="text" name="name" placeholder="FullName" [formControl]="myForm.get('fullname')">
                     </div>
                     <div class="input-group">
-                        <input class="input-style" type="text" name="phone" placeholder="Phone" [formControl]="myForm.get('phone')">
+                        <input class="input-style" type="text" name="email" placeholder="Email" [formControl]="myForm.get('email')">
                     </div>
                     <div class="input-group">
                         <input class="input-style" type="password" name="password" placeholder="Password" [formControl]="myForm.get('password')">
@@ -44,7 +44,7 @@ export class SignUp implements OnInit {
     constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
         this.myForm = fb.group({
             'fullname': ['', Validators.required],
-            'phone': ['', Validators.required],
+            'email': ['', Validators.required],
             'password': ['', Validators.required]
         })
     }
