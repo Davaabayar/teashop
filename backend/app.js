@@ -62,7 +62,7 @@ function tokenCheck(req, res, next) {
 	}
 }
 app.use('/', indexRouter);
-app.use('/api/teas', tokenCheck, teasRouter);
+app.use('/api/teas', teasRouter);
 app.use('/users', usersRouter);
 app.use('/shop', shopRoute);
 app.use('/api/blog', blogRouter);

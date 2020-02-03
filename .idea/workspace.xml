@@ -1,34 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d53c960-29bd-4c89-a7d4-192d76a36352" name="Default Changelist" comment="[ADD] Connect to atlas, .env,  shop add">
-      <change afterPath="$PROJECT_DIR$/backend/service/tokenService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/app.http.interceptor.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-add/shop-add.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-add/shop-add.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-add/shop-add.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-add/shop-add.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-list/shop-list.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-list/shop-list.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-list/shop-list.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-list/shop-list.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/token-check.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/token.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/mwa-homework-14-angular-04-Orshih71.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/mwa-homework-14-angular-04-Orshih71.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/routes/private.js" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/routes/private.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/testPrivate.http" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/testPrivate.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/teashop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/teashop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6d53c960-29bd-4c89-a7d4-192d76a36352" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/d41d8cd9.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/service/tokenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/service/tokenService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1XEDT0Hau6kmbhpCFWBwGttHZvR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -180,7 +155,7 @@
       <workItem from="1580612788387" duration="2069000" />
       <workItem from="1580617703611" duration="6954000" />
       <workItem from="1580696378434" duration="628000" />
-      <workItem from="1580716935968" duration="4381000" />
+      <workItem from="1580716935968" duration="4866000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD] Connect to atlas, .env,  shop add">
       <created>1580613792965</created>
@@ -189,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580613792966</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="[ADD] Token and shop">
+      <created>1580759413080</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1580759413080</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,7 +180,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="[ADD] Connect to atlas, .env,  shop add" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ADD] Connect to atlas, .env,  shop add" />
+    <MESSAGE value="[ADD] Token and shop" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADD] Token and shop" />
   </component>
   <component name="WindowStateProjectService">
     <state x="283" y="63" key="#Usage_Scope" timestamp="1580610890792">
@@ -213,14 +196,14 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1580718122736" />
-    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2" timestamp="1580759334889">
+    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2" timestamp="1580759839905">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1580759334889" />
-    <state x="129" y="58" key="DiffContextDialog" timestamp="1580759145553">
+    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1580759839905" />
+    <state x="129" y="58" key="DiffContextDialog" timestamp="1580759358693">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="129" y="58" key="DiffContextDialog/0.0.1366.768@0.0.1366.768" timestamp="1580759145553" />
+    <state x="129" y="58" key="DiffContextDialog/0.0.1366.768@0.0.1366.768" timestamp="1580759358693" />
     <state x="463" y="138" key="FileChooserDialogImpl" timestamp="1580718039673">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -249,10 +232,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="387" y="90" key="MultipleFileMergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1580613901282" />
-    <state x="481" y="9" key="RollbackChangesDialog" timestamp="1580611787633">
+    <state x="481" y="9" key="RollbackChangesDialog" timestamp="1580759352802">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="481" y="9" key="RollbackChangesDialog/0.0.1366.768@0.0.1366.768" timestamp="1580611787633" />
+    <state x="481" y="9" key="RollbackChangesDialog/0.0.1366.768@0.0.1366.768" timestamp="1580759352802" />
     <state x="192" y="47" key="SettingsEditor" timestamp="1580610955959">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -261,10 +244,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="275" y="112" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1580613918971" />
-    <state x="409" y="156" key="git4idea.merge.GitPullDialog" timestamp="1580759116290">
+    <state x="409" y="156" key="git4idea.merge.GitPullDialog" timestamp="1580759418210">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="409" y="156" key="git4idea.merge.GitPullDialog/0.0.1366.768@0.0.1366.768" timestamp="1580759116290" />
+    <state x="409" y="156" key="git4idea.merge.GitPullDialog/0.0.1366.768@0.0.1366.768" timestamp="1580759418210" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1580756893137">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
