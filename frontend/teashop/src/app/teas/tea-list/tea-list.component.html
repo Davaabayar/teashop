@@ -1,5 +1,4 @@
 <h2>Tea list</h2>
-<a [routerLink] = "['add']">Add Tea</a>
 <mat-accordion multi="true" *ngIf="teas.length>0">
     <mat-expansion-panel  *ngFor = "let tea of teas">
         <mat-expansion-panel-header>
@@ -19,9 +18,10 @@
         </div>
         <p>Description: {{tea.description}}</p>
         <mat-action-row>
-            <button mat-button color="primary">EDIT</button>
+            <a mat-button color="accent" [routerLink]="[tea._id]">VIEW</a>
+            <a mat-button color="primary" [routerLink]="['edit',tea._id]">EDIT</a>
             <button mat-button color="warn" (click)="onDelete(tea._id)">DELETE</button>
         </mat-action-row>
     </mat-expansion-panel>
 </mat-accordion>
-<p class="info-text mat-body-1" *ngIf="teas.length<1">No teas added yet!</p>
+<p class="info-text mat-body-1" *ngIf="teas.length < 1">No teas added yet!</p>

@@ -14,7 +14,6 @@ let db;
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/userRoute');
 const teasRouter = require('./routes/teaRoute');
-// const usersRouter = require('./routes/users');
 const shopRoute = require('./routes/shopRoute');
 const blogRouter = require('./routes/blogRoute');
 
@@ -63,10 +62,10 @@ mongoose.connect("mongodb+srv://user3:user3@cluster0-fetd1.mongodb.net/tshot")
 
 app.use('/', indexRouter);
 app.use('/api/teas',teasRouter);
-// app.use('/users', usersRouter);
+app.use('/users', usersRouter);
 app.use('/shop', shopRoute);
 app.use('/blog', blogRouter)
-
+app.use('/user', usersRouter)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
 	next(createError(404));

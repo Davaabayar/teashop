@@ -1,9 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.send('Get users for index');
-});
+router.post('/signUp', async (req, res, next) => {
+    await req.db.collection("users").insertOne({...req.body}, function (err, doc) {
+		if(err)  next(err);
+		else res.json({"success":1});
+    });
+})
 
+router.get('/getQuiz', async(req, res, next) => {
+    console.log(req.query.index)
+    await req.db.collection("quiz").find({}, function (err, doc) {
+		if(err)  next(err);
+		else doc.toArray().then(data => {
+            console.log(data)
+            res.json(data)
+        })
+    });
+})
 module.exports = router;
