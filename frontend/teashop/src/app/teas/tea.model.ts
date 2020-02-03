@@ -5,6 +5,7 @@ export interface Tea {
    description:string,
     cafine: string,
     flavors:[string],
+    tags:[string],
     ingredients:string,
     brewInstruction:{
         temp:string,

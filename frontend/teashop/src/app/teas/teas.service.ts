@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject,of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -19,8 +19,8 @@ export class TeasService {
   getTeas() {
     this.http.get(
       'http://localhost:3000/api/teas')
-      .subscribe(result=> {
-      //  this.teas = result;          
+      .subscribe(result=> {      
+        this.teas = result;          
         this.teasUpdated.next([...this.teas]);
       });
     return [...this.teas];
@@ -31,14 +31,15 @@ export class TeasService {
   }
 
   addTea(tea:Tea){
-    // const tea:Tea = {_id:null, name:name, shortName:shortName};
     this.http
-      .post<{message:string, body: Tea}>('http://localhost:3000/api/teas', tea)
+      .post('http://localhost:3000/api/teas', tea)
       .subscribe(responseData => {
-        const id = responseData.body._id;
+        console.log(responseData);
+        // this.teas.push(responseData.body);
+        return of(responseData);
       });
-    this.teas.push(tea);
-    this.teasUpdated.next([...this.teas]);
+    // this.teas.push(tea);
+    // this.teasUpdated.next([...this.teas]);
   }
 
   deleteTea(teaId:string){
@@ -52,19 +53,19 @@ export class TeasService {
   }
 
   getCategories(){
-    return ['A','B'];
+    return ['Cold', "Improve digestion", "Boost immune system", 
+    "Reduce inflammation", "Anti-ageing", "Relieve stress and anxiety", "Lower blood pressure", "Skin health"];
+  }
+
+  getTags(){
+    return ['Cold', "Improve digestion", "Boost immune system", 
+    "Reduce inflammation", "Anti-ageing", "Relieve stress and anxiety", "Lower blood pressure", "Skin health"];
   }
 
   getTea(teaId:string){    
-    if(this.teas.length==0){
-      this.http.get('http://localhost:3000/api/teas/'+teaId)
-      .subscribe((res)=>{       
-        this.tea = res;
-      });
-    }else{
-      this.tea = {...this.teas.find(t=>t._id === teaId)};
-    }
-    return this.tea;
+    // this.tea = {...this.teas.find(t=>t._id === teaId)};   
+    console.log('Tea service',teaId);  
+    return this.http.get('http://localhost:3000/api/teas/'+teaId);
   }
 
   updateTea(tea:Tea){
