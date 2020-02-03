@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/signUp', async (req, res, next) => {
+    console.log(req.body)
     await req.db.collection("users").insertOne({...req.body}, function (err, doc) {
 		if(err)  next(err);
 		else res.json({"success":1});
