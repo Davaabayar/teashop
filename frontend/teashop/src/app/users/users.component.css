@@ -49,7 +49,77 @@
     object-fit: cover;
     height: 300px;
 }
-body{
-    margin: 0px;
-    position: absolute;
+#form-wrapper{
+    max-width: 960px;
+}
+#card{
+    webkit-box-shadow: 0 8px 20px 0 rgba(0,0,0,.15);
+    -moz-box-shadow: 0 8px 20px 0 rgba(0,0,0,.15);
+    box-shadow: 0 8px 20px 0 rgba(0,0,0,.15);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width: 100%;
+    display: table;
+    overflow: hidden;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #fff;
+}
+#card-heading{
+    background: url(/assets/quiz/3.jpg) top left/cover no-repeat;
+    width: 29.1%;
+    display: table-cell;
+}
+#card-body{
+    display: table-cell;
+    padding: 80px 90px;
+    padding-bottom: 88px;
+}
+#card-title{
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 37px;
+    font-size: 30px;
+}
+.input-group{
+    position: relative;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.input-style{
+    padding: 9px 0;
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+    outline: none;
+    margin: 0;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    font-size: 14px;
+    font-family: inherit;
+}
+.form-btn{
+    padding-top: 30px;
+}
+.form-btn input{
+    background: #57b846;
+    border-radius: 3px;
+    transition: all .4s ease;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 25px;
+    cursor: pointer;
+    color: #fff;
+    outline: none;
+    border: none;
+}
+.form-btn input:hover{
+    background-color: #4ea53f;
 }
