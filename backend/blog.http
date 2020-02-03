@@ -1,12 +1,16 @@
-GET http://localhost:3000/blog/1
+GET http://localhost:3000/blog/posts/1
 
-POST http://localhost:3000/blog
+POST http://localhost:3000/blog/posts
 Content-Type: application/json
 
 {
-    "title": "Drinking Green Tea Can Make You Live Longer",
-    "date": 1580673100,
-    "thumbnail": 1,
+    "title": "Drinking Green Tea Can Make You Live middle",
+    "thumbnail": "1",
     "body": "this section has a lot of text from rich text editor",
-    "status": "published"
+    "thumbnail": 1,
+    "created": "2020-02-01T06:00:00.000+00:00",
+    "updated": "2020-02-01T06:00:00.000+00:00",
+    "createdBy": "BRITTANY SILVEIRA",
+    "updatedBy":"",
+    "status": 1
 }

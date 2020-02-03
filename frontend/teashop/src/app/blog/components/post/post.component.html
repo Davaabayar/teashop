@@ -3,22 +3,22 @@
         <header class="entry-header">
             <div class="entry-header-text text-center">
                 <h2 class="entry-title">
-                    <a href="https://grosche.ca/drinking-green-tea-make-you-live-longer/" rel="post" class="plain">
-                        Drinking Green Tea Can Make You Live Longer
+                    <a [routerLink]="[createURLPost(post._id)]" rel="post" class="plain">
+                        {{post.title}}
                     </a>
                 </h2>
                 <div class="entry-divider is-divider small"></div>
                 <div class="entry-meta uppercase is-xsmall">
                     <span class="posted-on">Posted on
-                        <a href="https://grosche.ca/drinking-green-tea-make-you-live-longer/" rel="post">
-                            <time class="entry-date published" datetime="2020-01-27T12:07:27-04:00">January 27, 2020</time>
-                            <time class="updated" datetime="2020-01-27T12:44:15-04:00">January 27, 2020</time>
+                        <a [routerLink]="[createURLPost(post._id)]" rel="post">
+                            <time class="entry-date published">{{ post.created | date:'MMMM dd, yyyy' }} </time>
+                            <!-- <time class="updated">January 27, 2020</time> -->
                         </a>
                     </span>
                     <span class="byline">
                         by
                         <span class="meta-author vcard">
-                            <a href="#">Brittany Silveira</a>
+                            <a [routerLink]="['#']">{{post.createdBy}}</a>
                         </span>
                     </span>
                 </div>
@@ -26,14 +26,14 @@
         </header>
 
         <div class="entry-image-float">
-            <a href="https://grosche.ca/drinking-green-tea-make-you-live-longer/">
+            <a [routerLink]="[createURLPost(post._id)]">
                 <img width="1000" height="737" src="https://grosche.ca/wp-content/uploads/2018/12/Grosche-Cambridge-Glass-infuser-teapot-2-liter-64-oz-with-green-looe-leaf-tea-1000x1000-1.jpg" />
             </a>
             <div class="badge absolute top post-date badge-outline">
                 <div class="badge-inner">
-                    <span class="post-date-day">27</span>
+                    <span class="post-date-day">{{ post.created | date:'dd' }}</span>
                     <br>
-                    <span class="post-date-month is-small">Jan</span>
+                    <span class="post-date-month is-small">{{ post.created | date:'MMM' }}</span>
                 </div>
             </div>
         </div>
@@ -41,13 +41,13 @@
         <div class="entry-content">
             <div class="entry-summary">
                 <p>
-                    We have the solution to immortality… okay well not quite. But we do know how you can live longer! Drink more green tea. According to a new study, regular consumers of green tea live longer and have a better chance at avoiding heart attacks or strokes. So, it’s time to up your daily dose. The […]
+                    {{post.summary}}[…]
                 </p>
             </div>
             <div class="text-center">
-                <a class="more-link button primary is-outline is-smaller" href="https://grosche.ca/drinking-green-tea-make-you-live-longer/">
+                <a class="more-link button primary is-outline is-smaller" [routerLink]="[createURLPost(post._id)]">
                     Continue reading
-                    <span class="meta-nav">→</span>
+                    <span class=" meta-nav">→</span>
                 </a>
             </div>
         </div>

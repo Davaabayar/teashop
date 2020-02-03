@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
-// const dotenv = require('dotenv');
+const dotenv = require('dotenv');
 const MongoClient = require('mongodb').MongoClient;
 // const mongoose = require('mongoose');
 
@@ -26,12 +26,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use(async (req, res, next) => {
-// dotenv.config();
-// const dburl = "mongodb+srv://" + process.env.dbname + ":" + process.env.dbpass + "@cluster0-fetd1.mongodb.net/tshot";
-let db;
+dotenv.config();
 
 app.use(async (req, res, next) => {
+	const dburl = "mongodb+srv://" + process.env.dbname + ":" + process.env.dbpass + "@cluster0-fetd1.mongodb.net/tshot";
 	try {
 		if (!db) {
 			await MongoClient.connect(dburl, { promiseLibrary: Promise })
@@ -61,7 +59,7 @@ app.use(async (req, res, next) => {
 // 	});
 
 app.use('/', indexRouter);
-app.use('/api/teas',teasRouter);
+app.use('/api/teas', teasRouter);
 app.use('/users', usersRouter);
 app.use('/shop', shopRoute);
 app.use('/blog', blogRouter)

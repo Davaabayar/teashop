@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Post } from '../../models/post';
 
 @Component({
   selector: 'app-post',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostComponent implements OnInit {
 
-  constructor() { }
+  @Input() post: Post;
+
+  constructor(public datepipe: DatePipe) { }
 
   ngOnInit() {
+  }
+
+  createURLPost(id) {
+    return 'posts/' + id;
+  }
+
+  getMonthFromDateString(date) {
+    console.log(new Date(date));
   }
 
 }
