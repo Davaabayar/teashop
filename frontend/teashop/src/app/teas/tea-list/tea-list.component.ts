@@ -11,25 +11,24 @@ import { Tea } from '../tea.model';
 })
 export class TeaListComponent implements OnInit, OnDestroy {
 
-  teas:Tea[] = [];
-  
+  teas: Tea[] = [];
+
   private teasSub: Subscription;
 
   constructor(private teasService: TeasService) { }
 
   ngOnInit() {
-    this.teas = this.teasService.getTeas();   
-    this.teasSub = this.teasService.getTeasUpdateListener()
-      .subscribe((teas:Tea[]) => {
-        this.teas = teas;      
-      });
+    console.log('Tea list onInit');
+    this.teasSub = this.teasService.getTeas().subscribe(teas => {
+      this.teas = JSON.parse(JSON.stringify(teas));
+    });
   }
 
   ngOnDestroy() {
     this.teasSub.unsubscribe();
   }
-  onDelete(id:string){
-    if(id!=null)
+  onDelete(id: string) {
+    if (id != null)
       this.teasService.deleteTea(id);
   }
 }

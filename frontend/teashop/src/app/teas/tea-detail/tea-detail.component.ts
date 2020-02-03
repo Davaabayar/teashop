@@ -12,7 +12,7 @@ export class TeaDetailComponent implements OnInit {
   tea: Tea;
   constructor(private teasService: TeasService, private router: ActivatedRoute) {
     this.router.params.subscribe(params => {
-      this.teasService.getTea("5e38571b1392951e0428a9ec").subscribe(tea => {
+      this.teasService.getTea(params.get['teaId']).subscribe(tea => {
         this.tea = JSON.parse(JSON.stringify(tea));
         console.log(tea);
       });

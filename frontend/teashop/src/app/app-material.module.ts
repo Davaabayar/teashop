@@ -19,6 +19,8 @@ import {
   MatProgressSpinnerModule,
   MatDialogModule,
   MatDatepickerModule,
+  MatGridList,
+  MatGridTile
 } from "@angular/material";
 
 @NgModule({
@@ -41,7 +43,9 @@ import {
     MatSortModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridList,
+    MatGridTile
   ],
   exports: [
     CommonModule,
@@ -61,7 +65,9 @@ import {
     MatSortModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridList,
+    MatGridTile
   ]
 })
 export class MaterialModule { }
