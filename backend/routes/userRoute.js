@@ -9,11 +9,12 @@ router.post('/signUp', async (req, res, next) => {
 
   let {username, password, email} = req.body;
   let encPass = await bcrypt.hash(password, saltRounds);
+  console.log(encPass)
   let token = jwt.sign({
     "username": username,
     "email": email
   }, "privateKey",{ expiresIn: '10m' });
-  let result = await req.db.collection("users").insert({
+  let result = await req.db.collection("users").insertOne({
     "username": username,
     "email": email,
     "password": encPass

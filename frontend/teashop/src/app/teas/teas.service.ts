@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, of } from 'rxjs';
+import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -31,7 +31,7 @@ export class TeasService {
 
   addTea(tea: Tea) {
     this.http
-      .post<{message:string, body: Tea}>('http://localhost:3000/api/teas', tea)
+      .post<{ message: string, body: Tea }>('http://localhost:3000/api/teas', tea)
       .subscribe(responseData => {
         const id = responseData.body._id;
       });
