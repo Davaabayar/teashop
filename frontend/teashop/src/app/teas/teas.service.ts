@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-import { Subject } from 'rxjs';
-=======
 import { Subject, of } from 'rxjs';
->>>>>>> 88e2e6398e55b1d36e31a0842bf30f83d158a665
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 

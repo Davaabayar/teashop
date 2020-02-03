@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const bcrypt = require('bcryptjs');
+const saltRounds = bcrypt.genSaltSync(10);
 
 router.post('/signUp', async (req, res, next) => {
+
   let {username, password, email} = req.body;
   let encPass = await bcrypt.hash(password, saltRounds);
   let token = jwt.sign({
