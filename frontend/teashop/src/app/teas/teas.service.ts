@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, of } from 'rxjs';
+import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -20,8 +20,7 @@ export class TeasService {
     this.http.get(
       'http://localhost:3000/api/teas')
       .subscribe(result => {
-        this.teas = result;
-        this.teasUpdated.next([...this.teas]);
+        this.teas = JSON.parse(JSON.stringify(result));
       });
     return [...this.teas];
   }
@@ -32,14 +31,12 @@ export class TeasService {
 
   addTea(tea: Tea) {
     this.http
-      .post('http://localhost:3000/api/teas', tea)
+      .post<{ message: string, body: Tea }>('http://localhost:3000/api/teas', tea)
       .subscribe(responseData => {
-        console.log(responseData);
-        // this.teas.push(responseData.body);
-        return of(responseData);
+        const id = responseData.body._id;
       });
-    // this.teas.push(tea);
-    // this.teasUpdated.next([...this.teas]);
+    this.teas.push(tea);
+    this.teasUpdated.next([...this.teas]);
   }
 
   deleteTea(teaId: string) {
