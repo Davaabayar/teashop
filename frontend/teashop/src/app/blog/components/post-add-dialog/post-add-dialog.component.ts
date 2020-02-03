@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-post-add-dialog',
@@ -9,9 +9,13 @@ import { NgForm } from '@angular/forms';
 })
 export class PostAddDialogComponent implements OnInit {
 
+  form = this.fb.group({
+    title: ['', Validators.required]
+  });
+
   constructor(
     private dialogRef: MatDialogRef<PostAddDialogComponent>,
-
+    private fb: FormBuilder
   ) {
 
   }

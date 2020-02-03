@@ -29,8 +29,8 @@ import { BlogModule } from './blog/blog.module';
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    BlogModule,
-    MaterialModule
+    MaterialModule,
+    BlogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
