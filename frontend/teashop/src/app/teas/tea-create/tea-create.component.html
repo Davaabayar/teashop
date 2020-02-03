@@ -1,5 +1,6 @@
 <mat-card>
     <h2>Add Tea</h2>
+    <a [routerLink] = "['','teas']">Tea List</a>
     <form (submit) = "onAddTea(teaForm)" #teaForm="ngForm">
         <mat-form-field>
             <input matInput type="text" name="name" ngModel required minlength="3"  placeholder="Tea Name" #name = "ngModel">
@@ -55,6 +56,6 @@
         <button
             mat-raised-button
             color="accent"
-            type="submit">Add Tea</button>
+            type="submit">Save Tea</button>
     </form>
 </mat-card>

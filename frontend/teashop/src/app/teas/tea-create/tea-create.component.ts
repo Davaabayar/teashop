@@ -24,9 +24,8 @@ export class TeaCreateComponent implements OnInit{
     if(form.invalid){
       return;
     }
-    console.log(form.value);
-    const tmp = new Tea
-    this.teasService.addTea(tea);
+    // console.log(form.value);
+    // this.teasService.addTea(form.value.name, form.value.short);
     form.resetForm();
   }
 }

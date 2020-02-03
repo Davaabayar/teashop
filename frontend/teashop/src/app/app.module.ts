@@ -12,16 +12,14 @@ import {
 
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+
+import {AppRoutingModule} from './app-routing.module';
+
 import { TeaCreateComponent } from './teas/tea-create/tea-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { TeaListComponent } from './teas/tea-list/tea-list.component';
-import { RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
-const MY_ROUTES : Routes = [
-  // {path:'', redirectTo:'home', pathMatch:'full'},
-  { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) }
-];
 
 @NgModule({
   declarations: [
@@ -42,7 +40,7 @@ const MY_ROUTES : Routes = [
     MatExpansionModule,
     MatSelectModule,
     MatCheckboxModule,
-    RouterModule.forRoot(MY_ROUTES)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
