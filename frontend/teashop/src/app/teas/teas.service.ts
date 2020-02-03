@@ -20,8 +20,7 @@ export class TeasService {
     this.http.get(
       'http://localhost:3000/api/teas')
       .subscribe(result => {
-        this.teas = result;
-        this.teasUpdated.next([...this.teas]);
+        this.teas = JSON.parse(JSON.stringify(result));
       });
     return [...this.teas];
   }
