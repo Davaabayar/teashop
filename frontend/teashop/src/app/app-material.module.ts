@@ -42,6 +42,26 @@ import {
     MatProgressSpinnerModule,
     MatDatepickerModule,
     MatDialogModule
+  ],
+  exports: [
+    CommonModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatExpansionModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatMenuModule,
+    MatIconModule,
+    MatTabsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }
