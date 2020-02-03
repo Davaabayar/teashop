@@ -84,10 +84,10 @@ export class SignUp implements OnInit {
               res => {
                 console.log(res)
 
-                if(res.exists == 1) console.log('working')
+                // if(res.exists == 1) console.log('working')
 
-                if (res.exists == 1) resolve({invalid: true});
-                else resolve(null);
+                // if (res.exists == 1) resolve({invalid: true});
+                // else resolve(null);
               },
               error => resolve({invalid: true}));
           }, 600);
