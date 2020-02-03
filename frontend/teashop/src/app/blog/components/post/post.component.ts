@@ -16,12 +16,8 @@ export class PostComponent implements OnInit {
   ngOnInit() {
   }
 
-  createURLPost(id) {
+  createURLPost(id: number) {
     return 'posts/' + id;
-  }
-
-  getMonthFromDateString(date) {
-    console.log(new Date(date));
   }
 
 }

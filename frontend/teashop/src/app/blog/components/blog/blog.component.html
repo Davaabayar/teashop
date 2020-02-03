@@ -1,4 +1,6 @@
 <div class="post-list">
+    <button (click)="openDialog()">open</button>
+
     <div *ngFor="let post of posts$ | async; let i=index">
         <app-post [post]=post></app-post>
     </div>
