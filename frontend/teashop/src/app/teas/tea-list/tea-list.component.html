@@ -1,0 +1,27 @@
+<h2>Tea list</h2>
+<a [routerLink] = "['add']">Add Tea</a>
+<mat-accordion multi="true" *ngIf="teas.length>0">
+    <mat-expansion-panel  *ngFor = "let tea of teas">
+        <mat-expansion-panel-header>
+            <div class="mdc-typography--headline2">{{tea.name}}
+                <div class="mdc-typography--subtitle1">{{tea.shortName}}</div>
+            </div>
+        </mat-expansion-panel-header>
+        <div>Flavors:
+            <span *ngFor="let f of tea.flovors" class="f">{{f}} </span>
+        </div>
+        <p>Cafine: {{tea.cafine}}</p>
+        <div>Brew Information: 
+            <div>Temp:{{tea?.brewInstruction?.temp}}</div>
+            <div>Water:{{tea?.brewInstruction?.water}}</div>
+            <div>Time:{{tea?.brewInstruction?.time}}</div>
+            <div>Direction:{{tea?.brewInstruction?.direction}}</div>
+        </div>
+        <p>Description: {{tea.description}}</p>
+        <mat-action-row>
+            <button mat-button color="primary">EDIT</button>
+            <button mat-button color="warn" (click)="onDelete(tea._id)">DELETE</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="teas.length<1">No teas added yet!</p>
