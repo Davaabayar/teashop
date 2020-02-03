@@ -6,6 +6,10 @@ const logger = require('morgan');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const MongoClient = require('mongodb').MongoClient;
+<<<<<<< HEAD
+=======
+
+>>>>>>> d0703b946dee375527dac621016a0b5f2f9cccca
 let db;
 
 const indexRouter = require('./routes/index');
