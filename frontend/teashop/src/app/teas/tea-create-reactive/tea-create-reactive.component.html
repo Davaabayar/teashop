@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <mat-card>
     <h1>Add Tea</h1>
     <form [formGroup]="teaForm" (ngSubmit)="onSubmit()">
@@ -23,6 +24,65 @@
             <h3>Brew Instruction</h3>
             <mat-form-field>
                 <input matInput type="text" formControlName="temp" placeholder="Temperature">
+=======
+<h1>Add Tea</h1>
+<form [formGroup]="teaForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="full-width">
+        <input matInput type="text" formControlName="teaName" required placeholder="Tea Name">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput type="text" formControlName="shortName" placeholder="Short Name">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <textarea matInput rows="4" type="text" formControlName="description" placeholder="Description"></textarea>
+    </mat-form-field>
+    <div>
+        <h3>Ingredients</h3>
+        <mat-form-field>
+            <input matInput type="text" formControlName="cafine" placeholder="Cafine">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput type="text" formControlName="ingredients" placeholder="Ingredients">
+        </mat-form-field>
+    </div>
+    <div formGroupName="brewInstruction">
+        <h3>Brew Instruction</h3>
+        <mat-form-field>
+            <input matInput type="text" formControlName="temp" placeholder="Temperature">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" formControlName="water" placeholder="Water">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" formControlName="time" placeholder="Time">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" formControlName="direction" placeholder="Direction">
+        </mat-form-field>
+    </div>
+
+    <div formArrayName="flavors">
+        <h3>Flavors <button (click)="addFlavor()" mat-button color="accent" type="button">Add Flavor</button></h3>
+        <div *ngFor="let flavor of flavors.controls; let i = index">
+            <mat-form-field>
+                <input matInput type="text" [formControlName]="i" placeholder="Flavor">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div formArrayName="tags">
+        <h3>Tags
+            <button (click)="addTag()" mat-button color="accent" type="button">Add Tag</button>
+        </h3>
+        <div *ngFor="let tag of tags.controls; let i = index">
+            <mat-form-field>
+                <!-- <input matInput type="text" [formControlName]="i" placeholder="Tag"> -->
+                <mat-select [formControlName]="i">
+                    <mat-option *ngFor="let t of tagTypes" [value]="t">
+                        {{t}}
+                    </mat-option>
+                </mat-select>
+>>>>>>> 3d24bac16b2b85c0f7fa5b83d11f86cc91cdca55
             </mat-form-field>
             <mat-form-field>
                 <input matInput type="text" formControlName="water" placeholder="Water">
@@ -60,6 +120,7 @@
             </div>
         </div>
 
+<<<<<<< HEAD
         <button type="submit" [disabled]="!teaForm.valid" mat-raised-button color="primary">Add Tea</button>
     </form>
     <hr>
@@ -74,3 +135,18 @@
         Form Status: {{ teaForm.status }}
     </p>
 </mat-card>
+=======
+    <button type="submit" [disabled]="!teaForm.valid" mat-raised-button color="primary">Add Tea</button>
+</form>
+<hr>
+
+
+<p>
+    Form Value: {{ teaForm.value | json }}
+</p>
+
+
+<p>
+    Form Status: {{ teaForm.status }}
+</p>
+>>>>>>> 3d24bac16b2b85c0f7fa5b83d11f86cc91cdca55

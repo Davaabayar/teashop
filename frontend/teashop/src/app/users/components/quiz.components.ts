@@ -38,8 +38,8 @@ export class Quiz implements OnInit {
         console.log('working')
     }
     ngOnInit() {
-        // this.Subscription = this.userService.getQuiz(0).subscribe(res => {
-        //     console.log(res)
-        // })
+        this.Subscription = this.userService.getQuiz(0).subscribe(res => {
+            console.log(res)
+        })
     }
 }

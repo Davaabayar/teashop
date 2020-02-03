@@ -19,55 +19,38 @@ import {
   MatProgressSpinnerModule,
   MatDialogModule,
   MatDatepickerModule,
+  MatFormFieldModule,
   MatGridList,
   MatGridTile
 } from "@angular/material";
 
+const modules = [
+  CommonModule,
+  MatInputModule,
+  MatCardModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatExpansionModule,
+  MatSelectModule,
+  MatCheckboxModule,
+  MatMenuModule,
+  MatIconModule,
+  MatTabsModule,
+  MatSidenavModule,
+  MatListModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatProgressSpinnerModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatGridList,
+  MatGridTile
+];
+
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatExpansionModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatMenuModule,
-    MatIconModule,
-    MatTabsModule,
-    MatSidenavModule,
-    MatListModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatProgressSpinnerModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatGridList,
-    MatGridTile
-  ],
-  exports: [
-    CommonModule,
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatExpansionModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatMenuModule,
-    MatIconModule,
-    MatTabsModule,
-    MatSidenavModule,
-    MatListModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatProgressSpinnerModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatGridList,
-    MatGridTile
-  ]
+  imports: [...modules],
+  exports: [...modules]
 })
 export class MaterialModule { }

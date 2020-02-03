@@ -4,20 +4,23 @@ import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './users.component';
 import { SignUp } from './components/signUp.component';
 import { Quiz } from './components/quiz.components';
+import { SignIn } from './components/signIn.components';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 const routes: Routes = [
   { path: '', component: UsersComponent},
   { path: 'signup', component: SignUp},
-  { path: 'quiz', component: Quiz}
+  { path: 'quiz', component: Quiz},
+  { path: 'signin', component: SignIn}
 ];
 
 @NgModule({
   declarations: [
     UsersComponent,
     SignUp,
-    Quiz
+    Quiz,
+    SignIn
   ],
   imports: [
     CommonModule,
