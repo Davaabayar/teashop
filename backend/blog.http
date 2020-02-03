@@ -1,0 +1,12 @@
+GET http://localhost:3000/blog/1
+
+POST http://localhost:3000/blog
+Content-Type: application/json
+
+{
+    "title": "Drinking Green Tea Can Make You Live Longer",
+    "date": 1580673100,
+    "thumbnail": 1,
+    "body": "this section has a lot of text from rich text editor",
+    "status": "published"
+}
