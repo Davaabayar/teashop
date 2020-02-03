@@ -68,7 +68,7 @@
     background: #fff;
 }
 #card-heading{
-    background: url(/assets/quiz/3.jpg) top left/cover no-repeat;
+    background: url(/assets/quiz/4.jpg) top left/cover no-repeat;
     width: 29.1%;
     display: table-cell;
 }
@@ -106,7 +106,7 @@
 .form-btn{
     padding-top: 30px;
 }
-.form-btn input{
+.form-btn button{
     background: #57b846;
     border-radius: 3px;
     transition: all .4s ease;
@@ -120,6 +120,22 @@
     outline: none;
     border: none;
 }
-.form-btn input:hover{
+.form-btn button:hover{
     background-color: #4ea53f;
+}
+.error{
+    border-bottom: 1px solid red;
+}
+.error-text{
+    color:red
+}
+.disabled-btn{
+    background-color: grey !important;
+}
+.signup-link{
+    float: right;
+    position: relative;
+    top: 10px;
+    color: inherit;
+    text-decoration: none;
 }

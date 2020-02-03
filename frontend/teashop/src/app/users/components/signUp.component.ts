@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
-import { Subscription } from 'rxjs'
+import { Subscription, Observable } from 'rxjs'
 import { Router } from '@angular/router';
+import { resolve } from 'url';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 @Component({
     selector: 'sign-up',
@@ -13,22 +15,24 @@ import { Router } from '@angular/router';
 
             </div>
             <div id="card-body">
-                <h2 id="card-title">User Info</h2>
+                <h2 id="card-title">Sign Up</h2>
                 <form [formGroup]="myForm" id="signup-form" (ngSubmit)="onSubmit()">
                     <div class="input-group">
                         <input class="input-style" type="text" name="name" placeholder="FullName" [formControl]="myForm.get('fullname')">
                     </div>
-                    <div class="input-group">
+                    <div class="input-group" [ngClass]="{'error': myForm.get('email').hasError('invalid') == true}">
                         <input class="input-style" type="text" name="email" placeholder="Email" [formControl]="myForm.get('email')">
                     </div>
-                    <div class="input-group">
+                    <span class="error-text" *ngIf="myForm.get('email').hasError('invalid') == true">Email already exists</span>
+                    <div class="input-group" [ngClass]="(myForm.hasError('different') ? 'error':'')">
                         <input class="input-style" type="password" name="password" placeholder="Password" [formControl]="myForm.get('password')">
                     </div>
-                    <div class="input-group">
-                        <input class="input-style" type="password" name="verified-password" placeholder="Verify Password">
+                    <div class="input-group" [ngClass]="(myForm.hasError('different') ? 'error':'')">
+                        <input class="input-style " type="password" name="verified-password" placeholder="Verify Password" [formControl]="myForm.get('verifyPassword')">
                     </div>
+                    <span class="error-text" *ngIf="myForm.hasError('different')">Password mismatch</span>
                     <div class="form-btn">
-                        <input type="submit" value="Submit">
+                        <button type="submit" [ngClass]="{'disabled-btn': myForm.valid == false}" [disabled]="!myForm.valid">Submit</button>
                     </div>
                 </form>
             </div>
@@ -40,20 +44,22 @@ import { Router } from '@angular/router';
 export class SignUp implements OnInit {
     myForm: FormGroup
     private Subscription: Subscription
-
+    private emailTimeout
     constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
         this.myForm = fb.group({
             'fullname': ['', Validators.required],
-            'email': ['', Validators.required],
-            'password': ['', Validators.required]
-        })
+            'email': ['', Validators.required, [this.asyncEmailValidator.bind(this)]],
+            'password': ['', Validators.required],
+            'verifyPassword': ['', Validators.required]
+        },
+        {validators: this.checkPassword}
+        )
     }
 
-    onSubmit() {
-        console.log('You submitted value : ', this.myForm.value)
+    onSubmit() {      
         this.Subscription = this.userService.signUp(this.myForm.value).subscribe(response => {
             if (response) {
-                this.router.navigateByUrl('/users/quiz')
+                this.router.navigateByUrl('/users/signin')
             }
         })
     }
@@ -61,4 +67,31 @@ export class SignUp implements OnInit {
     ngOnInit() {
 
     }
+
+    checkPassword(group: FormGroup) {
+        let password = group.value.password
+        let verify = group.value.verifyPassword
+        console.log(password + " : "+ verify)
+        return (password == verify) ? null : {different : true}
+    }
+
+    asyncEmailValidator(control: FormControl): Promise<any> | Observable<any> {
+        clearTimeout(this.emailTimeout);
+        return new Promise<any>((resolve, reject) => {
+          this.emailTimeout = setTimeout(() => {
+            this.userService.checkEmail(control.value)
+            .subscribe(
+              res => {
+                console.log(res)
+
+                if(res.exists == 1) console.log('working')
+
+                if (res.exists == 1) resolve({invalid: true});
+                else resolve(null);
+              },
+              error => resolve({invalid: true}));
+          }, 600);
+        });
+      }
 }
+
