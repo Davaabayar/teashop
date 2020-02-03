@@ -9,20 +9,20 @@ import { TeasService } from '../teas.service';
   templateUrl: './tea-create-reactive.component.html',
   styleUrls: ['./tea-create-reactive.component.css']
 })
-export class TeaCreateReactiveComponent implements OnInit{
+export class TeaCreateReactiveComponent implements OnInit {
   teaForm = this.fb.group({
     teaName: ['', Validators.required],
     shortName: [''],
-    cafine:[''],
+    cafine: [''],
     brewInstruction: this.fb.group({
-      temp:[''],
-      water:[''],
-      time:[''],
-      direction:[]
+      temp: [''],
+      water: [''],
+      time: [''],
+      direction: []
     }),
-    description:[''],
-    ingredients:[''],
-    flavors:this.fb.array([
+    description: [''],
+    ingredients: [''],
+    flavors: this.fb.array([
       this.fb.control('')
     ]),
     tags: this.fb.array([
@@ -30,18 +30,18 @@ export class TeaCreateReactiveComponent implements OnInit{
     ])
   });
   tagTypes = [];
-  
-  get flavors(){
+
+  get flavors() {
     return this.teaForm.get('flavors') as FormArray;
   }
 
-  constructor(private fb:FormBuilder, private teasService:TeasService) { }
+  constructor(private fb: FormBuilder, private teasService: TeasService) { }
 
   addFlavor() {
     this.flavors.push(this.fb.control(''));
   }
 
-  get tags(){
+  get tags() {
     return this.teaForm.get('tags') as FormArray;
   }
 
@@ -49,12 +49,12 @@ export class TeaCreateReactiveComponent implements OnInit{
     this.tags.push(this.fb.control(''));
   }
 
-  onSubmit(){
+  onSubmit() {
     this.teasService.addTea(this.teaForm.value);
     console.log('OK');
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.tagTypes = this.teasService.getTags();
   }
 }
