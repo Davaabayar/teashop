@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject,of } from 'rxjs';
+import { Subject, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -11,16 +11,16 @@ import { Tea } from './tea.model';
 export class TeasService {
 
   teas: any[] = [];
-  tea:any= null;
+  tea: any = null;
   private teasUpdated = new Subject<Tea[]>();
   private categories = [];
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) { }
 
   getTeas() {
     this.http.get(
       'http://localhost:3000/api/teas')
-      .subscribe(result=> {      
-        this.teas = result;          
+      .subscribe(result => {
+        this.teas = result;
         this.teasUpdated.next([...this.teas]);
       });
     return [...this.teas];
@@ -30,7 +30,7 @@ export class TeasService {
     return this.teasUpdated.asObservable();
   }
 
-  addTea(tea:Tea){
+  addTea(tea: Tea) {
     this.http
       .post('http://localhost:3000/api/teas', tea)
       .subscribe(responseData => {
@@ -42,35 +42,35 @@ export class TeasService {
     // this.teasUpdated.next([...this.teas]);
   }
 
-  deleteTea(teaId:string){
+  deleteTea(teaId: string) {
     this.http
-      .delete('http://localhost:3000/api/teas/'+teaId)
-      .subscribe((res)=>{
+      .delete('http://localhost:3000/api/teas/' + teaId)
+      .subscribe((res) => {
         const updatedTeas = this.teas.filter(tea => tea._id !== teaId);
         this.teas = updatedTeas;
         this.teasUpdated.next([...this.teas]);
       });
   }
 
-  getCategories(){
-    return ['Cold', "Improve digestion", "Boost immune system", 
-    "Reduce inflammation", "Anti-ageing", "Relieve stress and anxiety", "Lower blood pressure", "Skin health"];
+  getCategories() {
+    return ['Cold', "Improve digestion", "Boost immune system",
+      "Reduce inflammation", "Anti-ageing", "Relieve stress and anxiety", "Lower blood pressure", "Skin health"];
   }
 
-  getTags(){
-    return ['Cold', "Improve digestion", "Boost immune system", 
-    "Reduce inflammation", "Anti-ageing", "Relieve stress and anxiety", "Lower blood pressure", "Skin health"];
+  getTags() {
+    return ['Cold', "Improve digestion", "Boost immune system",
+      "Reduce inflammation", "Anti-ageing", "Relieve stress and anxiety", "Lower blood pressure", "Skin health"];
   }
 
-  getTea(teaId:string){    
+  getTea(teaId: string) {
     // this.tea = {...this.teas.find(t=>t._id === teaId)};   
-    console.log('Tea service',teaId);  
-    return this.http.get('http://localhost:3000/api/teas/'+teaId);
+    console.log('Tea service', teaId);
+    return this.http.get('http://localhost:3000/api/teas/' + teaId);
   }
 
-  updateTea(tea:Tea){
+  updateTea(tea: Tea) {
     this.http
-      .put<{message:string}>('http://localhost:3000/api/teas/'+tea._id, tea)
+      .put<{ message: string }>('http://localhost:3000/api/teas/' + tea._id, tea)
       .subscribe(response => console.log(response));
   }
 }
