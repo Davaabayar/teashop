@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 const MongoClient = require('mongodb').MongoClient;
 
 const indexRouter = require('./routes/index');
-// const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/userRoute');
 const shopRoute = require('./routes/shopRoute');
 const blogRouter = require('./routes/blogRoute');
 
@@ -49,7 +49,7 @@ app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/shop', shopRoute);
 app.use('/blog', blogRouter)
-
+app.use('/user', usersRouter)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
 	next(createError(404));
