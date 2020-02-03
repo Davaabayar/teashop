@@ -63,6 +63,7 @@ import { TeaCreateReactiveComponent } from './teas/tea-create-reactive/tea-creat
     MatSortModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
+    MatDialogModule,
     AppRoutingModule
   ],
   providers: [],
