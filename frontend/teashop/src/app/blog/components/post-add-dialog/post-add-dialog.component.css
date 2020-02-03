@@ -1,0 +1,14 @@
+.full-width{
+    width:100%;
+}
+.mat-form-field{
+    margin-right:20px;
+}
+
+.dnone {
+    display: none;
+}
+
+.container {
+    overflow-y: scroll;
+}

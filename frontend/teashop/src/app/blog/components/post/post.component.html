@@ -50,6 +50,8 @@
                     <span class=" meta-nav">→</span>
                 </a>
             </div>
+            <button type="button" (click)="edit()">Edit</button>
+            <button type="button" (click)="delete([post.title], [post._id])">Delete</button>
         </div>
 
         <div class="clearfix"></div>

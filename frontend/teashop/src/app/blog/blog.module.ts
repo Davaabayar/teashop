@@ -7,6 +7,8 @@ import { PostComponent } from './components/post/post.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { DatePipe } from '@angular/common';
 import { PostAddDialogComponent } from './components/post-add-dialog/post-add-dialog.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
 import { MaterialModule } from '../app-material.module';
 
 const MY_ROUTES = [
@@ -25,7 +27,8 @@ const MY_ROUTES = [
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
-    RouterModule.forChild(MY_ROUTES)
+    RouterModule.forChild(MY_ROUTES),
+    AngularEditorModule
   ],
   entryComponents: [
     PostAddDialogComponent
