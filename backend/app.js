@@ -5,11 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
 const MongoClient = require('mongodb').MongoClient;
-<<<<<<< HEAD
-=======
-
->>>>>>> d0703b946dee375527dac621016a0b5f2f9cccca
 let db;
 
 const indexRouter = require('./routes/index');
@@ -50,12 +47,26 @@ app.use(async (req, res, next) => {
 	}
 });
 
+function tokenCheck(req, res, next) {
+	let bearerHeader = req.headers["authorization"];
+	if (typeof bearerHeader !== 'undefined') {
+		let bearer = bearerHeader.split(" ");
+		req.token = bearer[1];
+		let token = bearer[1];
+		jwt.verify(token, 'privateKey', function (err, decoded) {
+			if (err) res.status(400).send(err);
+			else return next();
+		});
+	} else {
+		res.send(403);
+	}
+}
 app.use('/', indexRouter);
-app.use('/api/teas', teasRouter);
+app.use('/api/teas', tokenCheck, teasRouter);
 app.use('/users', usersRouter);
 app.use('/shop', shopRoute);
-app.use('/api/blog', blogRouter)
-app.use('/user', usersRouter)
+app.use('/api/blog', blogRouter);
+app.use('/user', usersRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
 	next(createError(404));
