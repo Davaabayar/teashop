@@ -5,14 +5,18 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
-const dburl = "mongodb://localhost:27017/users";
+// const dburl = "mongodb://mongodb+srv://user3:user3@cluster0-fetd1.mongodb.net/test";
+const dburl = "mongodb+srv://user3:user3@cluster0-fetd1.mongodb.net/tshot";
+// const dburl = "mongodb://localhost/lab14";
 let db;
 
+const mongoose = require('mongoose');
+
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/userRoute');
+const teasRouter = require('./routes/teaRoute');
 
 const app = express();
-
 
 app.use(logger('dev'));
 app.use(cors());
@@ -21,7 +25,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(async (req, res, next) => {
+/*app.use(async (req, res, next) => {
 	try {
 		if (!db) {
 			await MongoClient.connect(dburl, {promiseLibrary: Promise})
@@ -39,10 +43,20 @@ app.use(async (req, res, next) => {
 	} catch (e) {
 		next(e);
 	}
-});
+});*/
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+mongoose.connect("mongodb+srv://user3:user3@cluster0-fetd1.mongodb.net/tshot")
+	.then(()=>{
+		console.log('Database successfully connected.');
+	})
+	.catch((err)=>{
+		console.log('Database connection failed.');
+		console.log(err);
+	});
+
+app.use('/api/', indexRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/teas',teasRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

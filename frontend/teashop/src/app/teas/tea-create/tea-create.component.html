@@ -1,0 +1,60 @@
+<mat-card>
+    <h2>Add Tea</h2>
+    <form (submit) = "onAddTea(teaForm)" #teaForm="ngForm">
+        <mat-form-field>
+            <input matInput type="text" name="name" ngModel required minlength="3"  placeholder="Tea Name" #name = "ngModel">
+            <mat-error *ngIf = "name.invalid">Please enter a tea name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input
+                matInput
+                type="text"
+                name="short"
+                ngModel
+                required
+                placeholder="Short Name"
+                #short = "ngModel"
+            >
+            <mat-error *ngIf="short.invalid">Please enter a tea short name.</mat-error>
+        </mat-form-field>
+        <mat-checkbox name="organic" ngModel>Organic!</mat-checkbox>
+        <mat-form-field>
+            <mat-label>Category</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let category of categories" [value]="category">
+                    {{category}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+          
+        <mat-form-field>
+            <input matInput type="text" name="cafine" ngModel placeholder="Cafine" #cafine = "ngModel">
+        </mat-form-field>
+        <h3>Brew Information</h3>
+        <mat-form-field>
+            <input matInput type="text" name="brewInstruction.temp" ngModel  minlength="3"  placeholder="Temp" #brewInstruction.temp = "ngModel">           
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" name="brewInstruction.water" ngModel  minlength="3"  placeholder="Water" #brewInstruction.water = "ngModel">            
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" name="brewInstruction.time" ngModel  minlength="3"  placeholder="Minute" #brewInstruction.time = "ngModel">            
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" name="brewInstruction.direction" ngModel  minlength="3"  placeholder="Direction" #brewInstruction.direction = "ngModel">            
+        </mat-form-field>
+        <h3>Whole description</h3>
+        <mat-form-field>
+            <textarea rows="4" matInput type="text" name="description" ngModel  required placeholder="description" #description = "ngModel"></textarea>  
+            <mat-error *ngIf="description.invalid">Please enter a tea description.</mat-error>          
+        </mat-form-field> 
+        <mat-form-field>
+            <input matInput type="text" name="ingredients" ngModel  required placeholder="ingredients" #ingredients = "ngModel">  
+            <mat-error *ngIf="ingredients.invalid">Please enter a tea ingredients.</mat-error>          
+        </mat-form-field>       
+        <button
+            mat-raised-button
+            color="accent"
+            type="submit">Add Tea</button>
+    </form>
+</mat-card>
