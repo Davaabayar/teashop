@@ -26,12 +26,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(async (req, res, next) => {
-	dotenv.config();
-	const dburl = "mongodb+srv://" + process.env.dbname + ":" + process.env.dbpass + "@cluster0-fetd1.mongodb.net/tshot";
-});
+dotenv.config();
 
 app.use(async (req, res, next) => {
+	const dburl = "mongodb+srv://" + process.env.dbname + ":" + process.env.dbpass + "@cluster0-fetd1.mongodb.net/tshot";
 	try {
 		if (!db) {
 			await MongoClient.connect(dburl, { promiseLibrary: Promise })
