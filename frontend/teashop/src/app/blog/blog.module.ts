@@ -6,7 +6,6 @@ import { PostComponent } from './components/post/post.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { DatePipe } from '@angular/common';
 import { PostAddDialogComponent } from './components/post-add-dialog/post-add-dialog.component';
-import { MatDialogModule } from '@angular/material';
 
 const MY_ROUTES = [
   { path: '', component: BlogComponent },
