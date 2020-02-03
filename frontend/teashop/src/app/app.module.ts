@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from "@angular/forms";
-import { TeaCreateComponent } from './teas/tea-create/tea-create.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { TeaListComponent } from './teas/tea-list/tea-list.component';
@@ -18,7 +17,6 @@ import { BlogModule } from './blog/blog.module';
 @NgModule({
   declarations: [
     AppComponent,
-    TeaCreateComponent,
     HeaderComponent,
     TeaListComponent,
     TeaDetailComponent,
