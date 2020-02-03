@@ -10,6 +10,16 @@ import {
   MatButtonModule,
   MatToolbarModule,
   MatExpansionModule,
+  MatMenuModule,
+  MatIconModule,
+  MatTabsModule,
+  MatSidenavModule,
+  MatListModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatProgressSpinnerModule,
+  MatDialogModule,
+  MatDatepickerModule,
 } from "@angular/material";
 
 import { MatSelectModule } from '@angular/material/select';
@@ -44,6 +54,15 @@ import { TeaCreateReactiveComponent } from './teas/tea-create-reactive/tea-creat
     MatExpansionModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatMenuModule,
+    MatIconModule,
+    MatTabsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatDatepickerModule,
     AppRoutingModule
   ],
   providers: [],

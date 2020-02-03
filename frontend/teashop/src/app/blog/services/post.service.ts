@@ -9,7 +9,7 @@ export class PostService {
   constructor(public http: HttpClient) { }
 
   getPosts(page) {
-    return this.http.get('http://localhost:3000/blog/posts/' + page);
+    return this.http.get('http://localhost:3000/api/blog/posts/' + page);
   }
 
 }
