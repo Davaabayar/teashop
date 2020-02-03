@@ -8,11 +8,17 @@
         <input matInput type="text" formControlName = "shortName" placeholder="Short Name">
     </mat-form-field>
     <mat-form-field class="full-width">
-        <input matInput type="text" formControlName = "ingredients" placeholder="Ingredients">
-    </mat-form-field>
-    <mat-form-field class="full-width">
-        <input matInput type="text" formControlName = "description" placeholder="Description">
+        <textarea matInput rows="4" type="text" formControlName = "description" placeholder="Description"></textarea>
     </mat-form-field>    
+    <div>
+        <h3>Ingredients</h3>
+        <mat-form-field>
+            <input matInput type="text" formControlName = "cafine" placeholder="Cafine">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput type="text" formControlName = "ingredients" placeholder="Ingredients">
+        </mat-form-field>
+    </div>
     <div formGroupName="brewInstruction">
         <h3>Brew Instruction</h3>
         <mat-form-field>
@@ -22,7 +28,7 @@
             <input matInput type="text" formControlName = "water" placeholder="Water"> 
         </mat-form-field>
         <mat-form-field>
-            <input matInput type="text" formControlName = "minute" placeholder="Minute">
+            <input matInput type="text" formControlName = "time" placeholder="Time">
         </mat-form-field>
         <mat-form-field>
             <input matInput type="text" formControlName = "direction" placeholder="Direction">
@@ -30,11 +36,26 @@
     </div>
    
     <div formArrayName="flavors">
-        <h3>Flavors</h3>
-        <button (click) = "addFlavor()"  mat-button color="accent">Add Flavor</button>
+        <h3>Flavors  <button (click) = "addFlavor()"  mat-button color="accent" type="button">Add Flavor</button></h3>
         <div *ngFor = "let flavor of flavors.controls; let i = index">
             <mat-form-field>                
                 <input matInput type="text" [formControlName]="i" placeholder="Flavor">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div formArrayName="tags">
+        <h3>Tags   
+            <button (click) = "addTag()"  mat-button color="accent" type="button">Add Tag</button>
+        </h3>      
+        <div *ngFor = "let tag of tags.controls; let i = index">
+            <mat-form-field>                
+                <!-- <input matInput type="text" [formControlName]="i" placeholder="Tag"> -->
+                <mat-select [formControlName]="i">
+                    <mat-option *ngFor="let t of tagTypes" [value]="t">
+                      {{t}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
         </div>
     </div>

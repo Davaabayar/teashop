@@ -9,13 +9,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./tea-detail.component.css']
 })
 export class TeaDetailComponent implements OnInit {
-  tea:Tea;
-  constructor(private teasService:TeasService, private route:ActivatedRoute) { }
+  tea: Tea;
+  constructor(private teasService: TeasService, private router: ActivatedRoute) {
+    this.router.params.subscribe(params => {
+      this.teasService.getTea("5e38571b1392951e0428a9ec").subscribe(tea => {
+        this.tea = JSON.parse(JSON.stringify(tea));
+        console.log(tea);
+      });
+    });
+  }
 
-  ngOnInit() {      
-    console.log('On detail init');     
-    console.log(this.route.params['teaId']);  
-    console.log(this.teasService.getTea('5e364218a16ac11dd870c41a'));
+  ngOnInit() {
+    // console.log(this.route.params['teaId']);  
+
   }
 
 }

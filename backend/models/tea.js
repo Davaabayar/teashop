@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const teaSchema = mongoose.Schema({
-    _id: mongoose.Types.ObjectId,
-    name: {type:String, required: true},
-    shortName: {type:String, required: true},
+    teaName: {type:String, required: true},
+    shortName: String,
     description:String,
     cafine: String,
-    flovors:[String],
+    flavors:[String],
+    tags:[String],
     ingredients:String,
     brewInstruction:{
         temp:String,

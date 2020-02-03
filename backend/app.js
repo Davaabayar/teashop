@@ -6,10 +6,10 @@ const logger = require('morgan');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const MongoClient = require('mongodb').MongoClient;
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
 const dburl = "mongodb+srv://user3:user3@cluster0-fetd1.mongodb.net/tshot";
-let db;
+// let db;
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/userRoute');
