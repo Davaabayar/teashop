@@ -21,22 +21,17 @@ router.get('/', async function(req, res, next) {
 router.get('/:id', async function(req,res,next){
   Tea.findById(req.params.id)
     .then((result)=>{
-      console.log(result);
       res.status(200).json(result);
     })
     .catch(err=>{
-      console.log(err);
       res.status(400).json(err);
-    })
-
-  
+    })  
 });
 
 
 router.post('/', async function(req, res, next) {  
     const tea = new Tea(req.body);    
     const result = await tea.save();
-    //let result = await req.db.collection('teas').insertOne(req.body);       
     res.status(201).json({
       message:"Tea added successfully",
       body:result
@@ -44,22 +39,23 @@ router.post('/', async function(req, res, next) {
   });
 
 router.delete('/:id',(req,res,next)=>{
-  Tea.deleteOne({_id:req.params.id}
-  //   , function(err){
-  //   if(err) {
-  //     console.log(err);
-  //     res.status(501).json({message:"Tea id not found"});
-  //   }
-  // }
-  )
-  .then(result=>{
-      console.log(result);
+  Tea.deleteOne({_id:req.params.id})
+  .then(result=>{     
       res.status(200).json({message:"Tea deleted!"});
     })
-    .catch(err=>{
-      console.log('Error during deletion',err);
+    .catch(err=>{   
       res.status(500);
     });
+})
+
+router.put('/:id', (req, res, next) => {
+  const tea = new Tea({...req.body});
+  console.log('put',{...req.body});
+
+  Tea.updateOne({_id:req.params.id}, tea).then(result => {
+    console.log(result);
+    res.status(200).json({message:"Update successful!"});
+  });
 })
 
 module.exports = router;

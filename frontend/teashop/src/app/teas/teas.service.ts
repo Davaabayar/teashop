@@ -10,15 +10,17 @@ import { Tea } from './tea.model';
 })
 export class TeasService {
 
-  private teas: Tea[] = [];
+  teas: any[] = [];
+  tea:any= null;
   private teasUpdated = new Subject<Tea[]>();
   private categories = [];
   constructor(private http: HttpClient){}
+
   getTeas() {
     this.http.get(
       'http://localhost:3000/api/teas')
       .subscribe(result=> {
-        // this.teas = result;  
+      //  this.teas = result;          
         this.teasUpdated.next([...this.teas]);
       });
     return [...this.teas];
@@ -30,7 +32,6 @@ export class TeasService {
 
   addTea(tea:Tea){
     // const tea:Tea = {_id:null, name:name, shortName:shortName};
-
     this.http
       .post<{message:string, body: Tea}>('http://localhost:3000/api/teas', tea)
       .subscribe(responseData => {
@@ -44,8 +45,6 @@ export class TeasService {
     this.http
       .delete('http://localhost:3000/api/teas/'+teaId)
       .subscribe((res)=>{
-        console.log('DELETE+++++++++++++++++++++');
-        console.log(res);
         const updatedTeas = this.teas.filter(tea => tea._id !== teaId);
         this.teas = updatedTeas;
         this.teasUpdated.next([...this.teas]);
@@ -54,5 +53,23 @@ export class TeasService {
 
   getCategories(){
     return ['A','B'];
+  }
+
+  getTea(teaId:string){    
+    if(this.teas.length==0){
+      this.http.get('http://localhost:3000/api/teas/'+teaId)
+      .subscribe((res)=>{       
+        this.tea = res;
+      });
+    }else{
+      this.tea = {...this.teas.find(t=>t._id === teaId)};
+    }
+    return this.tea;
+  }
+
+  updateTea(tea:Tea){
+    this.http
+      .put<{message:string}>('http://localhost:3000/api/teas/'+tea._id, tea)
+      .subscribe(response => console.log(response));
   }
 }

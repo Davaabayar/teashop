@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { TeasService } from '../teas.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Tea } from '../tea.model';
 
 @Component({
   selector: 'app-tea-create',
@@ -13,19 +15,41 @@ export class TeaCreateComponent implements OnInit{
   enteredName = "";
   enteredShortName = "";
   categories = [];
+  private mode = 'create';
+  private teaId:string;
+  tea:Tea;
 
-  constructor(private teasService:TeasService) { }
+  constructor(private teasService:TeasService, public route:ActivatedRoute) { }
  
   ngOnInit(){
     this.categories = this.teasService.getCategories();  
+    
+    //check if id is provided in the route
+    //component uurchlugduugui bhad zam uurchlugduh tul subscribe hiih yostoi.
+    this.route.paramMap.subscribe((paramMap:ParamMap)=>{
+      // parameter uurchlugduhud
+      if(paramMap.has('teaId')){
+        this.mode = 'edit';
+        this.teaId = paramMap.get('teaId');
+        this.tea = this.teasService.getTea(this.teaId);
+      }else{
+        this.mode = 'create';
+        this.teaId = null;
+      }
+    });
+    console.log(this.tea);
   }
 
-  onAddTea(form:NgForm){
+  onSaveTea(form:NgForm){
     if(form.invalid){
       return;
     }
-    // console.log(form.value);
-    // this.teasService.addTea(form.value.name, form.value.short);
-    form.resetForm();
+    //this.tea = new Tea({...form.value});
+    if(this.mode === 'create'){
+      this.teasService.addTea(this.tea);
+      form.resetForm();
+    }else{
+      this.teasService.updateTea(this.tea);
+    }
   }
 }
