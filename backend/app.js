@@ -6,10 +6,7 @@ const logger = require('morgan');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const MongoClient = require('mongodb').MongoClient;
-// const mongoose = require('mongoose');
-
-const dburl = "mongodb+srv://user3:user3@cluster0-fetd1.mongodb.net/tshot";
-// let db;
+let db;
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/userRoute');
@@ -48,15 +45,6 @@ app.use(async (req, res, next) => {
 		next(e);
 	}
 });
-
-// mongoose.connect("mongodb+srv://user3:user3@cluster0-fetd1.mongodb.net/tshot")
-// 	.then(()=>{
-// 		console.log('Database successfully connected.');
-// 	})
-// 	.catch((err)=>{
-// 		console.log('Database connection failed.');
-// 		console.log(err);
-// 	});
 
 app.use('/', indexRouter);
 app.use('/api/teas', teasRouter);
