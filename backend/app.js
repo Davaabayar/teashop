@@ -4,11 +4,16 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 const MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
+
+const dburl = "mongodb+srv://user3:user3@cluster0-fetd1.mongodb.net/tshot";
+let db;
 
 const indexRouter = require('./routes/index');
-// const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/userRoute');
+const teasRouter = require('./routes/teaRoute');
 const shopRoute = require('./routes/shopRoute');
 const blogRouter = require('./routes/blogRoute');
 
@@ -21,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/*app.use(async (req, res, next) => {
 dotenv.config();
 const dburl = "mongodb+srv://" + process.env.dbname + ":" + process.env.dbpass + "@cluster0-fetd1.mongodb.net/tshot";
 let db;
@@ -43,13 +49,23 @@ app.use(async (req, res, next) => {
 	} catch (e) {
 		next(e);
 	}
-});
+});*/
+
+mongoose.connect("mongodb+srv://user3:user3@cluster0-fetd1.mongodb.net/tshot")
+	.then(()=>{
+		console.log('Database successfully connected.');
+	})
+	.catch((err)=>{
+		console.log('Database connection failed.');
+		console.log(err);
+	});
 
 app.use('/', indexRouter);
-// app.use('/users', usersRouter);
+app.use('/api/teas',teasRouter);
+app.use('/users', usersRouter);
 app.use('/shop', shopRoute);
 app.use('/blog', blogRouter)
-
+app.use('/user', usersRouter)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
 	next(createError(404));
