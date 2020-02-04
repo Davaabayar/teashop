@@ -1,14 +1,35 @@
-<h1>Tea Details</h1>
-<div *ngIf="tea">
-    <p>Short name: {{tea.shortName}}</p>
-    <p>Descripton: {{tea.description}}</p>
-    <p>Cafine: {{tea.cafine}}</p>
-    <p>Ingredients: {{tea.ingredients}}</p>
-    <p>Category: {{tea.category}}</p>
-    <h3>Brew</h3>
-    <p>Temp: {{tea.brewInstruction?.temp}}</p>
-    <p>Water: {{tea.brewInstruction?.water}}</p>
-    <p>Time: {{tea.brewInstruction?.time}}</p>
-    <p>Direction: {{tea.brewInstruction?.direction}}</p>
-    <h3>Flavors</h3>
+<div *ngIf="(tea$ | async)" class="tea-container">
+    <div>
+        <img *ngIf="(tea$ | async)?.thumbnail" mat-card-image src="{{serverURL + (tea$ | async)?.thumbnail}}"
+            alt="{{(tea$ | async)?.teaName}}" />
+        <img *ngIf="!(tea$ | async)?.thumbnail" mat-card-image
+            src="https://static.trotcdn.com/images/art/Clean_Beauty_Supporting.jpg" />
+    </div>
+    <div class="p2">
+        <p>Category: {{(tea$ | async)?.category}}</p>
+        <h1>{{(tea$ | async)?.teaName}}</h1>
+        <div>{{(tea$ | async)?.shortName}}</div>
+        <h3>Tag</h3>
+        <span *ngFor="let t of (tea$ | async)?.tags">{{t}}</span>
+        <h3>Flavors</h3>
+        <span *ngFor="let f of (tea$ | async)?.flavors">{{f}}</span>
+        <p>{{(tea$ | async)?.description}}</p>
+        <p>Cafine: {{(tea$ | async)?.cafine}}</p>
+    </div>
+    <mat-tab-group>
+        <mat-tab label="Brew Information">
+            <p>Temp:{{(tea$ | async)?.brewInstruction?.temp}}</p>
+            <p>Water: {{(tea$ | async)?.brewInstruction?.water}}</p>
+            <p>Time: {{(tea$ | async)?.brewInstruction?.time}}</p>
+            <p>Direction: {{(tea$ | async)?.brewInstruction?.direction}}</p>
+        </mat-tab>
+        <mat-tab label="Additional Information">
+            <p>Ingredients: {{(tea$ | async)?.ingredients}}</p>
+        </mat-tab>
+        <mat-tab label="Reviews {{(tea$ | async)?.reviews?.length}}">
+            {{star}} {{comment}}
+            <button mat-raised-button (click)="openDialog()" color="accent">Write review</button>
+            <div *ngFor="let r of (tea$ | async)?.reviews">{{r}}</div>
+        </mat-tab>
+    </mat-tab-group>
 </div>
