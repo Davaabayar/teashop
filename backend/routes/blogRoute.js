@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { ObjectID } = require('mongodb');
 
 //blog status:0 draft, status:1 published, status:2 deleted
 
@@ -29,12 +30,35 @@ router.post('/posts', async function (req, res, next) {
     });
 });
 
-router.put('/posts', function (req, res) {
-
+router.put('/posts', async function (req, res, next) {
+    let id = req.body._id;
+    req.body._id = undefined;
+    await req.db.collection("blog").updateOne({ "_id": ObjectID(id) },
+        {
+            $set: {
+                title: req.body.title,
+                summary: req.body.summary,
+                thumbnail: req.body.thumbnail,
+                body: req.body.body,
+                created: new Date(req.body.created),
+                updated: req.body.updated ? new Date(req.body.updated) : null,
+                createdBy: req.body.createdBy,
+                updatedBy: req.body.updatedBy,
+                status: req.body.status
+            }
+        }, function (err, doc) {
+            if (err) {
+                next(err);
+            }
+            else {
+                res.json({ "success": 1 }).status(200); //201 successfully updated
+            }
+        });
 });
 
 router.delete('/posts/:id', function (req, res) {
-
+    req.db.collection("blog").deleteOne({ "_id": ObjectID(req.params.id) });
+    res.json({ success: 1 });
 });
 
 module.exports = router;
