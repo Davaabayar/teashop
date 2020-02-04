@@ -13,6 +13,7 @@ import { TeaCreateReactiveComponent } from './teas/tea-create-reactive/tea-creat
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './app-material.module';
 import { BlogModule } from './blog/blog.module';
+import { UsersModule } from './users/users.module'
 import { SharedModule } from './shared.module';
 import { TeaCardComponent } from './teas/tea-list/tea-card.component';
 import { ReviewAddDialogComponent } from './teas/review-add-dialog/review-add-dialog.component';
@@ -36,6 +37,7 @@ import { ReviewAddDialogComponent } from './teas/review-add-dialog/review-add-di
     AppRoutingModule,
     MaterialModule,
     BlogModule,
+    UsersModule,
     SharedModule
   ],
   entryComponents: [

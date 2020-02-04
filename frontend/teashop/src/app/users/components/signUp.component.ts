@@ -5,6 +5,7 @@ import { Subscription, Observable } from 'rxjs'
 import { Router } from '@angular/router';
 import { resolve } from 'url';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
+import { TokenService } from '../../token.service'
 
 @Component({
     selector: 'sign-up',
@@ -13,7 +14,7 @@ import { CompileShallowModuleMetadata } from '@angular/compiler';
         <div id="card">
             <div id="card-heading"></div>
             <div id="card-body">
-                <h2 id="card-title">Sign Up</h2>
+                <h2 id="card-title-user">Sign Up</h2>
                 <form [formGroup]="myForm" id="signup-form" (ngSubmit)="onSubmit()">
                     <div class="input-group">
                         <input class="input-style" type="text" name="name" placeholder="FullName" [formControl]="myForm.get('fullname')">
@@ -43,7 +44,7 @@ export class SignUp implements OnInit {
     myForm: FormGroup
     private Subscription: Subscription
     private emailTimeout
-    constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+    constructor(private fb: FormBuilder, private userService: UserService, private router: Router,private tokenService: TokenService,) {
         this.myForm = fb.group({
             'fullname': ['', Validators.required],
             'email': ['', Validators.required, [this.asyncEmailValidator.bind(this)]],
@@ -56,8 +57,9 @@ export class SignUp implements OnInit {
 
     onSubmit() {      
         this.Subscription = this.userService.signUp(this.myForm.value).subscribe(response => {
-            if (response) {
-                this.router.navigateByUrl('/users/signin')
+            if (response.success == 1) {
+                this.tokenService.setToken(response.token)
+                this.router.navigateByUrl('/users/quiz')
             }
         })
     }

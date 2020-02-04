@@ -14,8 +14,8 @@ export class UserService {
   signIn(form) {
     return this.http.post<any>('http://localhost:3000/user/signIn', form)
   }
-  getQuiz(index) {
-    return this.http.get('http://localhost:3000/user/getQuiz?index='+index)
+  sendQuiz(quizAns) {
+    return this.http.post('http://localhost:3000/user/sendQuiz', quizAns)
   }
   checkEmail(email) {
     return this.http.get<any>('http://localhost:3000/user/checkEmail?email='+email)
