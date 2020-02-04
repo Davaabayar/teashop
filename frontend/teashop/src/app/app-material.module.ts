@@ -19,7 +19,8 @@ import {
   MatProgressSpinnerModule,
   MatDialogModule,
   MatDatepickerModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatStepperModule,
 } from "@angular/material";
 
 const modules = [
@@ -41,7 +42,8 @@ const modules = [
   MatProgressSpinnerModule,
   MatDatepickerModule,
   MatDialogModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatStepperModule
 ];
 
 @NgModule({

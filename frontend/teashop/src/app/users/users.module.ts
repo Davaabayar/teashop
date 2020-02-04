@@ -6,7 +6,7 @@ import { SignUp } from './components/signUp.component';
 import { Quiz } from './components/quiz.components';
 import { SignIn } from './components/signIn.components';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { MaterialModule } from "../app-material.module";
 
 const routes: Routes = [
   { path: '', component: UsersComponent},
@@ -25,7 +25,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   bootstrap: [UsersComponent]
 })

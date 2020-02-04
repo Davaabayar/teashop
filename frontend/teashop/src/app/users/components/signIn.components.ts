@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
         <div id="card">
             <div id="card-heading"></div>
             <div id="card-body">
-                <h2 id="card-title">Sign In</h2>
+                <h2 id="card-title-user">Sign In</h2>
                 <form [formGroup]="form" id="signup-form" (ngSubmit)="onSubmit()">
                     <div class="input-group">
                         <input class="input-style" type="text" name="name" placeholder="Email" [formControl]="form.get('email')">

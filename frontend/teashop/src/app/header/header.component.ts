@@ -18,8 +18,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.tokenService.getToken())
     this.isSignedIn = (this.tokenService.getToken()) ? true : false
-    console.log(this.isSignedIn)
   }
 }
