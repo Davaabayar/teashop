@@ -31,15 +31,6 @@ export class TeasService {
   }
 
   getTea(teaId: string) {
-    //   console.log(this.tea);
-    //   console.log(this.tea);
-    //   console.log(this.teasUpdated);
-    //   console.log(this.categories);
-    //   this.tea = { ...this.teas.find(t => t._id === teaId) };
-
-    // console.log("HERE", this.tea);
-    // return this.tea;
-    // console.log('Tea service', teaId);
     return this.http.get('http://localhost:3000/api/teas/' + teaId);
   }
 

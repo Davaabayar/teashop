@@ -11,21 +11,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TeaDetailComponent implements OnInit {
   tea: Tea;
-
+  teaId;
 
   constructor(private teasService: TeasService, private router: ActivatedRoute) {
-
+    this.router.params.subscribe(params => {
+      this.teaId = params.teaId;
+    });
   }
 
   ngOnInit() {
-    this.router.params.subscribe(params => {
-      console.log(params.teaId);
-      // console.log(params.get['teaId']);
-      // this.tea = this.teasService.getTea(params.teaId);
-      this.teasService.getTea(params.get['teaId']).subscribe(tea => {
-        this.tea = JSON.parse(JSON.stringify(tea));
-        console.log(tea);
-      });
+    this.teasService.getTea(this.teaId).subscribe(tea => {
+      this.tea = JSON.parse(JSON.stringify(tea));
     });
   }
 }
