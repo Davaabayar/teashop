@@ -10,8 +10,11 @@
         <li>
             <a mat-button routerLink="/blog">Explore</a>
         </li>
-        <li>
+        <li *ngIf="isSignedIn === false">
             <a mat-button routerLink="/users/signin">Sign In</a>
+        </li>
+        <li *ngIf="isSignedIn === true">
+            <a mat-button (click)="signOut()">Sign Out</a>
         </li>
     </ul>
 </mat-toolbar>

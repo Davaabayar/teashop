@@ -19,7 +19,7 @@ import {
   MatProgressSpinnerModule,
   MatDialogModule,
   MatDatepickerModule,
-  MatFormFieldModule,
+  MatFormFieldModule
 } from "@angular/material";
 
 const modules = [
