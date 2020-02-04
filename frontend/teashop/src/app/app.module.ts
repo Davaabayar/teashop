@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './app-material.module';
 import { BlogModule } from './blog/blog.module';
 import { UsersModule } from './users/users.module'
+import { SharedModule } from './shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { UsersModule } from './users/users.module'
     HeaderComponent,
     TeaListComponent,
     TeaDetailComponent,
-    TeaCreateReactiveComponent
+    TeaCreateReactiveComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,8 @@ import { UsersModule } from './users/users.module'
     AppRoutingModule,
     MaterialModule,
     BlogModule,
-    UsersModule
+    UsersModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

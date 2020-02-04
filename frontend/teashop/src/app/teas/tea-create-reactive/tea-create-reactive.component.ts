@@ -20,6 +20,7 @@ export class TeaCreateReactiveComponent implements OnInit {
       time: [''],
       direction: []
     }),
+    thumbnail: [''],
     description: [''],
     ingredients: [''],
     flavors: this.fb.array([

@@ -1,12 +1,14 @@
 <h1>Tea Details</h1>
-<p>Short name: {{tea.shortName}}</p>
-<p>Descripton: {{tea.description}}</p>
-<p>Cafine: {{tea.cafine}}</p>
-<p>Ingredients: {{tea.ingredients}}</p>
-<p>Category: {{tea.category}}</p>
-<h3>Brew</h3>
-<p>Temp: {{tea.brewInstruction?.temp}}</p>
-<p>Water: {{tea.brewInstruction?.water}}</p>
-<p>Time: {{tea.brewInstruction?.time}}</p>
-<p>Direction: {{tea.brewInstruction?.direction}}</p>
-<h3>Flavors</h3>
+<div *ngIf="tea">
+    <p>Short name: {{tea.shortName}}</p>
+    <p>Descripton: {{tea.description}}</p>
+    <p>Cafine: {{tea.cafine}}</p>
+    <p>Ingredients: {{tea.ingredients}}</p>
+    <p>Category: {{tea.category}}</p>
+    <h3>Brew</h3>
+    <p>Temp: {{tea.brewInstruction?.temp}}</p>
+    <p>Water: {{tea.brewInstruction?.water}}</p>
+    <p>Time: {{tea.brewInstruction?.time}}</p>
+    <p>Direction: {{tea.brewInstruction?.direction}}</p>
+    <h3>Flavors</h3>
+</div>

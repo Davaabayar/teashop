@@ -1,7 +1,8 @@
 export interface Tea {
   _id: string,
-  name: string,
+  teaName: string,
   shortName: string,
+  thumbnail: string,
   description: string,
   cafine: string,
   flavors: [string],
