@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { PostService } from '../../services/post.service';
+import { environment } from '../../../../environments/environment';
 import { Subscription } from 'rxjs';
 import { Post } from '../../models/post';
 
@@ -41,11 +42,10 @@ export class PostAddDialogComponent implements OnInit, OnDestroy {
       { class: 'calibri', name: 'Calibri' },
       { class: 'comic-sans-ms', name: 'Comic Sans MS' }
     ],
-    uploadUrl: 'v1/image',
+    uploadUrl: `${environment.serverURL}/api/upload`,
     sanitize: true,
     toolbarPosition: 'top',
     toolbarHiddenButtons: [
-      ['insertVideo']
     ]
   };
 

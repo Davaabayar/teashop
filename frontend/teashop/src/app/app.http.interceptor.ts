@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +16,11 @@ export class AppHttpInterceptor implements HttpInterceptor {
         headers: req.headers.set("Authorization",
           "Bearer " + localStorage.getItem('token'))
       });
-      return next.handle(authReq).pipe(map(resp=> {
+      return next.handle(authReq).pipe(map(resp => {
         return resp;
       }));
     }
+    console.log(req);
     return next.handle(req);
   }
 }

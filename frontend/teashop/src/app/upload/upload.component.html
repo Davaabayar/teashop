@@ -1,0 +1,12 @@
+<div class="dnone">
+    <input #fileInput type="file" name="image" (change)="fileProgress($event)" />
+</div>
+<div *ngIf="fileUploadProgress">
+    Upload progress: {{ fileUploadProgress }}
+</div>
+<div *ngIf="previewUrl">
+    <img [src]="previewUrl" height="150" (click)="fileInput.click()" />
+</div>
+<!-- <div>
+    <button type="button" (click)="upload()">upload</button>
+</div> -->
