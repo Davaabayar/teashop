@@ -1,1 +1,14 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap:20px;
+}
 
+.bg{
+    padding: 10px 5px;
+    font-size: 15px;
+    text-align: center;
+}
+.bg .bold{
+    font-weight: 700;
+}

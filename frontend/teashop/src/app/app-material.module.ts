@@ -19,9 +19,7 @@ import {
   MatProgressSpinnerModule,
   MatDialogModule,
   MatDatepickerModule,
-  MatFormFieldModule,
-  MatGridList,
-  MatGridTile
+  MatFormFieldModule
 } from "@angular/material";
 
 const modules = [
@@ -43,9 +41,7 @@ const modules = [
   MatProgressSpinnerModule,
   MatDatepickerModule,
   MatDialogModule,
-  MatFormFieldModule,
-  MatGridList,
-  MatGridTile
+  MatFormFieldModule
 ];
 
 @NgModule({
