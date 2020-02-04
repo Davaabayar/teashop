@@ -20,6 +20,8 @@ router.get('/posts/:page', async function (req, res) {
 });
 
 router.post('/posts', async function (req, res, next) {
+    //brute force
+    req.body._id = undefined;
     await req.db.collection("blog").insert({ ...req.body }, function (err, doc) {
         if (err) {
             next(err);

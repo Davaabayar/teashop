@@ -28,8 +28,9 @@ router.get('/:id', function (req, res, next) {
 router.post('/', upload.single('file'), function (req, res, next) {
     if (!req.file) next(err);
     res.json({
-        "msg": "Image upload successful",
-        imageUrl: '\/api\/upload\/' + req.file.filename
+        msg: "Image upload successful",
+        imageUrlShort: '\/api\/upload\/' + req.file.filename,
+        imageUrl: 'http://localhost:3000\/api\/upload\/' + req.file.filename
     }).status(200);
 });
 
