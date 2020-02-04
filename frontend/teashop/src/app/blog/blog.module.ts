@@ -32,6 +32,9 @@ const MY_ROUTES = [
     RouterModule.forChild(MY_ROUTES),
     AngularEditorModule
   ],
+  exports: [
+    UploadComponent
+  ],
   entryComponents: [
     PostAddDialogComponent
   ],
