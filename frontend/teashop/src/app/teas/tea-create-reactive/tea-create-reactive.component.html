@@ -10,6 +10,7 @@
         <mat-form-field class="full-width">
             <textarea matInput rows="4" type="text" formControlName="description" placeholder="Description"></textarea>
         </mat-form-field>
+        <app-upload [formGroup]="teaForm"></app-upload>
         <div>
             <h3>Ingredients</h3>
             <mat-form-field>

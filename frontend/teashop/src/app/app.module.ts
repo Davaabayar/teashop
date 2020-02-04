@@ -13,6 +13,7 @@ import { TeaCreateReactiveComponent } from './teas/tea-create-reactive/tea-creat
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './app-material.module';
 import { BlogModule } from './blog/blog.module';
+import { SharedModule } from './shared.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BlogModule } from './blog/blog.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
-    BlogModule
+    BlogModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

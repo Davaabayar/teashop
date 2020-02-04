@@ -58,19 +58,14 @@ export class UploadComponent implements OnInit, OnDestroy {
         } else if (events.type === HttpEventType.Response) {
           this.fileUploadProgress = '';
           console.log(events.body);
-          this.form.setValue({
-            _id: this.form.value._id,
-            thumbnail: events.body['imageUrlShort'],
-            title: this.form.value.title,
-            body: this.form.value.body,
-            summary: this.form.value.summary
-          });
+          this.form.controls['thumbnail'].setValue(events.body['imageUrlShort']);
         }
       });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription != undefined)
+      this.subscription.unsubscribe();
   }
 
 }

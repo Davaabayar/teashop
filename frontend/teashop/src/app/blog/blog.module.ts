@@ -8,9 +8,9 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
 import { DatePipe } from '@angular/common';
 import { PostAddDialogComponent } from './components/post-add-dialog/post-add-dialog.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { UploadComponent } from '../upload/upload.component';
 
 import { MaterialModule } from '../app-material.module';
+import { SharedModule } from '../shared.module';
 
 const MY_ROUTES = [
   { path: '', component: BlogComponent },
@@ -22,18 +22,15 @@ const MY_ROUTES = [
     BlogComponent,
     PostComponent,
     PostDetailsComponent,
-    PostAddDialogComponent,
-    UploadComponent
+    PostAddDialogComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
     RouterModule.forChild(MY_ROUTES),
-    AngularEditorModule
-  ],
-  exports: [
-    UploadComponent
+    AngularEditorModule,
+    SharedModule
   ],
   entryComponents: [
     PostAddDialogComponent
