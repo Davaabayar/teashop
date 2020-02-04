@@ -1,1 +1,50 @@
-<p>post-details works!</p>
+<article class="post" *ngIf="(post$ | async)">
+    <div class="article-inner">
+        <header class="entry-header">
+            <div class="entry-header-text text-center">
+                <h2 class="entry-title">
+                    <p class="plain">
+                        {{(post$ | async)?.title}}
+                    </p>
+                </h2>
+                <div class="entry-divider is-divider small"></div>
+                <div class="entry-meta uppercase is-xsmall">
+                    <span class="posted-on">Posted on
+                        <p rel="post">
+                            <time class="entry-date published">{{ (post$ | async)?.created | date:'MMMM dd, yyyy' }} </time>
+                            <!-- <time class="updated">January 27, 2020</time> -->
+                        </p>
+                    </span>
+                    <span class="byline">
+                        by
+                        <span class="meta-author vcard">
+                            <a [routerLink]="['#']">{{(post$ | async)?.createdBy}}</a>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <div class="entry-image-float">
+            <p>
+                <img width="1000" height="737" src="{{serverURL + (post$ | async)?.thumbnail}}" alt="{{(post$ | async)?.title}}" />
+            </p>
+            <div class="badge absolute top post-date badge-outline">
+                <div class="badge-inner">
+                    <span class="post-date-day">{{ (post$ | async)?.created | date:'dd' }}</span>
+                    <br>
+                    <span class="post-date-month is-small">{{ (post$ | async)?.created | date:'MMM' }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="entry-content">
+            <div [innerHTML]="(post$ | async)?.body"></div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <footer class="entry-meta clearfix">
+        </footer>
+    </div>
+</article>
