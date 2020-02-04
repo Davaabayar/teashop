@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ShopService} from "../../services/shop.service";
 
 @Component({
   selector: 'app-shop-list',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shop-list.component.css']
 })
 export class ShopListComponent implements OnInit {
+  constructor(private shopService:ShopService) { }
 
-  constructor() { }
+  private shopList;
 
   ngOnInit() {
+    this.shopList = this.shopService.getShops();
   }
 
 }
