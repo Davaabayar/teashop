@@ -4,6 +4,7 @@ import { Post } from '../../models/post';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { PostAddDialogComponent } from '../post-add-dialog/post-add-dialog.component';
 import { PostService } from '../../services/post.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-post',
@@ -13,6 +14,7 @@ import { PostService } from '../../services/post.service';
 export class PostComponent implements OnInit {
 
   @Input() post: Post;
+  serverURL: string = environment.serverURL;
 
   constructor(public datepipe: DatePipe,
     private dialog: MatDialog,
