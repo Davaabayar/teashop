@@ -20,7 +20,7 @@ import { BlogModule } from './blog/blog.module';
     HeaderComponent,
     TeaListComponent,
     TeaDetailComponent,
-    TeaCreateReactiveComponent
+    TeaCreateReactiveComponent,
   ],
   imports: [
     BrowserModule,

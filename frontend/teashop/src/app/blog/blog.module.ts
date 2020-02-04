@@ -30,7 +30,11 @@ const MY_ROUTES = [
     ReactiveFormsModule,
     MaterialModule,
     RouterModule.forChild(MY_ROUTES),
-    AngularEditorModule
+    AngularEditorModule,
+    UploadComponent
+  ],
+  exports: [
+    UploadComponent
   ],
   entryComponents: [
     PostAddDialogComponent
