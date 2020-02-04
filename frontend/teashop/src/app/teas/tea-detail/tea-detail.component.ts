@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeasService } from '../teas.service';
 import { Tea } from '../tea.model';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -10,8 +11,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./tea-detail.component.css']
 })
 export class TeaDetailComponent implements OnInit {
-  tea: Tea;
-  teaId;
+
+  tea$: Observable<Tea>;
+  teaId: string;
 
   constructor(private teasService: TeasService, private router: ActivatedRoute) {
     this.router.params.subscribe(params => {
@@ -20,8 +22,6 @@ export class TeaDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.teasService.getTea(this.teaId).subscribe(tea => {
-      this.tea = JSON.parse(JSON.stringify(tea));
-    });
+    this.tea$ = this.teasService.getTea(this.teaId);
   }
 }
