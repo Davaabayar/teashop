@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from '../token.service'
+import { timingSafeEqual } from 'crypto';
+
 
 @Component({
   selector: 'app-header',
@@ -6,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  isSignedIn
+  constructor(private tokenService: TokenService) { 
+    this.isSignedIn = false 
   }
 
+  signOut() {
+    this.tokenService.clearToken()
+    this.isSignedIn = false 
+  }
+
+  ngOnInit() {
+    console.log(this.tokenService.getToken())
+    this.isSignedIn = (this.tokenService.getToken()) ? true : false
+    console.log(this.isSignedIn)
+  }
 }

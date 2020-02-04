@@ -11,9 +11,7 @@ import { CompileShallowModuleMetadata } from '@angular/compiler';
     template: `
     <div id="form-wrapper">
         <div id="card">
-            <div id="card-heading">
-
-            </div>
+            <div id="card-heading"></div>
             <div id="card-body">
                 <h2 id="card-title">Sign Up</h2>
                 <form [formGroup]="myForm" id="signup-form" (ngSubmit)="onSubmit()">
@@ -71,7 +69,6 @@ export class SignUp implements OnInit {
     checkPassword(group: FormGroup) {
         let password = group.value.password
         let verify = group.value.verifyPassword
-        console.log(password + " : "+ verify)
         return (password == verify) ? null : {different : true}
     }
 
@@ -82,12 +79,8 @@ export class SignUp implements OnInit {
             this.userService.checkEmail(control.value)
             .subscribe(
               res => {
-                console.log(res)
-
-                // if(res.exists == 1) console.log('working')
-
-                // if (res.exists == 1) resolve({invalid: true});
-                // else resolve(null);
+                if (res.exists == 1) resolve({invalid: true});
+                else resolve(null);
               },
               error => resolve({invalid: true}));
           }, 600);
