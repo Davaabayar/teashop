@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 import { TeasService } from '../teas.service';
+// import { UploadComponent } from '../../upload/upload.component';
 
 @Component({
   selector: 'app-tea-create-reactive',
@@ -20,6 +21,7 @@ export class TeaCreateReactiveComponent implements OnInit {
       time: [''],
       direction: []
     }),
+    thumbnail: [''],
     description: [''],
     ingredients: [''],
     flavors: this.fb.array([

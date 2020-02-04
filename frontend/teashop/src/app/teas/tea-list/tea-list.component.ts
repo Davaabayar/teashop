@@ -3,6 +3,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TeasService } from '../teas.service';
 import { Tea } from '../tea.model';
+import { environment } from '../../../environments/environment';
+
 
 @Component({
   selector: 'app-tea-list',
@@ -12,6 +14,7 @@ import { Tea } from '../tea.model';
 export class TeaListComponent implements OnInit, OnDestroy {
 
   teas: Tea[] = [];
+  serverURL: string = environment.serverURL;
 
   private teasSub: Subscription;
 

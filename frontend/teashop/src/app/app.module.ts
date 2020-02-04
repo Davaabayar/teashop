@@ -21,7 +21,7 @@ import { SharedModule } from './shared.module';
     HeaderComponent,
     TeaListComponent,
     TeaDetailComponent,
-    TeaCreateReactiveComponent
+    TeaCreateReactiveComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,22 +1,25 @@
 <div class="container">
     <div class="teaCard" *ngFor="let tea of teas">
-        <mat-card>
-            <img mat-card-image src="https://static.trotcdn.com/images/art/Clean_Beauty_Supporting.jpg" />
-            <mat-card-title>{{tea.teaName}}</mat-card-title>
-            <mat-card-subtitle>{{tea.shortName}}</mat-card-subtitle>
-            <mat-card-content>
-                <p>{{tea.description}}</p>
-                <span *ngFor="let f of tea.flavors">{{f}} </span>
-            </mat-card-content>
-            <mat-card-actions>
-                <div fxLayout="row">
-                    <mat-icon [style.color]="'orange'">star</mat-icon>
-                    <mat-icon [style.color]="'orange'">star</mat-icon>
-                    <mat-icon [style.color]="'orange'">star</mat-icon>
-                    <mat-icon [style.color]="'orange'">star_half</mat-icon>
-                </div>
-            </mat-card-actions>
-        </mat-card>
-        {{tea}}
+        <a [routerLink]="[tea._id]">
+            <mat-card class="z-depth">
+                <img *ngIf="tea.thumbnail" mat-card-image src="{{serverURL + tea.thumbnail}}" alt="{{tea.teaName}}" />
+                <img *ngIf="!tea.thumbnail" mat-card-image
+                    src="https://static.trotcdn.com/images/art/Clean_Beauty_Supporting.jpg" />
+                <mat-card-title>{{tea.teaName}}</mat-card-title>
+                <mat-card-subtitle>{{tea.shortName}}</mat-card-subtitle>
+                <mat-card-content>
+                    <div *ngIf="tea.flavors">Flavors: <span *ngFor="let f of tea.flavors">{{f}} | </span></div>
+                    <div *ngIf="tea.tags">Tags: <span *ngFor="let t of tea.tags">{{t}} | </span></div>
+                    <div fxLayout="row" class="relative">
+                        <mat-icon [style.color]="'orange'" *ngIf="5>1">star</mat-icon>
+                        <mat-icon [style.color]="'orange'" *ngIf="5>2">star</mat-icon>
+                        <mat-icon [style.color]="'orange'" *ngIf="5>3">star</mat-icon>
+                        <mat-icon [style.color]="'orange'" *ngIf="5>4">star</mat-icon>
+                        <mat-icon [style.color]="'orange'" *ngIf="5>=5">star_half</mat-icon>
+                        <a class="t4">{{17}}</a>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </a>
     </div>
 </div>
