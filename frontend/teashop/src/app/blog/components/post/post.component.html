@@ -43,18 +43,21 @@
                 <p>
                     {{post.summary}}
                 </p>
+                <div class="text-center">
+                    <a class="more-link button primary is-outline is-smaller" [routerLink]="[createURLPost(post._id)]">
+                        Continue reading
+                        <span class=" meta-nav">→</span>
+                    </a>
+                </div>
             </div>
-            <div class="text-center">
-                <a class="more-link button primary is-outline is-smaller" [routerLink]="[createURLPost(post._id)]">
-                    Continue reading
-                    <span class=" meta-nav">→</span>
-                </a>
-            </div>
-            <button type="button" (click)="edit()">Edit</button>
-            <button type="button" (click)="delete([post.title], [post._id])">Delete</button>
         </div>
 
         <div class="clearfix"></div>
+
+        <div class="action-buttons">
+            <button type="button" (click)="edit()" mat-stroked-button>Edit</button>
+            <button type="button" (click)="delete([post.title], [post._id])" mat-stroked-button>Delete</button>
+        </div>
 
         <footer class="entry-meta clearfix">
             <!-- <span class="cat-links">
