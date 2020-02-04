@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 import { Tea } from './tea.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -31,16 +32,8 @@ export class TeasService {
   }
 
   getTea(teaId: string) {
-    //   console.log(this.tea);
-    //   console.log(this.tea);
-    //   console.log(this.teasUpdated);
-    //   console.log(this.categories);
-    //   this.tea = { ...this.teas.find(t => t._id === teaId) };
-
-    // console.log("HERE", this.tea);
-    // return this.tea;
-    // console.log('Tea service', teaId);
-    return this.http.get('http://localhost:3000/api/teas/' + teaId);
+    return this.http.get<Tea>(`${environment.serverURL}/api/teas/` + teaId);
+    //return this.http.get<Post>(`${environment.serverURL}/api/blog/posts/one?id=` + id);
   }
 
   deleteTea(teaId: string) {
