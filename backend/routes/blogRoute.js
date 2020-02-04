@@ -4,6 +4,14 @@ const { ObjectID } = require('mongodb');
 
 //blog status:0 draft, status:1 published, status:2 deleted
 
+router.get('/posts/one', async function (req, res, next) {
+    let result = await req.db.collection('blog')
+        .findOne({ _id: ObjectID(req.query.id) }, function (err, result) {
+            if (err) next(err);
+            res.send(result).status(200);
+        });
+});
+
 router.get('/posts', async function (req, res) {
     let result = await req.db.collection('blog')
         .find({ status: 1 }).sort({ date: -1 }).toArray();
