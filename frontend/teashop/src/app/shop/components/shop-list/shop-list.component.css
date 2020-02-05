@@ -40,3 +40,12 @@
   margin-left: 30px;
   display: block;
 }
+.mat-card-content .relative{
+  position: relative;
+}
+.mat-card-content  .nr, .mat-card-subtitle .nr{
+  position: absolute;
+  top:0;
+  right:0;
+  font-weight: bold;
+}

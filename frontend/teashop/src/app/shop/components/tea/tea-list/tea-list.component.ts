@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './tea-list.component.html',
   styleUrls: ['./tea-list.component.css']
 })
-export class TeaListComponent implements OnInit, OnDestroy {
+export class TeaListComponent implements OnInit {
 
   teas: Tea[];
   teas$: Observable<Tea[]>;
@@ -19,7 +19,7 @@ export class TeaListComponent implements OnInit, OnDestroy {
   color = 'primary';
   mode = 'determinate';
   value = 50;
-
+  average = 0;
 
   private teasSub: Subscription;
 
@@ -28,14 +28,21 @@ export class TeaListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.teasService.loadTeas();
     this.teas$ = this.teasService.getTeas();
-    // this.teasSub = this.teasService.getTeas().subscribe(teas => {
-    //   this.teas = JSON.parse(JSON.stringify(teas));
-    // });
   }
 
-  ngOnDestroy() {
-    // this.teasSub.unsubscribe();
+  getAvgReview(reviews) {
+
+    if (reviews) {
+      let total = 0;
+      reviews.forEach(r => {
+        total += r["star"];
+      });
+      this.average = total / reviews.length;
+      console.log('Reviews', reviews, 'avegrage ', this.average);
+      return total / reviews.length;
+    } else return 0;
   }
+
   onDelete(id: string) {
     if (id != null)
       this.teasService.deleteTea(id);

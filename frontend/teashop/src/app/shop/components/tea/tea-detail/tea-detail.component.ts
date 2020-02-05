@@ -1,11 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {TeasService} from '../../../services/teas.service';
-import {Tea} from '../../../models/tea';
-import {ActivatedRoute} from '@angular/router';
-import {Observable, Subscription} from 'rxjs';
-import {environment} from 'src/environments/environment';
-import {MatDialog} from '@angular/material';
-import {ReviewAddDialogComponent} from '../../review-add-dialog/review-add-dialog.component';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { TeasService } from '../../../services/teas.service';
+import { Tea } from '../../../models/tea';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { MatDialog } from '@angular/material';
+import { ReviewAddDialogComponent } from '../../review-add-dialog/review-add-dialog.component';
 
 
 @Component({
@@ -22,8 +22,8 @@ export class TeaDetailComponent implements OnInit, OnDestroy {
   average = 0;
 
   constructor(private teasService: TeasService,
-              private router: ActivatedRoute,
-              private dialog: MatDialog) {
+    private router: ActivatedRoute,
+    private dialog: MatDialog) {
     this.subscription = this.router.params.subscribe(params => {
       this.teaId = params.teaId;
     });
@@ -52,7 +52,7 @@ export class TeaDetailComponent implements OnInit, OnDestroy {
   openDialog(): void {
     const dialogRef = this.dialog.open(ReviewAddDialogComponent, {
       width: '500px',
-      data: {teaId: this.teaId}
+      data: { teaId: this.teaId }
     });
 
     dialogRef.afterClosed().subscribe(result => {

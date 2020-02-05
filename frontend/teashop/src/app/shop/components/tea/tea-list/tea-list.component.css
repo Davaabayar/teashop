@@ -41,3 +41,16 @@
 .example-margin {
     margin: 0 10px;
 }
+
+.mat-card-content p{
+    position: relative;
+  }
+  .mat-card-content p i{
+    position: absolute;
+    top:-4px;
+    color:#ff4081;
+  }
+  .mat-card-content p span.ml{
+    margin-left: 30px;
+    display: block;
+  }

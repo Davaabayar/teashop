@@ -2,22 +2,35 @@
     <div class="teaCard" *ngFor="let tea of teas$ | async">
         <a [routerLink]="[tea._id]">
             <mat-card class="z-depth">
-                <img *ngIf="tea.thumbnail" mat-card-image src="{{serverURL + tea.thumbnail}}" alt="{{tea.teaName}}" />
-                <img *ngIf="!tea.thumbnail" mat-card-image
-                    src="https://static.trotcdn.com/images/art/Clean_Beauty_Supporting.jpg" />
-                <mat-card-title>{{tea.teaName}}</mat-card-title>
-                <mat-card-subtitle>{{tea.shortName}}</mat-card-subtitle>
+                <mat-card-header>
+                    <mat-card-title>{{tea.teaName}}</mat-card-title>
+                    <mat-card-subtitle>{{tea.shortName}}</mat-card-subtitle>
+
+                </mat-card-header>
                 <mat-card-content>
-                    <div *ngIf="tea.flavors">Flavors: <span *ngFor="let f of tea.flavors">{{f}} | </span></div>
-                    <div *ngIf="tea.tags">Tags: <span *ngFor="let t of tea.tags">{{t}} | </span></div>
-                    <div fxLayout="row" class="relative">
-                        <mat-icon [style.color]="'orange'" *ngIf="5>1">star</mat-icon>
-                        <mat-icon [style.color]="'orange'" *ngIf="5>2">star</mat-icon>
-                        <mat-icon [style.color]="'orange'" *ngIf="5>3">star</mat-icon>
-                        <mat-icon [style.color]="'orange'" *ngIf="5>4">star</mat-icon>
-                        <mat-icon [style.color]="'orange'" *ngIf="5>=5">star_half</mat-icon>
-                        <span class="n">{{tea.reviews?.length}}</span>
+                    <img *ngIf="tea.thumbnail" mat-card-image src="{{serverURL + tea.thumbnail}}"
+                        alt="{{tea.teaName}}" />
+                    <img *ngIf="!tea.thumbnail" mat-card-image
+                        src="https://static.trotcdn.com/images/art/Clean_Beauty_Supporting.jpg" />
+
+                    <div>
+                        <div class="relative" fxLayout="row" *ngIf="getAvgReview(tea.reviews)!=0">
+                            <mat-icon [style.color]="'orange'" *ngIf="average>=1">star</mat-icon>
+                            <mat-icon [style.color]="'orange'" *ngIf="average>=2">star</mat-icon>
+                            <mat-icon [style.color]="'orange'" *ngIf="average>=3">star</mat-icon>
+                            <mat-icon [style.color]="'orange'" *ngIf="average>=4">star</mat-icon>
+                            <mat-icon [style.color]="'orange'" *ngIf="average==5">star</mat-icon>
+                            <div style="       position: absolute;
+                            top: 4px;
+                            font-size: 15px;
+                            right: 0px">{{(tea.reviews)?.length}} Reviews</div>
+                        </div>
                     </div>
+                    <p *ngIf="tea.tags">
+                        <span *ngFor="let tag of tea.tags">{{tag}} | </span>
+                    </p>
+                    <p>
+                        <span *ngFor="let f of tea.flavors">{{f}} </span></p>
                 </mat-card-content>
             </mat-card>
         </a>
