@@ -19,8 +19,8 @@ export class PostService {
     return this.http.get(`${environment.serverURL}/api/blog/posts/count`);
   }
 
-  getPosts(page: number) {
-    return this.http.get(`${environment.serverURL}/api/blog/posts/` + page);
+  getPosts() {
+    return this.http.get(`${environment.serverURL}/api/blog/posts/`);
   }
 
 
