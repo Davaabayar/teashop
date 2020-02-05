@@ -1,0 +1,15 @@
+POST http://localhost:3000/shop/add
+Content-Type: application/json
+
+{
+  "name": "dios",
+  "user": {
+    "id":"1",
+    "name":"Test",
+    "email":"gg@gmail.com",
+    "phone":"12345679"
+  },
+  "location": [-10,10]
+}
+
+###

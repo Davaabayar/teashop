@@ -6,7 +6,7 @@
     <div class="p2">
         <h1>{{(tea$ | async)?.teaName}}</h1>
         <div>{{(tea$ | async)?.shortName}}</div>
-        <a class="t4">{{(tea$ | async)?.reviews.length}}</a>
+<!--        <a class="t4">{{(tea$ | async)?.reviews.length}}</a>-->
 
         <div fxLayout="row" class="relative" *ngIf="average!=0">
             <mat-icon [style.color]="'orange'" *ngIf="average>=1">star</mat-icon>

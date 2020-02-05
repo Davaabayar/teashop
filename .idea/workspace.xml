@@ -4,9 +4,7 @@
     <list default="true" id="6d53c960-29bd-4c89-a7d4-192d76a36352" name="Default Changelist" comment="[FIX] tea and interceptor">
       <change beforePath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/app/app.http-interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/app/app.http-interceptor.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/routes/shopRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/shopRoute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-add/shop-add.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-add/shop-add.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/token.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/token.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/teas/tea-detail/tea-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/teas/tea-detail/tea-detail.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +166,7 @@
       <workItem from="1580696378434" duration="628000" />
       <workItem from="1580716935968" duration="15535000" />
       <workItem from="1580770911971" duration="18376000" />
-      <workItem from="1580844903168" duration="37869000" />
+      <workItem from="1580844903168" duration="38945000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD] Connect to atlas, .env,  shop add">
       <created>1580613792965</created>
@@ -219,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580885447231</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="[FIX] shop">
+      <created>1580887688087</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1580887688087</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +239,8 @@
     <MESSAGE value="[ADD] Shop" />
     <MESSAGE value="[FIX] tea and interceptor" />
     <MESSAGE value="[FIX] all" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FIX] all" />
+    <MESSAGE value="[FIX] shop" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FIX] shop" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="41" key="#Scopes" timestamp="1580765154080">
@@ -257,10 +263,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="413" y="130" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768@0.0.1366.768" timestamp="1580874509201" />
-    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2" timestamp="1580885444886">
+    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2" timestamp="1580887685157">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1580885444886" />
+    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1580887685157" />
     <state x="129" y="58" width="1092" height="644" key="DiffContextDialog" timestamp="1580887661380">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -285,14 +291,14 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="171" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1580854922653" />
-    <state x="32" y="24" width="1200" height="652" key="MergeDialog" timestamp="1580885699750">
+    <state x="32" y="24" width="1200" height="652" key="MergeDialog" timestamp="1580887733727">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="32" y="24" width="1200" height="652" key="MergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1580885699750" />
-    <state x="387" y="90" key="MultipleFileMergeDialog" timestamp="1580885699772">
+    <state x="32" y="24" width="1200" height="652" key="MergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1580887733727" />
+    <state x="387" y="90" key="MultipleFileMergeDialog" timestamp="1580887733740">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="387" y="90" key="MultipleFileMergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1580885699772" />
+    <state x="387" y="90" key="MultipleFileMergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1580887733740" />
     <state x="481" y="9" key="RollbackChangesDialog" timestamp="1580857087734">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -305,22 +311,22 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="503" y="5" key="VCS.ChangeListViewerDialog/0.0.1366.768@0.0.1366.768" timestamp="1580783152231" />
-    <state x="275" y="112" key="Vcs.Push.Dialog.v2" timestamp="1580886232726">
+    <state x="275" y="112" key="Vcs.Push.Dialog.v2" timestamp="1580887689127">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="112" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1580886232726" />
+    <state x="275" y="112" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1580887689127" />
     <state x="0" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1580884582330">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="0" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.768@0.0.1366.768" timestamp="1580884582330" />
-    <state x="370" y="105" width="757" height="628" key="find.popup" timestamp="1580887514341">
+    <state x="370" y="105" width="757" height="628" key="find.popup" timestamp="1580888170095">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="370" y="105" width="757" height="628" key="find.popup/0.0.1366.768@0.0.1366.768" timestamp="1580887514341" />
-    <state x="409" y="156" key="git4idea.merge.GitPullDialog" timestamp="1580887646820">
+    <state x="370" y="105" width="757" height="628" key="find.popup/0.0.1366.768@0.0.1366.768" timestamp="1580888170095" />
+    <state x="409" y="156" key="git4idea.merge.GitPullDialog" timestamp="1580887692373">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="409" y="156" key="git4idea.merge.GitPullDialog/0.0.1366.768@0.0.1366.768" timestamp="1580887646820" />
+    <state x="409" y="156" key="git4idea.merge.GitPullDialog/0.0.1366.768@0.0.1366.768" timestamp="1580887692373" />
     <state x="339" y="172" key="run.anything.popup" timestamp="1580863098397">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
