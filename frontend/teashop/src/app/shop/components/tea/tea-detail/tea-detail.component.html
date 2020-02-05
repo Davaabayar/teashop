@@ -25,7 +25,7 @@
     </div>
     <mat-tab-group>
         <mat-tab label="Information">
-            <p>{{(tea$ | async)?.description}}</p>
+            <div [innerHTML]="(tea$ | async)?.description"></div>
         </mat-tab>
         <mat-tab label="Brew Information">
             <p><strong>Temp:</strong>{{(tea$ | async)?.brewInstruction?.temp}}</p>
