@@ -15,7 +15,7 @@ export interface Tea {
     direction: string
   },
   reviews: [{
-    start: number,
+    star: number,
     comment: string,
     user: {
       _id: string,
