@@ -16,7 +16,7 @@ export class TokenService {
   }
 
   hasShop() {
-    return this.http.get(environment.serverURL + '/shop/has');
+    return this.http.get(environment.serverURL + '/api/shop/has');
   }
 
   getUserType() {
