@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { Subscription } from 'rxjs'
 import { Router } from '@angular/router';
 import { TokenService } from '../../token.service'
+import { SharedService } from '../shared.service'
 
 @Component({
     selector: 'quiz',
@@ -93,14 +94,17 @@ export class Quiz implements OnInit {
         flavors: {},
         benefits: {}
     }
-    constructor(private fb: FormBuilder, private userService: UserService, private tokenService: TokenService, private router: Router) { }
+    constructor(private fb: FormBuilder, private userService: UserService, private tokenService: TokenService, private router: Router, private shared: SharedService) { }
 
     quizClick(index, type, tag, stepper) {
         this.quizAns[type][index] = tag
         if(parseInt(index) == 3) {
             this.userService.sendQuiz({'token': this.tokenService.getToken(), 'quiz': this.quizAns}).subscribe(res => {
-                console.log(res)
                 this.tokenService.setToken(res.token)
+                this.shared.signIn(true)
+                this.shared.isUserOnline.subscribe((res) => {
+                    console.log('res : '+res)
+                });
                 this.router.navigateByUrl('/blog')
             })
         } else {

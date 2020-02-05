@@ -3,7 +3,8 @@ import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 import { TeasService } from '../teas.service';
-import { AngularEditorModule } from '@kolkov/angular-editor';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-tea-create-reactive',
@@ -31,6 +32,32 @@ export class TeaCreateReactiveComponent implements OnInit {
       this.fb.control('')
     ])
   });
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    maxHeight: '200px',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Description',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'times-new-roman', name: 'Times New Roman' },
+      { class: 'calibri', name: 'Calibri' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' }
+    ],
+    uploadUrl: `${environment.serverURL}/api/upload`,
+    sanitize: true,
+    toolbarPosition: 'top',
+    toolbarHiddenButtons: [
+    ]
+  };
   tagTypes = [];
 
   get flavors() {

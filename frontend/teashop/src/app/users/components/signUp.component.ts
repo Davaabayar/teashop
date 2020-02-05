@@ -33,8 +33,10 @@ import {TokenService} from '../../token.service'
             </div>
             <span class="error-text" *ngIf="myForm.hasError('different')">Password mismatch</span>
             <label class="radio-style">Who are you? <br>
-              <input class="radio-style" [formControl]="myForm.get('userType')" checked type="radio" name="user-type" value="0"> Tea lover
-              <input class="radio-style" [formControl]="myForm.get('userType')" type="radio" name="user-type" value="1"> Shop owner
+              <input class="radio-style" [formControl]="myForm.get('userType')" checked type="radio" name="user-type"
+                     value="0"> Tea lover
+              <input class="radio-style" [formControl]="myForm.get('userType')" type="radio" name="user-type" value="1">
+              Shop owner
             </label>
             <div class="form-btn">
               <button type="submit" [ngClass]="{'disabled-btn': myForm.valid == false}" [disabled]="!myForm.valid">
@@ -68,9 +70,10 @@ export class SignUp implements OnInit {
   onSubmit() {
     this.Subscription = this.userService.signUp(this.myForm.value).subscribe(response => {
       if (response.success == 1) {
-        this.tokenService.setToken(response.token);
-        if(response.userType == 1) this.router.navigateByUrl('/shop/add')
+        this.tokenService.setToken(response.token)
+        if (response.userType == 1) this.router.navigateByUrl('/shop/add')
         else this.router.navigateByUrl('/users/quiz')
+
       }
     })
   }
@@ -78,6 +81,7 @@ export class SignUp implements OnInit {
   ngOnInit() {
 
   }
+
 
   checkPassword(group: FormGroup) {
     let password = group.value.password

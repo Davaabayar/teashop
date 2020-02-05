@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { TokenService } from '../../token.service'
 import { Subscription, Observable } from 'rxjs'
 import { Router } from '@angular/router';
+import { SharedService } from '../shared.service'
 
 @Component({
     selector: 'sign-in',
@@ -36,7 +37,7 @@ export class SignIn implements OnInit {
     form: FormGroup
     private Subscription: Subscription
     private failed
-    constructor(private fb: FormBuilder, private tokenService: TokenService, private userService: UserService, private router: Router) {
+    constructor(private fb: FormBuilder, private tokenService: TokenService, private userService: UserService, private router: Router, private shared: SharedService) {
         this.form = fb.group({
             'email': ['', Validators.required],
             'password': ['', Validators.required]
@@ -47,6 +48,10 @@ export class SignIn implements OnInit {
         this.Subscription = this.userService.signIn(this.form.value).subscribe(response => {
             if(response.success == 1) {
                 this.tokenService.setToken(response.token)
+                this.shared.signIn(true)
+                this.shared.isUserOnline.subscribe((res) => {
+                    console.log('res : '+res)
+                });
                 this.router.navigateByUrl('/blog')
             } else {
                 this.failed = true

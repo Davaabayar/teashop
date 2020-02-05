@@ -18,6 +18,7 @@ import { SharedModule } from './shared.module';
 import { TeaCardComponent } from './teas/tea-list/tea-card.component';
 import { ReviewAddDialogComponent } from './teas/review-add-dialog/review-add-dialog.component';
 import {AppHttpInterceptor} from "../../../../../mwa-homework-14-angular-04-Orshih71/client/hw14/src/app/app.http-interceptor";
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {AppHttpInterceptor} from "../../../../../mwa-homework-14-angular-04-Orsh
     MaterialModule,
     BlogModule,
     SharedModule,
-    UsersModule
+    UsersModule,
+    AngularEditorModule
   ],
   entryComponents: [
     ReviewAddDialogComponent

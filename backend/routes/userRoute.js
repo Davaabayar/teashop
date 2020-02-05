@@ -28,22 +28,23 @@ router.post('/signUp', async (req, res, next) => {
 })
 
 router.post('/signIn', async (req, res, next) => {
-	try {
-		let {email, password} = req.body
-		let user = await req.db.collection("users").findOne({"email": email});
-		let result = await bcrypt.compare(password, user.password);
-		let token = await jwt.sign({
-			"username": email,
-			"userType": user.userType,
-			"benefits": user.benefits,
-			"flavors": user.flavors
-		}, process.env.privateKey, {expiresIn: process.env.tokenDuration});
-		
-		if (result) res.json({"success": 1, "token": token});
-		else res.json({"success": 0});
-	} catch (err) {
-		res.json(err)
-	}
+  try {
+    let { email, password } = req.body
+    let user = await req.db.collection("users").findOne({ "email": email });
+    let result = await bcrypt.compare(password, user.password);
+    let token = await jwt.sign({
+      "username": email,
+      "fullname": user.fullname,
+      "userType": user.userType,
+      "benefits": user.benefits,
+      "flavors": user.flavors
+    }, process.env.privateKey, {expiresIn: process.env.tokenDuration});
+
+    if (result) res.json({"success": 1, "token": token});
+    else res.json({"success": 0});
+  } catch(err) {
+    res.json(err)
+  }
 })
 
 router.post('/sendQuiz', async (req, res, next) => {
