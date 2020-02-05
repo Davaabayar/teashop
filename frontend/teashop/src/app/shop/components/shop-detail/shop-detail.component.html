@@ -5,39 +5,28 @@
     <mat-card-subtitle>{{(shop$ | async)?.contacts.address}}</mat-card-subtitle>
   </mat-card-header>
   <div id="container">
-    <img *ngIf="(shop$ | async)?.thumbnail" mat-card-image src="{{serverURL + (shop$ | async)?.thumbnail}}" alt="{{(shop$ | async)?.name}}" />
+    <img *ngIf="(shop$ | async)?.thumbnail" mat-card-image src="{{serverURL + (shop$ | async)?.thumbnail}}"
+      alt="{{(shop$ | async)?.name}}" />
   </div>
   <mat-card-content>
     <div>
       <h3>Contacts</h3>
-      <mat-form-field>
-        <input matInput type="text" placeholder="Address" [value]="(shop$ | async)?.contacts?.address">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="text" placeholder="Phone" [value]="(shop$ | async)?.contacts?.phone">
-      </mat-form-field>
-    </div>
+      <div><strong>Phone </strong>{{(shop$ | async)?.contacts?.phone}}</div>
+      <div><strong>Address </strong>{{(shop$ | async)?.contacts?.address}}</div>
+      <div><strong>Website </strong><a href="(shop$ | async)?.contacts?.website"
+          target="_blank">{{(shop$ | async)?.contacts?.website}}</a></div>
 
-    <div *ngFor="let tag of (shop$ | async)?.tags; let i = index">
-      <mat-form-field>
-        <input matInput type="text" placeholder="Tag" [value]="tag">
-      </mat-form-field>
-    </div>
+      <h3>Type of teas we sell</h3>
+      <span *ngFor="let tag of (shop$ | async)?.tags">{{tag}} | </span>
 
-    <div>
-      <h3>Location</h3>
-      <mat-form-field>
-        <input matInput type="text" placeholder="Longitude" [value]="(shop$ | async)?.location[0]">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="text" placeholder="Latitude" [value]="(shop$ | async)?.location[1]">
-      </mat-form-field>
+      <div>
+        <h3>Location</h3>
+        <div><strong>Longtitude</strong> {{(shop$ | async)?.location[0]}} |
+          <strong>Lattitude</strong>{{(shop$ | async)?.location[0]}}</div>
+      </div>
     </div>
-
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="secondary">Edit</button>
     <button mat-raised-button color="secondary" (click)="openDialog()">Add tea</button>
   </mat-card-actions>
-  <hr>
 </mat-card>
