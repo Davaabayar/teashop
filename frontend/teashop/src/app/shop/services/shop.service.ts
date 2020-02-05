@@ -28,8 +28,6 @@ export class ShopService implements OnDestroy {
       if (res.success) {
         this.dataStore.shops.push(shop);
         this._shops.next(Object.assign({}, this.dataStore).shops);
-        console.log(res.shop._id);
-        console.log(res.shop);
         this.router.navigateByUrl("shop/detail/" + res.shop._id);
       } else console.error(res);
     });
