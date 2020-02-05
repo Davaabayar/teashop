@@ -2,8 +2,8 @@ import { Component, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Review } from './reivew.model';
 import { Validators, FormBuilder } from '@angular/forms';
-import { TeasService } from '../teas.service';
-import { TokenService } from '../../token.service'
+import { TeasService } from '../../services/teas.service';
+import { TokenService } from '../../../token.service'
 import { Subscription } from 'rxjs';
 
 

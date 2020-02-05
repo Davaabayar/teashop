@@ -1,19 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import {Observable, Subscription} from 'rxjs';
-import { TeasService } from '../teas.service';
-import { Tea } from '../tea.model';
-import { environment } from '../../../environments/environment';
-import { TeaCardComponent } from './tea-card.component';
+import { Observable, Subscription } from 'rxjs';
+import { TeasService } from '../../../services/teas.service';
+import { Tea } from '../../../models/tea';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
   selector: 'app-tea-list',
   templateUrl: './tea-list.component.html',
-  // template: `
-  //   <h1>Teas by: this shop</h1>
-  //   <app-tea-card [data]="teas"></app-tea-card>
-  // `,
   styleUrls: ['./tea-list.component.css']
 })
 export class TeaListComponent implements OnInit, OnDestroy {

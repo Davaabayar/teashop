@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from "@angular/forms";
-import { TeasService } from "../../../teas/teas.service";
+import { FormBuilder, Validators } from "@angular/forms";
+import { TeasService } from "../../services/teas.service";
 import { ShopService } from "../../services/shop.service";
 import { TokenService } from "../../../token.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-shop-add',
@@ -34,15 +34,15 @@ export class ShopAddComponent implements OnInit {
   tagTypes;
 
   constructor(private fb: FormBuilder,
-              private shopService: ShopService,
-              private teasService:TeasService,
-              private tokenService:TokenService,
-              private router:Router) {
+    private shopService: ShopService,
+    private teasService: TeasService,
+    private tokenService: TokenService,
+    private router: Router) {
   }
 
   ngOnInit() {
-    this.tokenService.hasShop().subscribe(r=> {
-      if(r["_id"]) this.router.navigateByUrl("shop/detail/"+r["_id"]);
+    this.tokenService.hasShop().subscribe(r => {
+      if (r["_id"]) this.router.navigateByUrl("shop/detail/" + r["_id"]);
     });
     this.tagTypes = this.teasService.getTags();
   }

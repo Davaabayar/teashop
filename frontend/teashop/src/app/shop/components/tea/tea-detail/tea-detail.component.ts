@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { TeasService } from '../teas.service';
-import { Tea } from '../tea.model';
+import { TeasService } from '../../../services/teas.service';
+import { Tea } from '../../../models/tea';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { environment } from '../../../environments/environment';
-import { MatDialogConfig, MatDialog } from '@angular/material';
-import { ReviewAddDialogComponent } from '../review-add-dialog/review-add-dialog.component';
+import { environment } from 'src/environments/environment';
+import { MatDialog } from '@angular/material';
+import { ReviewAddDialogComponent } from '../../review-add-dialog/review-add-dialog.component';
 
 
 @Component({

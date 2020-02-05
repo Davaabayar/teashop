@@ -3,8 +3,9 @@ import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 
-import {Tea} from './tea.model';
-import {environment} from 'src/environments/environment';
+import { Tea } from '../models/tea';
+import { environment } from 'src/environments/environment';
+import { Review } from '../components/review-add-dialog/reivew.model';
 
 @Injectable({
   providedIn: 'root'
