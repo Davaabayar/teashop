@@ -37,7 +37,7 @@ export class ShopService implements OnDestroy {
 
   loadShop(id: string) {
     this.subForShop$ = this.http.get<Shop>('http://localhost:3000/api/shop/detail/' + id)
-    .subscribe(res => {
+      .subscribe(res => {
         let notFound = true;
 
         this.dataStore.shops.forEach((shop, index) => {
@@ -53,18 +53,18 @@ export class ShopService implements OnDestroy {
 
         this._shops.next(Object.assign({}, this.dataStore).shops);
       },
-      err => console.error(err)
-    );
+        err => console.error(err)
+      );
   }
 
   loadShops() {
     this.subForList$ = this.http.get<any>('http://localhost:3000/api/shop')
-    .subscribe(res => {
-      if (res.success) {
-        this.dataStore = {shops: res.arr};
-        this._shops.next(Object.assign({}, this.dataStore).shops);
-      } else console.error(res);
-    });
+      .subscribe(res => {
+        if (res.success) {
+          this.dataStore = { shops: res.arr };
+          this._shops.next(Object.assign({}, this.dataStore).shops);
+        } else console.error(res);
+      });
   }
 
   getShop(id: string): Observable<Shop> {
@@ -74,8 +74,8 @@ export class ShopService implements OnDestroy {
   getPosition(): Promise<any> {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resp => {
-          resolve({long: resp.coords.longitude, lat: resp.coords.latitude});
-        },
+        resolve({ long: resp.coords.longitude, lat: resp.coords.latitude });
+      },
         err => {
           reject(err);
         });
@@ -83,7 +83,7 @@ export class ShopService implements OnDestroy {
   }
 
 
-  async loadNearestShops(limit, maxDistance) : Promise<Observable<Shop[]>> {
+  async loadNearestShops(limit, maxDistance): Promise<Observable<Shop[]>> {
     await this.getPosition().then(pos => {
       this.subForShop$ = this.http.get<Shop[]>('http://localhost:3000/api/shop/nearest'
         + "?limit=" + limit
@@ -91,7 +91,7 @@ export class ShopService implements OnDestroy {
         + "&long=" + pos.long
         + "&lat=" + pos.lat
       )
-      .subscribe(res => {
+        .subscribe(res => {
           res.forEach(s => {
             this.ids.push(s._id);
             let notFound = true;
@@ -108,10 +108,10 @@ export class ShopService implements OnDestroy {
           });
           this._shops.next(Object.assign({}, this.dataStore).shops);
         },
-        err => console.error(err)
-      );
+          err => console.error(err)
+        );
     });
-    return this.shops.pipe(map(shops =>shops.filter(shop => this.ids.includes(shop._id))));
+    return this.shops.pipe(map(shops => shops.filter(shop => this.ids.includes(shop._id))));
   }
   updateShop(shop: Shop) {
     this.http.put<Shop>(`${environment.serverURL}/shop/${shop._id}`, JSON.stringify(shop))

@@ -7,6 +7,12 @@
   width: 100%;
   height: auto;
 }
+.mat-card-content p, .mat-card-content span{
+  font-size:17px;
+}
+.mat-card-header .mat-card-title {
+  margin-bottom: 20px;
+}
 .container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
