@@ -17,6 +17,7 @@ import { UsersModule } from './users/users.module'
 import { SharedModule } from './shared.module';
 import { TeaCardComponent } from './teas/tea-list/tea-card.component';
 import { ReviewAddDialogComponent } from './teas/review-add-dialog/review-add-dialog.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ReviewAddDialogComponent } from './teas/review-add-dialog/review-add-di
     MaterialModule,
     BlogModule,
     SharedModule,
-    UsersModule
+    UsersModule,
+    AngularEditorModule
   ],
   entryComponents: [
     ReviewAddDialogComponent
