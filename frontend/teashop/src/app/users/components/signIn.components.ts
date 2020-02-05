@@ -35,7 +35,7 @@ import { SharedService } from '../shared.service'
 })
 export class SignIn implements OnInit {
     form: FormGroup
-    private Subscription: Subscription
+    Subscription: Subscription
     failed
     constructor(private fb: FormBuilder, private tokenService: TokenService, private userService: UserService, private router: Router, private shared: SharedService) {
         this.form = fb.group({
@@ -44,13 +44,13 @@ export class SignIn implements OnInit {
         })
     }
 
-    onSubmit() {        
+    onSubmit() {
         this.Subscription = this.userService.signIn(this.form.value).subscribe(response => {
-            if(response.success == 1) {
+            if (response.success == 1) {
                 this.tokenService.setToken(response.token)
                 this.shared.signIn(true)
                 this.shared.isUserOnline.subscribe((res) => {
-                    console.log('res : '+res)
+                    console.log('res : ' + res)
                 });
                 this.router.navigateByUrl('/blog')
             } else {

@@ -1,14 +1,12 @@
 <div *ngIf="(tea$ | async)" class="tea-container">
     <div class="center">
-        <img *ngIf="(tea$ | async)?.thumbnail" mat-card-image src="{{serverURL + (tea$ | async)?.thumbnail}}"
-            alt="{{(tea$ | async)?.teaName}}" />
-        <img *ngIf="!(tea$ | async)?.thumbnail" mat-card-image
-            src="https://static.trotcdn.com/images/art/Clean_Beauty_Supporting.jpg" />
+        <img *ngIf="(tea$ | async)?.thumbnail" mat-card-image src="{{serverURL + (tea$ | async)?.thumbnail}}" alt="{{(tea$ | async)?.teaName}}" />
+        <img *ngIf="!(tea$ | async)?.thumbnail" mat-card-image src="https://static.trotcdn.com/images/art/Clean_Beauty_Supporting.jpg" />
     </div>
     <div class="p2">
         <h1>{{(tea$ | async)?.teaName}}</h1>
         <div>{{(tea$ | async)?.shortName}}</div>
-        <a class="t4">{{r?.reviews.length}}</a>
+<!--        <a class="t4">{{(tea$ | async)?.reviews.length}}</a>-->
 
         <div fxLayout="row" class="relative" *ngIf="average!=0">
             <mat-icon [style.color]="'orange'" *ngIf="average>=1">star</mat-icon>
@@ -18,8 +16,7 @@
             <mat-icon [style.color]="'orange'" *ngIf="average==5">star</mat-icon>
         </div>
 
-        <button mat-raised-button (click)="openDialog()" color="accent" class="mt20"> <i
-                class="material-icons">edit</i>Write review</button>
+        <button mat-raised-button (click)="openDialog()" color="accent" class="mt20"> <i class="material-icons">edit</i>Write review</button>
         <h3>Tag</h3>
         <span *ngFor="let t of (tea$ | async)?.tags">{{t}} | </span>
         <h3>Flavors</h3>

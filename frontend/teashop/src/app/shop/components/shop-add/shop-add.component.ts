@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, Validators} from "@angular/forms";
-import {TeasService} from "../../../teas/teas.service";
-import {ShopService} from "../../services/shop.service";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from "@angular/forms";
+import { TeasService } from "../../services/teas.service";
+import { ShopService } from "../../services/shop.service";
+import { TokenService } from "../../../token.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-shop-add',
@@ -10,35 +12,38 @@ import {ShopService} from "../../services/shop.service";
 })
 export class ShopAddComponent implements OnInit {
 
-  private shopForm = this.fb.group({
+  shopForm = this.fb.group({
     name: ['', Validators.required],
     contacts: this.fb.group({
       address: [''],
       phone: [''],
+      website: ['']
     }),
+    workHours: this.fb.group({
+      open: [''],
+      close: [''],
+    }),
+    workDays: [''],
     location: this.fb.group({
       long: [''],
       lat: [''],
     }),
     thumbnail: [''],
-    tags: this.fb.array([
-      this.fb.control('')
-    ])
+    tags: ['']
   });
-  private tagTypes;
+  tagTypes;
 
-  constructor(private fb: FormBuilder, private shopService: ShopService, private teasService:TeasService) {
-  }
-
-  get tags() {
-    return this.shopForm.get('tags') as FormArray;
-  }
-
-  addTag() {
-    this.tags.push(this.fb.control(''));
+  constructor(private fb: FormBuilder,
+    private shopService: ShopService,
+    private teasService: TeasService,
+    private tokenService: TokenService,
+    private router: Router) {
   }
 
   ngOnInit() {
+    this.tokenService.hasShop().subscribe(r => {
+      if (r["_id"]) this.router.navigateByUrl("shop/detail/" + r["_id"]);
+    });
     this.tagTypes = this.teasService.getTags();
   }
 

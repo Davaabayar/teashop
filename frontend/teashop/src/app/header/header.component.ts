@@ -10,10 +10,12 @@ import { SharedService } from '../users/shared.service'
 })
 export class HeaderComponent implements OnInit {
   isSignedIn: boolean;
+  userType$ : Observable<any>;
   constructor(private tokenService: TokenService,private shared: SharedService) {}
 
+
   signOut() {
-    this.tokenService.clearToken()
+    this.tokenService.clearToken();
     this.shared.signIn(false)
     this.shared.isUserOnline.subscribe((res) => {
       this.isSignedIn = res
@@ -21,6 +23,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userType$ = this.tokenService.getUserType();
     this.shared.signIn((this.tokenService.getToken()) ? true : false)
     this.shared.isUserOnline.subscribe((res) => {
       this.isSignedIn = res

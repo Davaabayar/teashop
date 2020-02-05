@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const tokenService = require('../service/tokenService');
 const { ObjectID } = require('mongodb');
 
 //blog status:0 draft, status:1 published, status:2 deleted
@@ -27,9 +28,10 @@ router.get('/posts/:page', async function (req, res) {
     res.send(result).status(200);
 });
 
-router.post('/posts', async function (req, res, next) {
-    //brute force
+router.post('/posts', tokenService.tokenCheck, async function (req, res, next) {
     req.body._id = undefined;
+    const {decoded} = req;
+    req.body.user = {email: decoded.username};
     await req.db.collection("blog").insert({ ...req.body }, function (err, doc) {
         if (err) {
             next(err);

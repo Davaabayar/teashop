@@ -1,4 +1,4 @@
-import {Tea} from "../../teas/tea.model";
+import { Tea } from "../models/tea";
 
 export interface Shop {
   _id: string,
@@ -7,9 +7,9 @@ export interface Shop {
   logo: string,
   tags: [string],
   rate: number,
-  contacts : {
+  contacts: {
     address: string,
-    phone : string,
+    phone: string,
   },
   location: [
     string,
