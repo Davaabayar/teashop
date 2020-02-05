@@ -84,6 +84,19 @@
     font-size: 14px;
     font-family: inherit;
 }
+.radio-style{
+  padding: 9px 0;
+  color: #666;
+  font-weight: 500;
+  outline: none;
+  margin: 0;
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  font-size: 14px;
+  font-family: inherit;
+}
 .form-btn{
     padding-top: 30px;
 }

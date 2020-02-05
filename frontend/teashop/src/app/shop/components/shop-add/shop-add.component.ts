@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, Validators} from "@angular/forms";
 import {TeasService} from "../../../teas/teas.service";
 import {ShopService} from "../../services/shop.service";
+import {TokenService} from "../../../token.service";
 
 @Component({
   selector: 'app-shop-add',
@@ -15,30 +16,27 @@ export class ShopAddComponent implements OnInit {
     contacts: this.fb.group({
       address: [''],
       phone: [''],
+      website: ['']
     }),
+    workHours: this.fb.group({
+      open: [''],
+      close: [''],
+    }),
+    workDays: [''],
     location: this.fb.group({
       long: [''],
       lat: [''],
     }),
     thumbnail: [''],
-    tags: this.fb.array([
-      this.fb.control('')
-    ])
+    tags: ['']
   });
   private tagTypes;
 
-  constructor(private fb: FormBuilder, private shopService: ShopService, private teasService:TeasService) {
-  }
-
-  get tags() {
-    return this.shopForm.get('tags') as FormArray;
-  }
-
-  addTag() {
-    this.tags.push(this.fb.control(''));
+  constructor(private fb: FormBuilder, private shopService: ShopService, private teasService:TeasService, private tokenService:TokenService) {
   }
 
   ngOnInit() {
+    this.tokenService.hasShop();
     this.tagTypes = this.teasService.getTags();
   }
 

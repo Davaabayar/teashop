@@ -8,7 +8,8 @@ import { Observable } from 'rxjs'
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isSignedIn
+  isSignedIn;
+  userType$ : Observable<any>;
   constructor(private tokenService: TokenService) {}
 
   signOut() {
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userType$ = this.tokenService.getUserType();
     this.isSignedIn = (this.tokenService.getToken()) ? true : false
   }
 }

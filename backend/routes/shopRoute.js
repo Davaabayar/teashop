@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const ObjectId = require('mongodb').ObjectID;
-const jwt = require('jsonwebtoken');
 const tokenService = require('../service/tokenService');
+const jwt = require('jsonwebtoken');
 
 function tokenCheck(req, res, next) {
-	console.log(req.headers["Authorization"]);
-	console.log(req.headers);
 	let bearerHeader = req.headers["authorization"];
 	if (typeof bearerHeader !== 'undefined') {
 		let bearer = bearerHeader.split(" ");
@@ -25,7 +23,9 @@ function tokenCheck(req, res, next) {
 }
 router.post('/add', tokenCheck, async (req, res, next) => {
 	let shop = req.body;
+	const {decoded} = req;
 	shop.location = [parseFloat(req.body.location.long), parseFloat(req.body.location.lat)];
+	shop.user = {email: decoded.username};
 	await req.db.collection("shops").insert(shop, function (err, doc) {
 		if (err) next(err);
 		else res.json({"success": 1});
@@ -57,6 +57,17 @@ router.get('/', async (req, res, next) => {
 		return next(e);
 	}
 });
+
+router.get('/has', tokenService.tokenCheck, async (req, res, next) => {
+	const {decoded} = req;
+	try {
+		const result = await req.db.collection('shops').findOne({"user.email": decoded.email});
+		res.status(200).json(result);
+	} catch (e) {
+		return next(e);
+	}
+});
+
 router.get('/detail/:id', async (req, res, next) => {
 	try {
 		const result = await req.db.collection('shops').findOne({_id: ObjectId(req.params.id)});

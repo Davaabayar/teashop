@@ -15,7 +15,6 @@ function getUser(token) {
 }
 
 function tokenCheck(req, res, next) {
-	console.log(req.headers["authorization"]);
 	let bearerHeader = req.headers["authorization"];
 	if (typeof bearerHeader !== 'undefined') {
 		let bearer = bearerHeader.split(" ");
@@ -28,7 +27,6 @@ function tokenCheck(req, res, next) {
 				return next();
 			}
 		});
-		return next();
 	} else {
 		res.send(403);
 	}
