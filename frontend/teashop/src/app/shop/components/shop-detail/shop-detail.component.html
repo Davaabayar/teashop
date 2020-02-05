@@ -10,7 +10,7 @@
       <h3>Contacts</h3>
       <p class="dark-primary"><strong>Call us:</strong>{{(shop$ | async)?.contacts?.phone}}</p>
       <p><strong>Where: </strong>{{(shop$ | async)?.contacts?.address}}</p>
-      <p><strong>Website: </strong><a href="(shop$ | async)?.contacts?.website" target="_blank">Visit here</a></p>
+      <p><strong>Website: </strong><a href="{{(shop$ | async)?.contacts?.website}}" target="_blank">Visit here</a></p>
 
       <p><strong>Work Hours:</strong><span>{{(shop$ | async)?.workHours.open}}-
           {{(shop$ | async)?.workHours.open}}</span></p>
