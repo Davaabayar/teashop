@@ -29,9 +29,12 @@
                     <p *ngIf="tea.tags">
                         <span *ngFor="let tag of tea.tags">{{tag}} | </span>
                     </p>
-                    <p>
-                        <span *ngFor="let f of tea.flavors">{{f}} </span></p>
+                    <p><span *ngFor="let f of tea?.flavors">{{f}} </span></p>
+
                 </mat-card-content>
+                <mat-action-row>
+                    <p>{{tea.shop?.name}}</p>
+                </mat-action-row>
             </mat-card>
         </a>
     </div>
