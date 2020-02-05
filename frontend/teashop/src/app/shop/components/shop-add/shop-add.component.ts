@@ -20,6 +20,7 @@ export class ShopAddComponent implements OnInit {
       long: [''],
       lat: [''],
     }),
+    thumbnail: [''],
     tags: this.fb.array([
       this.fb.control('')
     ])

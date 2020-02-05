@@ -1,1 +1,62 @@
-<p>shop-detail works!gg</p>
+<mat-card>
+  <h1>Shop Detail</h1>
+  <mat-card-header>
+    <mat-card-title>{{(shop$ | async)?.name}}</mat-card-title>
+    <mat-card-subtitle>{{(shop$ | async)?.contacts.address}}</mat-card-subtitle>
+  </mat-card-header>
+  <div id="container">
+    <img *ngIf="(shop$ | async)?.thumbnail" mat-card-image
+         src="{{serverURL + (shop$ | async)?.thumbnail}}"
+         alt="{{(shop$ | async)?.name}}"/>
+  </div>
+  <mat-card-content>
+    <!--    <mat-form-field class="full-width">-->
+    <!--      <input matInput type="text" required placeholder="Shop Name" [value]="(shop$ | async)?.name">-->
+    <!--    </mat-form-field>-->
+    <div>
+      <h3>Contacts</h3>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Address" [value]="(shop$ | async)?.contacts?.address">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Phone" [value]="(shop$ | async)?.contacts?.phone">
+      </mat-form-field>
+    </div>
+
+    <!--    <h3>Tags-->
+    <!--      <button (click)="addTag()" mat-button color="accent" type="button">Add Tag</button>-->
+    <!--    </h3>-->
+    <div *ngFor="let tag of (shop$ | async)?.tags; let i = index">
+      <mat-form-field>
+        <!-- <input matInput type="text" [formControlName]="i" placeholder="Tag"> -->
+        <input matInput type="text" placeholder="Tag" [value]="tag">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <h3>Location</h3>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Longitude" [value]="(shop$ | async)?.location[0]">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Latitude" [value]="(shop$ | async)?.location[1]">
+      </mat-form-field>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="secondary">Edit</button>
+    <button mat-raised-button color="secondary">Add tea</button>
+  </mat-card-actions>
+  <hr>
+
+
+  <!--  <p>-->
+  <!--    Form Value: {{ shopDetailForm.value | json }}-->
+  <!--  </p>-->
+
+
+  <p>
+    Form Status: {{ shopDetailForm.status }}
+  </p>
+</mat-card>
