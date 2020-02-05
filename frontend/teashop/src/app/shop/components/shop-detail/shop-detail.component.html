@@ -10,8 +10,7 @@
       <h3>Contacts</h3>
       <p class="dark-primary"><strong>Call us:</strong>{{(shop$ | async)?.contacts?.phone}}</p>
       <p><strong>Where: </strong>{{(shop$ | async)?.contacts?.address}}</p>
-      <p><strong>Website: </strong><a href="(shop$ | async)?.contacts?.website"
-          target="_blank">{{(shop$ | async)?.contacts?.website}}</a></p>
+      <p><strong>Website: </strong><a href="(shop$ | async)?.contacts?.website" target="_blank">Visit here</a></p>
 
       <p><strong>Work Hours:</strong><span>{{(shop$ | async)?.workHours.open}}-
           {{(shop$ | async)?.workHours.open}}</span></p>
@@ -20,11 +19,6 @@
       <p>
         <span *ngFor="let tag of (shop$ | async)?.tags">{{tag}} </span>
       </p>
-      <div>
-        <h3>Location</h3>
-        <p><strong>Longtitude: </strong> {{(shop$ | async)?.location[0]}}
-          <strong>Lattitude: </strong>{{(shop$ | async)?.location[0]}}</p>
-      </div>
     </div>
     <hr>
     <div>
@@ -33,9 +27,9 @@
         <div class="teaCard" *ngFor="let tea of tea$ | async">
           <a [routerLink]="['../../../teas/', tea._id]">
             <mat-card class="z-depth">
-              <img *ngIf="tea.thumbnail" mat-card-image src="{{serverURL + tea.thumbnail}}" alt="{{tea.teaName}}"/>
+              <img *ngIf="tea.thumbnail" mat-card-image src="{{serverURL + tea.thumbnail}}" alt="{{tea.teaName}}" />
               <img *ngIf="!tea.thumbnail" mat-card-image
-                   src="https://static.trotcdn.com/images/art/Clean_Beauty_Supporting.jpg"/>
+                src="https://static.trotcdn.com/images/art/Clean_Beauty_Supporting.jpg" />
               <mat-card-title>{{tea.teaName}}</mat-card-title>
               <mat-card-subtitle>{{tea.shortName}}</mat-card-subtitle>
               <mat-card-content>

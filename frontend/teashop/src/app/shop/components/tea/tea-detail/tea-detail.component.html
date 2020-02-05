@@ -15,6 +15,10 @@
             <mat-icon [style.color]="'orange'" *ngIf="average>=3">star</mat-icon>
             <mat-icon [style.color]="'orange'" *ngIf="average>=4">star</mat-icon>
             <mat-icon [style.color]="'orange'" *ngIf="average==5">star</mat-icon>
+            <div style="       position: absolute;
+                            top: 4px;
+                            font-size: 15px;
+            right: 0px">{{(tea$ | async)?.reviews?.length}} Reviews</div>
         </div>
 
         <button mat-raised-button (click)="openDialog()" color="accent" class="mt20"> <i
@@ -23,8 +27,9 @@
         <span *ngFor="let t of (tea$ | async)?.tags">{{t}} | </span>
         <h3>Flavors</h3>
         <span *ngFor="let f of (tea$ | async)?.flavors">{{f}} | </span>
-
         <p>Cafine: {{(tea$ | async)?.cafine}}</p>
+        <h3>Shop</h3>
+        <a [routerLink]="['','shop','detail',(tea$ | async)?.shop.id]">{{(tea$ | async)?.shop.name}}</a>
     </div>
     <mat-tab-group>
         <mat-tab label="Information">
