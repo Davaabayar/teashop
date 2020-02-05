@@ -37,6 +37,7 @@ router.post('/signIn', async (req, res, next) => {
     let result = await bcrypt.compare(password, user.password);
     let token = await jwt.sign({
       "username": email,
+      "fullname": user.fullname,
       "benefits": user.benefits,
       "flavors": user.flavors
     }, process.env.privateKey, {expiresIn: '30m'});
