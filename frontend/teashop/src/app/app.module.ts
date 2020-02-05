@@ -33,8 +33,8 @@ import { SharedModule } from './shared.module';
     AppRoutingModule,
     MaterialModule,
     BlogModule,
-    UsersModule,
-    SharedModule
+    SharedModule,
+    UsersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
