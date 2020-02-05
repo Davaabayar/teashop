@@ -8,6 +8,8 @@ const saltRounds = bcrypt.genSaltSync(10);
 
 router.post('/signUp', async (req, res, next) => {
   try {
+    console.log('working')
+
     let { fullname, password, email } = req.body;
     let encPass = await bcrypt.hash(password, saltRounds);
     let result = await req.db.collection("users").insertOne({
@@ -18,9 +20,12 @@ router.post('/signUp', async (req, res, next) => {
     let token = await jwt.sign({
       "username": email,
       "fullname": fullname
-    }, "privateKey", { expiresIn: '30m' });
+    }, process.env.privateKey, { expiresIn: '30m' });
+    console.log(token)
     res.json({ "success": 1, "token": token })
+
   } catch (err) {
+    console.log(err)
     res.json(err)
   }
 })
@@ -32,19 +37,13 @@ router.post('/signIn', async (req, res, next) => {
     let result = await bcrypt.compare(password, user.password);
     let token = await jwt.sign({
       "username": email,
-<<<<<<< HEAD
-    }, "privateKey", { expiresIn: '30m' });
-
-    if (result) res.json({ "success": 1, "token": token });
-    else res.json({ "success": 0 });
-  } catch (err) {
-=======
+      "benefits": user.benefits,
+      "flavors": user.flavors
     }, process.env.privateKey, {expiresIn: '30m'});
 
     if (result) res.json({"success": 1, "token": token});
     else res.json({"success": 0});
   } catch(err) {
->>>>>>> f19390036b07b62d0ca8a9b901d1cf45390dde4f
     res.json(err)
   }
 })
@@ -55,10 +54,12 @@ router.post('/sendQuiz', async (req, res, next) => {
   const benefits = Object.values(quiz.benefits)
   const flavors = Object.values(quiz.flavors)
   await req.db.collection("users").updateOne({ email: userInfo.username }, { $set: { benefits: benefits, flavors: flavors } }, function (err, doc) {
-    if (err) next(err);
-    else {
-      res.json({ success: 1 })
-    }
+    let token = jwt.sign({
+      "username": userInfo.username,
+      "benefits": benefits,
+      "flavors": flavors
+    }, process.env.privateKey, {expiresIn: '30m'});
+    res.json({"success":1, "token": token})
   });
 })
 
