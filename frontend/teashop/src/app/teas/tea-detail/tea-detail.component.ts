@@ -19,10 +19,7 @@ export class TeaDetailComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   teaId: string;
   serverURL: string = environment.serverURL;
-
-  star: number;
-  comment: string;
-
+  average = 0;
 
   constructor(private teasService: TeasService,
     private router: ActivatedRoute,
@@ -34,6 +31,16 @@ export class TeaDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.tea$ = this.teasService.getTea(this.teaId);
+    let total = 0, n = 0, avg = 0;
+    this.tea$.subscribe((t) => {
+      if (t.reviews != null) {
+        t.reviews.forEach(r => {
+          total += parseInt(r.star);
+          n++;
+        });
+        this.average = total / n;
+      }
+    })
   }
 
   ngOnDestroy() {
@@ -43,7 +50,7 @@ export class TeaDetailComponent implements OnInit, OnDestroy {
   openDialog(): void {
     const dialogRef = this.dialog.open(ReviewAddDialogComponent, {
       width: '500px',
-      data: { star: this.star, commet: this.comment }
+      data: { teaId: this.teaId }
     });
 
     dialogRef.afterClosed().subscribe(result => {

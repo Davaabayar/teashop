@@ -3,6 +3,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Review } from './reivew.model';
 import { Validators, FormBuilder } from '@angular/forms';
 import { TeasService } from '../teas.service';
+import { TokenService } from '../../token.service'
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -12,30 +14,44 @@ import { TeasService } from '../teas.service';
 })
 export class ReviewAddDialogComponent {
     reveiwForm = this.fb.group({
+        teaId: [''],
         star: ['', Validators.required],
         comment: ['', Validators.required],
     });
-    @Input() thisTeaId;
+
+    private subscription: Subscription;
 
     constructor(
         public dialogRef: MatDialogRef<ReviewAddDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: Review,
         private fb: FormBuilder,
-        private teaService: TeasService
+        private teaService: TeasService,
+        private tokenService: TokenService
     ) {
         if (data != null) {
-            console.log(data);
+
+            this.reveiwForm.setValue({
+                teaId: data.teaId,
+                star: '',
+                comment: ''
+            });
         }
     }
 
     onSubmit() {
         if (this.reveiwForm.valid) {
-            console.log('Save this', this.reveiwForm.value);
-
+            this.subscription = this.teaService.addReview({ 'token': this.tokenService.getToken(), 'review': this.reveiwForm.value })
+                .subscribe(res => {
+                    this.closeDialog();
+                });
         }
     }
 
     onNoClick(): void {
+        this.dialogRef.close();
+    }
+
+    closeDialog() {
         this.dialogRef.close();
     }
 
