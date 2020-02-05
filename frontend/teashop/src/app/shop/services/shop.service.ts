@@ -3,13 +3,14 @@ import {HttpClient} from "@angular/common/http";
 import {Shop} from "../models/shop";
 import {BehaviorSubject, Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopService implements OnDestroy {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router:Router) {
   }
 
   private _shops: BehaviorSubject<Shop[]> = new BehaviorSubject([]);
@@ -26,6 +27,9 @@ export class ShopService implements OnDestroy {
       if (res.success) {
         this.dataStore.shops.push(shop);
         this._shops.next(Object.assign({}, this.dataStore).shops);
+        console.log(res.shop._id);
+        console.log(res.shop);
+        this.router.navigateByUrl("shop/detail/" + res.shop._id);
       } else console.error(res);
     });
   }

@@ -2,42 +2,24 @@ const express = require('express');
 const router = express.Router();
 const ObjectId = require('mongodb').ObjectID;
 const tokenService = require('../service/tokenService');
-const jwt = require('jsonwebtoken');
 
-function tokenCheck(req, res, next) {
-	let bearerHeader = req.headers["authorization"];
-	if (typeof bearerHeader !== 'undefined') {
-		let bearer = bearerHeader.split(" ");
-		req.token = bearer[1];
-		let token = bearer[1];
-		jwt.verify(token, process.env.privateKey, function (err, decoded) {
-			if (err) res.status(400).send(err);
-			else {
-				req.decoded = decoded;
-				next();
-			}
-		});
-	} else {
-		res.send(403);
-	}
-}
-router.post('/add', tokenCheck, async (req, res, next) => {
+router.post('/add', tokenService.tokenCheck, async (req, res, next) => {
 	let shop = req.body;
 	const {decoded} = req;
 	shop.location = [parseFloat(req.body.location.long), parseFloat(req.body.location.lat)];
 	shop.user = {email: decoded.username};
 	await req.db.collection("shops").insert(shop, function (err, doc) {
 		if (err) next(err);
-		else res.json({"success": 1});
+		else res.json({"success": 1, shop: shop});
 	});
 });
 
-router.get('/nearest', async (req, res, next) => {
+router.get('/nearest', tokenService.tokenCheck, async (req, res, next) => {
 	const {limit, maxDistance, long, lat} = req.query;
-	const {tags} = req.decoded;
+	const {benefits} = req.decoded;
 	const result = await req.db.collection('shops').find({
 		"tags": {
-			$in: tags
+			$in: benefits
 		},
 		"location": {
 			$near: {
@@ -45,7 +27,7 @@ router.get('/nearest', async (req, res, next) => {
 				$maxDistance: parseInt(maxDistance)
 			}
 		}
-	}).limit(parseInt(limit)).toArray();
+	}, {multi:true}).limit(parseInt(limit)).toArray();
 	res.status(200).json(result);
 });
 

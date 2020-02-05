@@ -7,7 +7,7 @@
     <li>
       <a mat-button routerLink="/teas">Teas</a>
     </li>
-    <li>
+    <li *ngIf="(userType$ | async)?.userType == 0">
       <a mat-button routerLink="/shop/nearest">Nearest shops</a>
     </li>
     <li *ngIf="(userType$ | async)?.userType == 1">

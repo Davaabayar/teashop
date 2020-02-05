@@ -11,7 +11,6 @@ import { SharedModule } from "../shared.module";
 import { ShopFindNearestComponent } from './components/shop-find-nearest/shop-find-nearest.component';
 import { TeaListComponent } from './components/tea/tea-list/tea-list.component';
 import { TeaCreateReactiveComponent } from './components/tea/tea-create-reactive/tea-create-reactive.component';
-import { TeaCardComponent } from './components/tea/tea-list/tea-card.component';
 import { TeaDetailComponent } from './components/tea/tea-detail/tea-detail.component';
 import { ReviewAddDialogComponent } from './components/review-add-dialog/review-add-dialog.component';
 import { TeaAddDialogComponent } from './components/tea/tea-add-dialog/tea-add-dialog.component';
@@ -33,7 +32,6 @@ const MY_ROUTES = [
     TeaListComponent,
     TeaDetailComponent,
     TeaCreateReactiveComponent,
-    TeaCardComponent,
     ReviewAddDialogComponent,
     TeaAddDialogComponent
   ],

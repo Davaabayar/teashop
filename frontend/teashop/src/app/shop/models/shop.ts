@@ -1,4 +1,3 @@
-import { Tea } from "../models/tea";
 
 export interface Shop {
   _id: string,
