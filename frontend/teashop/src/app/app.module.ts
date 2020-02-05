@@ -15,6 +15,8 @@ import { MaterialModule } from './app-material.module';
 import { BlogModule } from './blog/blog.module';
 import { UsersModule } from './users/users.module'
 import { SharedModule } from './shared.module';
+import { TeaCardComponent } from './teas/tea-list/tea-card.component';
+import { ReviewAddDialogComponent } from './teas/review-add-dialog/review-add-dialog.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { SharedModule } from './shared.module';
     TeaListComponent,
     TeaDetailComponent,
     TeaCreateReactiveComponent,
+    TeaCardComponent,
+    ReviewAddDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,9 @@ import { SharedModule } from './shared.module';
     BlogModule,
     SharedModule,
     UsersModule
+  ],
+  entryComponents: [
+    ReviewAddDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

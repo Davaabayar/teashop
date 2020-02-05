@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { Tea } from './tea.model';
 import { environment } from 'src/environments/environment';
+import { Review } from './review-add-dialog/reivew.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,6 @@ export class TeasService {
 
   getTea(teaId: string) {
     return this.http.get<Tea>(`${environment.serverURL}/api/teas/` + teaId);
-    //return this.http.get<Post>(`${environment.serverURL}/api/blog/posts/one?id=` + id);
   }
 
   deleteTea(teaId: string) {
@@ -56,6 +56,13 @@ export class TeasService {
       "Reduce inflammation", "Anti-ageing", "Relieve stress and anxiety", "Lower blood pressure", "Skin health"];
   }
 
+  addReview(reviewBody) {
+
+    return this.http.post('http://localhost:3000/api/teas/addreview', reviewBody);
+    // .subscribe(responseData => {
+    //   console.log('Review Added', responseData);
+    // });
+  }
 
 
   getTeasUpdateListener() {

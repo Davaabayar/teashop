@@ -1,0 +1,26 @@
+<h1 mat-dialog-title> Add review </h1>
+<div mat-dialog-content>
+    <p>How would you rate this tea?</p>
+    <form [formGroup]="reveiwForm" (ngSubmit)="onSubmit()">
+
+        <!-- <mat-select matInput formControlName="star" type="number">
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="4">4</mat-option>
+                <mat-option value="5">5</mat-option>
+            </mat-select> -->
+        <mat-slider max="5" min="1" step="1" tickInterval="1" formControlName="star" thumbLabel="thumbLabel"
+            class="full" value="2">
+        </mat-slider>
+
+        <mat-form-field class="full">
+            <textarea matInput formControlName="comment" placeholder="comment" rows="2"></textarea>
+        </mat-form-field>
+        <div mat-dialog-actions>
+            <button type="submit" [disabled]="!reveiwForm.valid" mat-raised-button color="primary">Add Review</button>
+            <button mat-button (click)="onNoClick()">Cancel</button>
+        </div>
+    </form>
+
+</div>

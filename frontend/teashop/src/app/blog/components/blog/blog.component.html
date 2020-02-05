@@ -4,4 +4,7 @@
     <div *ngFor=" let post of posts$ | async; let i=index">
         <app-post [post]=post></app-post>
     </div>
+
+    <mat-paginator [length]="length" [pageSize]="pageSize" (page)="pageEvent = $event">
+    </mat-paginator>
 </div>
