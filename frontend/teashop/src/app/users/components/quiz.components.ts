@@ -99,6 +99,8 @@ export class Quiz implements OnInit {
         this.quizAns[type][index] = tag
         if(parseInt(index) == 3) {
             this.userService.sendQuiz({'token': this.tokenService.getToken(), 'quiz': this.quizAns}).subscribe(res => {
+                console.log(res)
+                this.tokenService.setToken(res.token)
                 this.router.navigateByUrl('/blog')
             })
         } else {

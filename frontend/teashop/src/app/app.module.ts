@@ -38,8 +38,8 @@ import {AppHttpInterceptor} from "../../../../../mwa-homework-14-angular-04-Orsh
     AppRoutingModule,
     MaterialModule,
     BlogModule,
-    UsersModule,
-    SharedModule
+    SharedModule,
+    UsersModule
   ],
   entryComponents: [
     ReviewAddDialogComponent

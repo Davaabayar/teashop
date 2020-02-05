@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from '../token.service'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,7 @@ import { TokenService } from '../token.service'
 })
 export class HeaderComponent implements OnInit {
   isSignedIn
-  constructor(private tokenService: TokenService) {
-    this.isSignedIn = false
-  }
+  constructor(private tokenService: TokenService) {}
 
   signOut() {
     this.tokenService.clearToken()

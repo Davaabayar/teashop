@@ -44,7 +44,7 @@ export class SignUp implements OnInit {
     myForm: FormGroup
     private Subscription: Subscription
     private emailTimeout
-    constructor(private fb: FormBuilder, private userService: UserService, private router: Router,private tokenService: TokenService,) {
+    constructor(private fb: FormBuilder, private userService: UserService, private router: Router,private tokenService: TokenService) {
         this.myForm = fb.group({
             'fullname': ['', Validators.required],
             'email': ['', Validators.required, [this.asyncEmailValidator.bind(this)]],
@@ -57,6 +57,7 @@ export class SignUp implements OnInit {
 
     onSubmit() {      
         this.Subscription = this.userService.signUp(this.myForm.value).subscribe(response => {
+            console.log(response)
             if (response.success == 1) {
                 this.tokenService.setToken(response.token)
                 this.router.navigateByUrl('/users/quiz')
