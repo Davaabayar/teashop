@@ -7,8 +7,8 @@ const bcrypt = require('bcryptjs');
 const saltRounds = bcrypt.genSaltSync(10);
 
 router.post('/signUp', async (req, res, next) => {
-  try{
-    let {fullname, password, email} = req.body;
+  try {
+    let { fullname, password, email } = req.body;
     let encPass = await bcrypt.hash(password, saltRounds);
     let result = await req.db.collection("users").insertOne({
       "username": fullname,
@@ -17,47 +17,56 @@ router.post('/signUp', async (req, res, next) => {
     });
     let token = await jwt.sign({
       "username": email,
-    }, process.env.privateKey, {expiresIn: '30m'});
-    res.json({"success":1, "token": token})
-  } catch(err) {
+      "fullname": fullname
+    }, "privateKey", { expiresIn: '30m' });
+    res.json({ "success": 1, "token": token })
+  } catch (err) {
     res.json(err)
   }
 })
 
 router.post('/signIn', async (req, res, next) => {
-  try{
-    let {email, password} = req.body
-    let user = await req.db.collection("users").findOne({"email": email});
+  try {
+    let { email, password } = req.body
+    let user = await req.db.collection("users").findOne({ "email": email });
     let result = await bcrypt.compare(password, user.password);
     let token = await jwt.sign({
       "username": email,
+<<<<<<< HEAD
+    }, "privateKey", { expiresIn: '30m' });
+
+    if (result) res.json({ "success": 1, "token": token });
+    else res.json({ "success": 0 });
+  } catch (err) {
+=======
     }, process.env.privateKey, {expiresIn: '30m'});
-    
+
     if (result) res.json({"success": 1, "token": token});
     else res.json({"success": 0});
   } catch(err) {
+>>>>>>> f19390036b07b62d0ca8a9b901d1cf45390dde4f
     res.json(err)
   }
 })
 
-router.post('/sendQuiz', async(req, res, next) => {
-    const { token, quiz } = req.body
-    const userInfo = tokenService.getUser(token)
-    const benefits = Object.values(quiz.benefits)
-    const flavors = Object.values(quiz.flavors)
-    await req.db.collection("users").updateOne({email: userInfo.username}, {$set: {benefits: benefits, flavors: flavors}}, function (err, doc) {
-		if(err)  next(err);
-		else {
-      res.json({success : 1})
+router.post('/sendQuiz', async (req, res, next) => {
+  const { token, quiz } = req.body
+  const userInfo = tokenService.getUser(token)
+  const benefits = Object.values(quiz.benefits)
+  const flavors = Object.values(quiz.flavors)
+  await req.db.collection("users").updateOne({ email: userInfo.username }, { $set: { benefits: benefits, flavors: flavors } }, function (err, doc) {
+    if (err) next(err);
+    else {
+      res.json({ success: 1 })
     }
-    });
+  });
 })
 
 router.get('/checkEmail', async (req, res, next) => {
-  const {email} = req.query;
-	const result = await req.db.collection("users").findOne({"email":email});
-	if(result) res.json({"exists":1});
-  else res.json({"exists":0});
+  const { email } = req.query;
+  const result = await req.db.collection("users").findOne({ "email": email });
+  if (result) res.json({ "exists": 1 });
+  else res.json({ "exists": 0 });
 })
 
 module.exports = router;

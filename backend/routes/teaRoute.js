@@ -1,8 +1,12 @@
 var express = require('express');
 var ObjectId = require('mongodb').ObjectID;
 var router = express.Router();
+const tokenService = require('../service/tokenService')
 const Tea = require('../models/tea');
 
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const saltRounds = bcrypt.genSaltSync(10);
 /*
 GET http://localhost:3000/api/teas?tags=Anti-ageing&flavors=Orange,Mango
 GET http://localhost:3000/api/teas?flavors=Joy&tags=Anti-ageing
@@ -56,7 +60,7 @@ router.get('/', async function (req, res) {
 
 router.get('/:id', async function (req, res) {
   let result = await req.db.collection('teas')
-    .find({ _id: ObjectId(req.params.id) }).toArray();
+    .findOne({ _id: ObjectId(req.params.id) });
   res.send(result).status(200);
 });
 
@@ -77,53 +81,23 @@ router.delete('/:id', async function (req, res) {
   res.send(result).status(200);
 });
 
-/*router.get('/:id', async function(req,res,next){
-  Tea.findById(req.params.id)
-    .then((result)=>{
-      res.status(200).json(result);
-    })
-    .catch(err=>{
-      res.status(400).json(err);
-    })  
-});
-
-router.post('/', async function(req, res, next) {  
-    const tea = new Tea(req.body);    
-    const result = await tea.save();  
-    res.status(201).json({
-      message:"Tea added successfully",
-      body:result
-    });
-  });
-
-router.delete('/:id',(req,res,next)=>{
-  Tea.deleteOne({_id:req.params.id})
-  .then(result=>{     
-      res.status(200).json({message:"Tea deleted!"});
-    })
-    .catch(err=>{   
-      res.status(500);
-    });
+router.post('/addReview', async (req, res, next) => {
+  const { token, review } = req.body
+  const userInfo = tokenService.getUser(token);
+  let newReview = {
+    "star": review.star,
+    "comment": review.comment,
+    "username": userInfo.username,
+    "created": Date.now()
+  }
+  await req.db.collection("teas")
+    .updateOne({ _id: ObjectId(review.teaId) },
+      { $push: { reviews: newReview } }, function (err, doc) {
+        if (err) next(err);
+        else {
+          res.json({ success: 1 })
+        }
+      });
 })
 
-router.delete('/',(req,res,next)=>{
-  Tea.deleteMany({})
-  .then(result=>{     
-      res.status(200).json({message:"Teas deleted!"});
-    })
-    .catch(err=>{   
-      res.status(500);
-    });
-})
-
-router.put('/:id', (req, res, next) => {
-  const tea = new Tea({...req.body});
-  console.log('put',{...req.body});
-
-  Tea.updateOne({_id:req.params.id}, tea).then(result => {
-    console.log(result);
-    res.status(200).json({message:"Update successful!"});
-  });
-})
-*/
 module.exports = router;
