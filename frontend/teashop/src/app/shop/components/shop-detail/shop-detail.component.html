@@ -6,7 +6,7 @@
   </mat-card-header>
   <div id="container">
     <img *ngIf="(shop$ | async)?.thumbnail" mat-card-image src="{{serverURL + (shop$ | async)?.thumbnail}}"
-      alt="{{(shop$ | async)?.name}}" />
+         alt="{{(shop$ | async)?.name}}"/>
   </div>
   <mat-card-content>
     <div>
@@ -14,7 +14,7 @@
       <div><strong>Phone </strong>{{(shop$ | async)?.contacts?.phone}}</div>
       <div><strong>Address </strong>{{(shop$ | async)?.contacts?.address}}</div>
       <div><strong>Website </strong><a href="(shop$ | async)?.contacts?.website"
-          target="_blank">{{(shop$ | async)?.contacts?.website}}</a></div>
+                                       target="_blank">{{(shop$ | async)?.contacts?.website}}</a></div>
 
       <h3>Type of teas we sell</h3>
       <span *ngFor="let tag of (shop$ | async)?.tags">{{tag}} | </span>
@@ -25,8 +25,38 @@
           <strong>Lattitude</strong>{{(shop$ | async)?.location[0]}}</div>
       </div>
     </div>
+    <hr>
+    <div>
+      <h3>Teas we Offer</h3>
+      <div class="container">
+        <div class="teaCard" *ngFor="let tea of tea$ | async">
+          <a [routerLink]="['../../../teas/', tea._id]">
+            <mat-card class="z-depth">
+              <img *ngIf="tea.thumbnail" mat-card-image src="{{serverURL + tea.thumbnail}}" alt="{{tea.teaName}}"/>
+              <img *ngIf="!tea.thumbnail" mat-card-image
+                   src="https://static.trotcdn.com/images/art/Clean_Beauty_Supporting.jpg"/>
+              <mat-card-title>{{tea.teaName}}</mat-card-title>
+              <mat-card-subtitle>{{tea.shortName}}</mat-card-subtitle>
+              <mat-card-content>
+                <div *ngIf="tea.flavors">Flavors: <span *ngFor="let f of tea.flavors">{{f}} | </span></div>
+                <div *ngIf="tea.tags">Tags: <span *ngFor="let t of tea.tags">{{t}} | </span></div>
+                <div fxLayout="row" class="relative">
+                  <mat-icon [style.color]="'orange'" *ngIf="5>1">star</mat-icon>
+                  <mat-icon [style.color]="'orange'" *ngIf="5>2">star</mat-icon>
+                  <mat-icon [style.color]="'orange'" *ngIf="5>3">star</mat-icon>
+                  <mat-icon [style.color]="'orange'" *ngIf="5>4">star</mat-icon>
+                  <mat-icon [style.color]="'orange'" *ngIf="5>=5">star_half</mat-icon>
+                  <span class="n">{{tea.reviews?.length}}</span>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </a>
+        </div>
+      </div>
+
+    </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="secondary" (click)="openDialog()">Add tea</button>
+    <button mat-raised-button color="primary" (click)="openDialog()">Add tea</button>
   </mat-card-actions>
 </mat-card>

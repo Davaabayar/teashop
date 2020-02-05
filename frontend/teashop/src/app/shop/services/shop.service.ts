@@ -4,6 +4,7 @@ import {Shop} from "../models/shop";
 import {BehaviorSubject, Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Router} from "@angular/router";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -112,7 +113,36 @@ export class ShopService implements OnDestroy {
     });
     return this.shops.pipe(map(shops =>shops.filter(shop => this.ids.includes(shop._id))));
   }
+  updateShop(shop: Shop) {
+    this.http.put<Shop>(`${environment.serverURL}/shop/${shop._id}`, JSON.stringify(shop))
+    .subscribe(
+      shop => {
+        this.dataStore.shops.forEach((t, i) => {
+          if (t._id === shop._id) {
+            this.dataStore.shops[i] = shop;
+          }
+        });
 
+        this._shops.next(Object.assign({}, this.dataStore).shops);
+      },
+      error => console.log(error)
+    );
+  }
+
+  removeShop(shopId: string) {
+    this.http.delete(`${environment.serverURL}/shop/${shopId}`).subscribe(
+      response => {
+        this.dataStore.shops.forEach((t, i) => {
+          if (t._id == shopId) {
+            this.dataStore.shops.splice(i, 1);
+          }
+        });
+
+        this._shops.next(Object.assign({}, this.dataStore).shops);
+      },
+      error => console.log(error)
+    );
+  }
   ngOnDestroy(): void {
     if (this.subForCreate$) this.subForCreate$.unsubscribe();
     if (this.subForList$) this.subForList$.unsubscribe();

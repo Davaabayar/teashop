@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
-import { Tea } from '../models/tea';
-import { environment } from 'src/environments/environment';
+import {Tea} from '../models/tea';
+import {environment} from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class TeasService {
 
   private _teas: BehaviorSubject<Tea[]> = new BehaviorSubject([]);
   public readonly teas: Observable<Tea[]> = this._teas.asObservable();
-  private dataStore: { teas: Tea[] } = { teas: [] };
+  private dataStore: { teas: Tea[] } = {teas: []};
 
   // teas: any[] = [];
   tea: any = null;
@@ -26,28 +26,28 @@ export class TeasService {
     return this.teas;
   }
 
-  loadTeas() {
-    this.http.get<any>('http://localhost:3000/api/teas')
-      .subscribe(res => {
-        this.dataStore = { teas: res };
-        this._teas.next(Object.assign({}, this.dataStore).teas);
-      },
-        err => console.error(err));
-  }
-
   addTea(tea: Tea) {
     this.http
-      .post<{ message: string, body: Tea }>(environment.serverURL + '/api/teas', tea)
-      .subscribe(responseData => {
-        const id = responseData.body._id;
-        this.dataStore.teas.push(tea);
+    .post<{ message: string, body: Tea }>(environment.serverURL + '/api/teas', tea)
+    .subscribe(responseData => {
+      const id = responseData.body._id;
+      this.dataStore.teas.push(tea);
+      this._teas.next(Object.assign({}, this.dataStore).teas);
+    });
+  }
+
+  loadTeas() {
+    this.http.get<any>('http://localhost:3000/api/teas')
+    .subscribe(res => {
+        this.dataStore = {teas: res};
         this._teas.next(Object.assign({}, this.dataStore).teas);
-      });
+      },
+      err => console.error(err));
   }
 
   loadTea(id: string) {
     this.http.get<Tea>(environment.serverURL + '/api/teas/' + id)
-      .subscribe(res => {
+    .subscribe(res => {
         let notFound = true;
 
         this.dataStore.teas.forEach((shop, index) => {
@@ -63,8 +63,34 @@ export class TeasService {
 
         this._teas.next(Object.assign({}, this.dataStore).teas);
       },
-        err => console.error(err)
-      );
+      err => console.error(err)
+    );
+  }
+
+  loadTeaByShop(shopId: string) {
+    this.http.get<Tea[]>(environment.serverURL + '/api/teas/shop/' + shopId)
+    .subscribe(res => {
+        let notFound = true;
+        res.forEach(t => {
+          this.dataStore.teas.forEach((tea, index) => {
+            if (tea._id == t._id) {
+              this.dataStore.teas[index] = t;
+              notFound = false;
+            }
+          });
+
+          if (notFound) {
+            this.dataStore.teas.push(t);
+          }
+        });
+        this._teas.next(Object.assign({}, this.dataStore).teas);
+      },
+      err => console.error(err)
+    );
+  }
+
+  getTeasByShop(shopId: string) {
+    return this.teas.pipe(map(teas => teas.filter(tea => tea.shop["id"] == shopId)));
   }
 
   getTea(teaId: string) {
@@ -73,14 +99,14 @@ export class TeasService {
 
   async deleteTea(teaId: string) {
     await this.http.delete(environment.serverURL + '/api/teas/' + teaId)
-      .subscribe((res) => {
-        this.dataStore.teas.forEach((t, i) => {
-          if (t._id === teaId) {
-            this.dataStore.teas.splice(i, 1);
-          }
-        });
-        this._teas.next(Object.assign({}, this.dataStore).teas);
+    .subscribe((res) => {
+      this.dataStore.teas.forEach((t, i) => {
+        if (t._id === teaId) {
+          this.dataStore.teas.splice(i, 1);
+        }
       });
+      this._teas.next(Object.assign({}, this.dataStore).teas);
+    });
     return this.teas.pipe(map(teas => teas.filter(tea => tea._id != teaId)));
   }
 
@@ -104,7 +130,7 @@ export class TeasService {
 
   updateTea(tea: Tea) {
     this.http
-      .put<{ message: string }>(environment.serverURL + '/api/teas/' + tea._id, tea)
-      .subscribe(response => console.log(response));
+    .put<{ message: string }>(environment.serverURL + '/api/teas/' + tea._id, tea)
+    .subscribe(response => console.log(response));
   }
 }

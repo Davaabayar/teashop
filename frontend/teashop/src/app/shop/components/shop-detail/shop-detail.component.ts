@@ -8,6 +8,7 @@ import { Shop } from "../../models/shop";
 import { environment } from "../../../../environments/environment";
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { TeaAddDialogComponent } from '../tea/tea-add-dialog/tea-add-dialog.component';
+import {Tea} from "../../models/tea";
 
 @Component({
   selector: 'app-shop-detail',
@@ -32,6 +33,7 @@ export class ShopDetailComponent implements OnInit, OnDestroy {
   tagTypes: string[];
   shopId: string;
   shop$: Observable<Shop>;
+  tea$: Observable<Tea[]>;
   readonly sub$: Subscription;
   serverURL: string = environment.serverURL;
 
@@ -48,6 +50,9 @@ export class ShopDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.shopService.loadShop(this.shopId);
     this.shop$ = this.shopService.getShop(this.shopId);
+
+    this.teasService.loadTeaByShop(this.shopId);
+    this.tea$ = this.teasService.getTeasByShop(this.shopId);
   }
 
   onSubmit() {
@@ -72,6 +77,8 @@ export class ShopDetailComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(TeaAddDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((result) => {
+      this.teasService.loadTeaByShop(this.shopId);
+      this.tea$ = this.teasService.getTeasByShop(this.shopId);
       console.log('add tea dialog closed');
     });
   }
