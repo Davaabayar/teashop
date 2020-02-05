@@ -13,3 +13,11 @@
 .center{
     text-align: center;
 }
+
+.fixedWidthHeight {
+    max-height: 300px;
+    max-width: 500px;
+}
+.fixedWidthHeight img{
+    width: 100%;
+}
