@@ -1,21 +1,22 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Shop } from "../models/shop";
-import { BehaviorSubject, Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { Router } from "@angular/router";
+import {Injectable, OnDestroy} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Shop} from "../models/shop";
+import {BehaviorSubject, Observable} from "rxjs";
+import {map} from "rxjs/operators";
+import {Router} from "@angular/router";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopService implements OnDestroy {
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router:Router) {
   }
 
   private _shops: BehaviorSubject<Shop[]> = new BehaviorSubject([]);
   public readonly shops: Observable<Shop[]> = this._shops.asObservable();
-  private dataStore: { shops: Shop[] } = { shops: [] };
+  private dataStore: { shops: Shop[] } = {shops: []};
   private subForCreate$;
   private subForList$;
   private subForShop$;
@@ -23,15 +24,15 @@ export class ShopService implements OnDestroy {
 
   addShop(shop: Shop) {
     this.subForCreate$ = this.http.post<any>('http://localhost:3000/api/shop/add', shop)
-      .subscribe(res => {
-        if (res.success) {
-          this.dataStore.shops.push(shop);
-          this._shops.next(Object.assign({}, this.dataStore).shops);
-          console.log(res.shop._id);
-          console.log(res.shop);
-          this.router.navigateByUrl("shop/detail/" + res.shop._id);
-        } else console.error(res);
-      });
+    .subscribe(res => {
+      if (res.success) {
+        this.dataStore.shops.push(shop);
+        this._shops.next(Object.assign({}, this.dataStore).shops);
+        console.log(res.shop._id);
+        console.log(res.shop);
+        this.router.navigateByUrl("shop/detail/" + res.shop._id);
+      } else console.error(res);
+    });
   }
 
   loadShop(id: string) {
@@ -112,7 +113,36 @@ export class ShopService implements OnDestroy {
     });
     return this.shops.pipe(map(shops => shops.filter(shop => this.ids.includes(shop._id))));
   }
+  updateShop(shop: Shop) {
+    this.http.put<Shop>(`${environment.serverURL}/shop/${shop._id}`, JSON.stringify(shop))
+    .subscribe(
+      shop => {
+        this.dataStore.shops.forEach((t, i) => {
+          if (t._id === shop._id) {
+            this.dataStore.shops[i] = shop;
+          }
+        });
 
+        this._shops.next(Object.assign({}, this.dataStore).shops);
+      },
+      error => console.log(error)
+    );
+  }
+
+  removeShop(shopId: string) {
+    this.http.delete(`${environment.serverURL}/shop/${shopId}`).subscribe(
+      response => {
+        this.dataStore.shops.forEach((t, i) => {
+          if (t._id == shopId) {
+            this.dataStore.shops.splice(i, 1);
+          }
+        });
+
+        this._shops.next(Object.assign({}, this.dataStore).shops);
+      },
+      error => console.log(error)
+    );
+  }
   ngOnDestroy(): void {
     if (this.subForCreate$) this.subForCreate$.unsubscribe();
     if (this.subForList$) this.subForList$.unsubscribe();
