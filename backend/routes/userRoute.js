@@ -74,9 +74,23 @@ router.get('/checkEmail', async (req, res, next) => {
 	else res.json({"exists": 0});
 });
 
-router.get('/role', tokenService.tokenCheck, async (req, res, next) => {
-	const {decoded} = req;
-	res.json(decoded);
+router.get('/role', async (req, res, next) => {
+	let bearerHeader = req.headers["authorization"];
+	if (typeof bearerHeader !== 'undefined') {
+		let bearer = bearerHeader.split(" ");
+		req.token = bearer[1];
+		let token = bearer[1];
+		jwt.verify(token, process.env.privateKey, function (err, decoded) {
+			if (err) {
+				res.json({});
+			}
+			else {
+				res.json(decoded);
+			}
+		});
+	} else {
+		res.json({});
+	}
 });
 
 module.exports = router;

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 import { Tea } from '../models/tea';
 import { environment } from 'src/environments/environment';
@@ -10,37 +11,77 @@ import { environment } from 'src/environments/environment';
 })
 export class TeasService {
 
-  teas: any[] = [];
+  private _teas: BehaviorSubject<Tea[]> = new BehaviorSubject([]);
+  public readonly teas: Observable<Tea[]> = this._teas.asObservable();
+  private dataStore: { teas: Tea[] } = { teas: [] };
+
+  // teas: any[] = [];
   tea: any = null;
   private teasUpdated = new Subject<Tea[]>();
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) {
+  }
 
   getTeas() {
-    return this.http.get('http://localhost:3000/api/teas');
+    return this.teas;
+  }
+
+  loadTeas() {
+    this.http.get<any>('http://localhost:3000/api/teas')
+      .subscribe(res => {
+        this.dataStore = { teas: res };
+        this._teas.next(Object.assign({}, this.dataStore).teas);
+      },
+        err => console.error(err));
   }
 
   addTea(tea: Tea) {
     this.http
-      .post<{ message: string, body: Tea }>('http://localhost:3000/api/teas', tea)
+      .post<{ message: string, body: Tea }>(environment.serverURL + '/api/teas', tea)
       .subscribe(responseData => {
         const id = responseData.body._id;
+        this.dataStore.teas.push(tea);
+        this._teas.next(Object.assign({}, this.dataStore).teas);
       });
-    this.teas.push(tea);
-    this.teasUpdated.next([...this.teas]);
+  }
+
+  loadTea(id: string) {
+    this.http.get<Tea>(environment.serverURL + '/api/teas/' + id)
+      .subscribe(res => {
+        let notFound = true;
+
+        this.dataStore.teas.forEach((shop, index) => {
+          if (shop._id === res._id) {
+            this.dataStore.teas[index] = res;
+            notFound = false;
+          }
+        });
+
+        if (notFound) {
+          this.dataStore.teas.push(res);
+        }
+
+        this._teas.next(Object.assign({}, this.dataStore).teas);
+      },
+        err => console.error(err)
+      );
   }
 
   getTea(teaId: string) {
-    return this.http.get<Tea>(`${environment.serverURL}/api/teas/` + teaId);
+    return this.teas.pipe(map(teas => teas.find(tea => tea._id = teaId)));
   }
 
-  deleteTea(teaId: string) {
-    this.http
-      .delete('http://localhost:3000/api/teas/' + teaId)
+  async deleteTea(teaId: string) {
+    await this.http.delete(environment.serverURL + '/api/teas/' + teaId)
       .subscribe((res) => {
-        const updatedTeas = this.teas.filter(tea => tea._id !== teaId);
-        this.teas = updatedTeas;
-        this.teasUpdated.next([...this.teas]);
+        this.dataStore.teas.forEach((t, i) => {
+          if (t._id === teaId) {
+            this.dataStore.teas.splice(i, 1);
+          }
+        });
+        this._teas.next(Object.assign({}, this.dataStore).teas);
       });
+    return this.teas.pipe(map(teas => teas.filter(tea => tea._id != teaId)));
   }
 
   getCategories() {
@@ -54,9 +95,8 @@ export class TeasService {
   }
 
   addReview(reviewBody) {
-    return this.http.post('http://localhost:3000/api/teas/addreview', reviewBody);
+    return this.http.post(environment.serverURL + '/api/teas/addreview', reviewBody);
   }
-
 
   getTeasUpdateListener() {
     return this.teasUpdated.asObservable();
@@ -64,7 +104,7 @@ export class TeasService {
 
   updateTea(tea: Tea) {
     this.http
-      .put<{ message: string }>('http://localhost:3000/api/teas/' + tea._id, tea)
+      .put<{ message: string }>(environment.serverURL + '/api/teas/' + tea._id, tea)
       .subscribe(response => console.log(response));
   }
 }
