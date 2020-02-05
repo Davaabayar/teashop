@@ -15,6 +15,7 @@ import { ReviewAddDialogComponent } from './shop/components/review-add-dialog/re
 import { AppHttpInterceptor } from "./app.http.interceptor";
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { ShopModule } from './shop/shop.module';
+import { TeaAddDialogComponent } from './shop/components/tea/tea-add-dialog/tea-add-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ShopModule } from './shop/shop.module';
     AngularEditorModule
   ],
   entryComponents: [
-    ReviewAddDialogComponent
+    ReviewAddDialogComponent,
+    TeaAddDialogComponent
   ],
   providers: [
     [

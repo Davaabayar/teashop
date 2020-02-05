@@ -67,6 +67,8 @@ export class ShopDetailComponent implements OnInit, OnDestroy {
 
     dialogConfig.autoFocus = true;
 
+    dialogConfig.data = this.shop$;
+
     const dialogRef = this.dialog.open(TeaAddDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((result) => {
