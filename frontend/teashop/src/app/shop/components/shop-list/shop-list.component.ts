@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ShopService} from "../../services/shop.service";
-import {Shop} from "../../models/shop";
-import {Observable} from "rxjs";
-import {environment} from "../../../../environments/environment";
+import { Component, OnInit } from '@angular/core';
+import { ShopService } from "../../services/shop.service";
+import { Shop } from "../../models/shop";
+import { Observable } from "rxjs";
+import { environment } from "../../../../environments/environment";
 
 @Component({
   selector: 'app-shop-list',
@@ -10,17 +10,16 @@ import {environment} from "../../../../environments/environment";
   styleUrls: ['./shop-list.component.css']
 })
 export class ShopListComponent implements OnInit {
-  private serverURL: string = environment.serverURL;
+  serverURL: string = environment.serverURL;
 
   constructor(private shopService: ShopService) {
   }
 
-  private shops$: Observable<Shop[]>;
+  shops$: Observable<Shop[]>;
 
   ngOnInit() {
     this.shopService.loadShops();
     this.shops$ = this.shopService.shops;
   }
-
 
 }

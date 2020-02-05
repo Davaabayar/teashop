@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from '../token.service'
+import { Observable } from 'rxjs'
+import { SharedService } from '../users/shared.service'
 
 @Component({
   selector: 'app-header',
@@ -7,17 +9,24 @@ import { TokenService } from '../token.service'
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isSignedIn
-  constructor(private tokenService: TokenService) {
-    this.isSignedIn = false
-  }
+  isSignedIn: boolean;
+  userType$ : Observable<any>;
+  constructor(private tokenService: TokenService,private shared: SharedService) {}
+
 
   signOut() {
-    this.tokenService.clearToken()
-    this.isSignedIn = false
+    this.tokenService.clearToken();
+    this.shared.signIn(false)
+    this.shared.isUserOnline.subscribe((res) => {
+      this.isSignedIn = res
+    });
   }
 
   ngOnInit() {
-    this.isSignedIn = (this.tokenService.getToken()) ? true : false
+    this.userType$ = this.tokenService.getUserType();
+    this.shared.signIn((this.tokenService.getToken()) ? true : false)
+    this.shared.isUserOnline.subscribe((res) => {
+      this.isSignedIn = res
+    });
   }
 }

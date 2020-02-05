@@ -9,7 +9,6 @@ const jwt = require('jsonwebtoken');
 const MongoClient = require('mongodb').MongoClient;
 let db;
 
-const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/userRoute');
 const teasRouter = require('./routes/teaRoute');
 const shopRoute = require('./routes/shopRoute');
@@ -66,12 +65,10 @@ function tokenCheck(req, res, next) {
 		res.send(403);
 	}
 }
-app.use('/', indexRouter);
 app.use('/api/teas', teasRouter);
-app.use('/users', usersRouter);
+app.use('/user', usersRouter);
 app.use('/api/shop', shopRoute);
 app.use('/api/blog', blogRouter);
-app.use('/user', usersRouter);
 app.use('/api/upload', uploadRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

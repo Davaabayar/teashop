@@ -1,16 +1,13 @@
 <div *ngIf="(tea$ | async)" class="tea-container">
     <div class="center">
-        <img *ngIf="(tea$ | async)?.thumbnail" mat-card-image src="{{serverURL + (tea$ | async)?.thumbnail}}"
-            alt="{{(tea$ | async)?.teaName}}" />
-        <img *ngIf="!(tea$ | async)?.thumbnail" mat-card-image
-            src="https://static.trotcdn.com/images/art/Clean_Beauty_Supporting.jpg" />
+        <img *ngIf="(tea$ | async)?.thumbnail" mat-card-image src="{{serverURL + (tea$ | async)?.thumbnail}}" alt="{{(tea$ | async)?.teaName}}" />
+        <img *ngIf="!(tea$ | async)?.thumbnail" mat-card-image src="https://static.trotcdn.com/images/art/Clean_Beauty_Supporting.jpg" />
     </div>
     <div class="p2">
         <h1>{{(tea$ | async)?.teaName}}</h1>
         <div>{{(tea$ | async)?.shortName}}</div>
-        <a class="t4">{{r?.reviews.length}}</a>
 
-        <div fxLayout="row" class="relative" *ngIf="average!=0">
+        <div fxLayout="row" class="relative" *ngIf="getAvgReview((tea$ | async)?.reviews)!=0">
             <mat-icon [style.color]="'orange'" *ngIf="average>=1">star</mat-icon>
             <mat-icon [style.color]="'orange'" *ngIf="average>=2">star</mat-icon>
             <mat-icon [style.color]="'orange'" *ngIf="average>=3">star</mat-icon>
@@ -18,8 +15,7 @@
             <mat-icon [style.color]="'orange'" *ngIf="average==5">star</mat-icon>
         </div>
 
-        <button mat-raised-button (click)="openDialog()" color="accent" class="mt20"> <i
-                class="material-icons">edit</i>Write review</button>
+        <button mat-raised-button (click)="openDialog()" color="accent" class="mt20"> <i class="material-icons">edit</i>Write review</button>
         <h3>Tag</h3>
         <span *ngFor="let t of (tea$ | async)?.tags">{{t}} | </span>
         <h3>Flavors</h3>
@@ -29,7 +25,7 @@
     </div>
     <mat-tab-group>
         <mat-tab label="Information">
-            <p>{{(tea$ | async)?.description}}</p>
+            <div [innerHTML]="(tea$ | async)?.description"></div>
         </mat-tab>
         <mat-tab label="Brew Information">
             <p><strong>Temp:</strong>{{(tea$ | async)?.brewInstruction?.temp}}</p>
@@ -42,7 +38,6 @@
         </mat-tab>
         <mat-tab label="Reviews {{(tea$ | async)?.reviews?.length}}">
             <div *ngFor="let r of (tea$ | async)?.reviews" class="review">
-
                 <div fxLayout="row" class="relative">
                     <mat-icon [style.color]="'orange'" *ngIf="r?.star>=1">star</mat-icon>
                     <mat-icon [style.color]="'orange'" *ngIf="r?.star>=2">star</mat-icon>
@@ -51,7 +46,7 @@
                     <mat-icon [style.color]="'orange'" *ngIf="r?.star==5">star</mat-icon>
                 </div>
                 <p>{{r?.comment}}</p>
-                <i>by {{r?.username}}, reviewed on {{r?.date | date:'MMMM dd, yyyy' }}</i>
+                <i>by {{r?.username}}, reviewed on {{r?.created | date:'MMMM dd, yyyy' }}</i>
             </div>
         </mat-tab>
     </mat-tab-group>

@@ -7,29 +7,45 @@
     <app-upload [formGroup]="shopForm"></app-upload>
     <div formGroupName="contacts">
       <h3>Contacts</h3>
-      <mat-form-field>
+      <mat-form-field class="full-width">
         <input matInput type="text" formControlName="address" placeholder="Address">
       </mat-form-field>
       <mat-form-field>
         <input matInput type="text" formControlName="phone" placeholder="Phone">
       </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" formControlName="website" placeholder="Website" pattern="https?://.+">
+      </mat-form-field>
     </div>
-
-    <div formArrayName="tags">
-      <h3>Tags
-        <button (click)="addTag()" mat-button color="accent" type="button">Add Tag</button>
-      </h3>
-      <div *ngFor="let tag of tags.controls; let i = index">
-        <mat-form-field>
-          <!-- <input matInput type="text" [formControlName]="i" placeholder="Tag"> -->
-          <mat-select [formControlName]="i">
-            <mat-option *ngFor="let t of tagTypes" [value]="t">
-              {{t}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+    <div formGroupName="workHours">
+      <h3>Work Hours</h3>
+      <mat-form-field>
+        <input matInput type="text" formControlName="open" placeholder="Open time" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" formControlName="close" placeholder="Close time" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]">
+      </mat-form-field>
     </div>
+    <mat-form-field style="width: 50%">
+      <mat-label>Work Days</mat-label>
+      <mat-select formControlName="workDays" multiple>
+        <mat-option value="1">Monday</mat-option>
+        <mat-option value="2">Tuesday</mat-option>
+        <mat-option value="3">Wednesday</mat-option>
+        <mat-option value="4">Thursday</mat-option>
+        <mat-option value="5">Friday</mat-option>
+        <mat-option value="6">Saturday</mat-option>
+        <mat-option value="7">Sunday</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Tags</mat-label>
+      <mat-select formControlName="tags" multiple>
+        <mat-option *ngFor="let t of tagTypes" [value]="t">
+          {{t}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
     <div formGroupName="location">
       <h3>Location</h3>
@@ -40,7 +56,6 @@
         <input matInput type="text" formControlName="lat" placeholder="Latitude">
       </mat-form-field>
     </div>
-
     <button type="submit" [disabled]="!shopForm.valid" mat-raised-button color="primary">Register</button>
   </form>
   <hr>

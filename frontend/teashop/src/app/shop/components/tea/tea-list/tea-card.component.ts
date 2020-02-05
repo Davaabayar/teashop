@@ -1,9 +1,8 @@
-import { Component, OnInit, OnDestroy, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnDestroy, Input, OnChanges, SimpleChanges } from '@angular/core';
 
-import { Subscription } from 'rxjs';
-import { TeasService } from '../teas.service';
-import { Tea } from '../tea.model';
-import { environment } from '../../../environments/environment';
+import { TeasService } from '../../../services/teas.service';
+import { Tea } from '../../../models/tea';
+import { environment } from 'src/environments/environment';
 
 
 @Component({

@@ -1,9 +1,9 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Review } from './reivew.model';
 import { Validators, FormBuilder } from '@angular/forms';
-import { TeasService } from '../teas.service';
-import { TokenService } from '../../token.service'
+import { TeasService } from '../../services/teas.service';
+import { TokenService } from '../../../token.service'
 import { Subscription } from 'rxjs';
 
 
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
     templateUrl: 'review-add-dialog.component.html',
     styleUrls: ['review-add-dialog.component.css']
 })
-export class ReviewAddDialogComponent {
+export class ReviewAddDialogComponent implements OnDestroy {
     reveiwForm = this.fb.group({
         teaId: [''],
         star: ['', Validators.required],
@@ -29,7 +29,6 @@ export class ReviewAddDialogComponent {
         private tokenService: TokenService
     ) {
         if (data != null) {
-
             this.reveiwForm.setValue({
                 teaId: data.teaId,
                 star: '',
@@ -53,6 +52,11 @@ export class ReviewAddDialogComponent {
 
     closeDialog() {
         this.dialogRef.close();
+    }
+
+    ngOnDestroy() {
+        if (this.subscription)
+            this.subscription.unsubscribe();
     }
 
 }

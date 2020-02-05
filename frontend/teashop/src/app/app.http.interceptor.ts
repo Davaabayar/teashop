@@ -20,7 +20,6 @@ export class AppHttpInterceptor implements HttpInterceptor {
         return resp;
       }));
     }
-    console.log(req);
     return next.handle(req);
   }
 }

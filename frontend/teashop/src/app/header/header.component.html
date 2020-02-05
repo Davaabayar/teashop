@@ -2,22 +2,16 @@
   <span class="spacer"></span>
   <ul>
     <li>
-      <a mat-button routerLink="/teas">Tea List</a>
+      <a mat-button routerLink="/blog">Blog</a>
     </li>
     <li>
-      <a mat-button routerLink="/teas/add">Add Tea</a>
-    </li>
-    <li>
-      <a mat-button routerLink="/blog">Explore</a>
-    </li>
-    <li>
-      <a mat-button routerLink="/shop">Shops</a>
-    </li>
-    <li>
-      <a mat-button routerLink="/shop/add">Shop add</a>
+      <a mat-button routerLink="/teas">Teas</a>
     </li>
     <li>
       <a mat-button routerLink="/shop/nearest">Nearest shops</a>
+    </li>
+    <li *ngIf="(userType$ | async)?.userType == 1">
+      <a mat-button routerLink="/shop/add">My shop</a>
     </li>
     <li *ngIf="isSignedIn === false">
       <a mat-button routerLink="/users/signin">Sign In</a>
