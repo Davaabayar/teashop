@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Shop } from '../../../models/shop';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { TeasService } from 'src/app/shop/services/teas.service';
@@ -13,7 +13,6 @@ import { TeasService } from 'src/app/shop/services/teas.service';
   styleUrls: ['./tea-add-dialog.component.css']
 })
 export class TeaAddDialogComponent implements OnInit, OnDestroy {
-
   teaForm = this.fb.group({
     teaName: ['', Validators.required],
     shortName: [''],
@@ -32,7 +31,11 @@ export class TeaAddDialogComponent implements OnInit, OnDestroy {
     ]),
     tags: this.fb.array([
       this.fb.control('')
-    ])
+    ]),
+    shop: this.fb.group({
+      id: [''],
+      name: ['']
+    })
   });
 
   editorConfig: AngularEditorConfig = {
@@ -62,14 +65,20 @@ export class TeaAddDialogComponent implements OnInit, OnDestroy {
     ]
   };
 
+  shop: Shop;
+
   private subscription: Subscription;
 
   constructor(
     private dialogRef: MatDialogRef<TeaAddDialogComponent>,
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: Shop,
+    @Inject(MAT_DIALOG_DATA) public data: Observable<Shop>,
     private teasService: TeasService
-  ) { }
+  ) {
+    this.subscription = data.subscribe((res) => {
+      this.shop = res;
+    });
+  }
 
   tagTypes = [];
 
@@ -90,8 +99,15 @@ export class TeaAddDialogComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.teaForm.patchValue({
+      shop: {
+        id: this.shop._id,
+        name: this.shop.name
+      }
+    });
+
     this.teasService.addTea(this.teaForm.value);
-    console.log('OK');
+    this.closeDialog();
   }
 
   ngOnInit() {

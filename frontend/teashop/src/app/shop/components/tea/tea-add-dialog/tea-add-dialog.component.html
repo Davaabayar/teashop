@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="teaAddStyle">
     <h1>Add Tea</h1>
     <form [formGroup]="teaForm" (ngSubmit)="onSubmit()">
         <mat-form-field class="full-width">
@@ -58,18 +58,7 @@
                 </mat-form-field>
             </div>
         </div>
-
         <button type="submit" [disabled]="!teaForm.valid" mat-raised-button color="primary">Add Tea</button>
     </form>
     <hr>
-
-
-    <p>
-        Form Value: {{ teaForm.value | json }}
-    </p>
-
-
-    <p>
-        Form Status: {{ teaForm.status }}
-    </p>
 </mat-card>
