@@ -45,7 +45,14 @@ export class BlogComponent implements OnInit, OnDestroy {
 
     dialogConfig.autoFocus = true;
 
-    this.dialog.open(PostAddDialogComponent, dialogConfig);
+    const dialogRef = this.dialog.open(PostAddDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.subscription = this.postService.getPosts().subscribe(posts => {
+        let json = JSON.parse(JSON.stringify(posts));
+        this.sharedService.changePosts(json);
+      });
+    });
   }
 
   ngOnDestroy() {
