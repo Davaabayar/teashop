@@ -1,32 +1,33 @@
 <mat-card>
-  <h1>Shop Detail</h1>
+  <h1>{{(shop$ | async)?.name}}</h1>
   <mat-card-header>
-    <mat-card-title>{{(shop$ | async)?.name}}</mat-card-title>
-    <mat-card-subtitle>{{(shop$ | async)?.contacts.address}}</mat-card-subtitle>
+    <mat-card-title>{{(shop$ | async)?.contacts.address}}</mat-card-title><br />
   </mat-card-header>
-  <div id="container">
+  <mat-card-content>
     <img *ngIf="(shop$ | async)?.thumbnail" mat-card-image src="{{serverURL + (shop$ | async)?.thumbnail}}"
       alt="{{(shop$ | async)?.name}}" />
-  </div>
-  <mat-card-content>
     <div>
       <h3>Contacts</h3>
-      <div><strong>Phone </strong>{{(shop$ | async)?.contacts?.phone}}</div>
-      <div><strong>Address </strong>{{(shop$ | async)?.contacts?.address}}</div>
-      <div><strong>Website </strong><a href="(shop$ | async)?.contacts?.website"
-          target="_blank">{{(shop$ | async)?.contacts?.website}}</a></div>
+      <p class="dark-primary"><strong>Call us:</strong>{{(shop$ | async)?.contacts?.phone}}</p>
+      <p><strong>Where: </strong>{{(shop$ | async)?.contacts?.address}}</p>
+      <p><strong>Website: </strong><a href="(shop$ | async)?.contacts?.website"
+          target="_blank">{{(shop$ | async)?.contacts?.website}}</a></p>
 
-      <h3>Type of teas we sell</h3>
-      <span *ngFor="let tag of (shop$ | async)?.tags">{{tag}} | </span>
-
+      <p><strong>Work Hours:</strong><span>{{(shop$ | async)?.workHours.open}}-
+          {{(shop$ | async)?.workHours.open}}</span></p>
+      <p><strong>Work Days:</strong><span *ngFor="let wd of (shop$ | async)?.workDays">{{wd}} | </span></p>
+      <h3>Type of teas we offer:</h3>
+      <p>
+        <span *ngFor="let tag of (shop$ | async)?.tags">{{tag}} </span>
+      </p>
       <div>
         <h3>Location</h3>
-        <div><strong>Longtitude</strong> {{(shop$ | async)?.location[0]}} |
-          <strong>Lattitude</strong>{{(shop$ | async)?.location[0]}}</div>
+        <p><strong>Longtitude: </strong> {{(shop$ | async)?.location[0]}}
+          <strong>Lattitude: </strong>{{(shop$ | async)?.location[0]}}</p>
       </div>
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="secondary" (click)="openDialog()">Add tea</button>
+    <button mat-raised-button color="accent" (click)="openDialog()">Add tea</button>
   </mat-card-actions>
 </mat-card>

@@ -1,8 +1,8 @@
-import {Injectable, OnDestroy} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Shop} from "../models/shop";
-import {BehaviorSubject, Observable} from "rxjs";
-import {map} from "rxjs/operators";
+import { Injectable, OnDestroy } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Shop } from "../models/shop";
+import { BehaviorSubject, Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class ShopService implements OnDestroy {
 
   private _shops: BehaviorSubject<Shop[]> = new BehaviorSubject([]);
   public readonly shops: Observable<Shop[]> = this._shops.asObservable();
-  private dataStore: { shops: Shop[] } = {shops: []};
+  private dataStore: { shops: Shop[] } = { shops: [] };
   private subForCreate$;
   private subForList$;
   private subForShop$;
@@ -22,17 +22,17 @@ export class ShopService implements OnDestroy {
 
   addShop(shop: Shop) {
     this.subForCreate$ = this.http.post<any>('http://localhost:3000/api/shop/add', shop)
-    .subscribe(res => {
-      if (res.success) {
-        this.dataStore.shops.push(shop);
-        this._shops.next(Object.assign({}, this.dataStore).shops);
-      } else console.error(res);
-    });
+      .subscribe(res => {
+        if (res.success) {
+          this.dataStore.shops.push(shop);
+          this._shops.next(Object.assign({}, this.dataStore).shops);
+        } else console.error(res);
+      });
   }
 
   loadShop(id: string) {
     this.subForShop$ = this.http.get<Shop>('http://localhost:3000/api/shop/detail/' + id)
-    .subscribe(res => {
+      .subscribe(res => {
         let notFound = true;
 
         this.dataStore.shops.forEach((shop, index) => {
@@ -48,18 +48,18 @@ export class ShopService implements OnDestroy {
 
         this._shops.next(Object.assign({}, this.dataStore).shops);
       },
-      err => console.error(err)
-    );
+        err => console.error(err)
+      );
   }
 
   loadShops() {
     this.subForList$ = this.http.get<any>('http://localhost:3000/api/shop')
-    .subscribe(res => {
-      if (res.success) {
-        this.dataStore = {shops: res.arr};
-        this._shops.next(Object.assign({}, this.dataStore).shops);
-      } else console.error(res);
-    });
+      .subscribe(res => {
+        if (res.success) {
+          this.dataStore = { shops: res.arr };
+          this._shops.next(Object.assign({}, this.dataStore).shops);
+        } else console.error(res);
+      });
   }
 
   getShop(id: string): Observable<Shop> {
@@ -69,8 +69,8 @@ export class ShopService implements OnDestroy {
   getPosition(): Promise<any> {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resp => {
-          resolve({long: resp.coords.longitude, lat: resp.coords.latitude});
-        },
+        resolve({ long: resp.coords.longitude, lat: resp.coords.latitude });
+      },
         err => {
           reject(err);
         });
@@ -78,7 +78,7 @@ export class ShopService implements OnDestroy {
   }
 
 
-  async loadNearestShops(limit, maxDistance) : Promise<Observable<Shop[]>> {
+  async loadNearestShops(limit, maxDistance): Promise<Observable<Shop[]>> {
     await this.getPosition().then(pos => {
       this.subForShop$ = this.http.get<Shop[]>('http://localhost:3000/api/shop/nearest'
         + "?limit=" + limit
@@ -86,7 +86,7 @@ export class ShopService implements OnDestroy {
         + "&long=" + pos.long
         + "&lat=" + pos.lat
       )
-      .subscribe(res => {
+        .subscribe(res => {
           res.forEach(s => {
             this.ids.push(s._id);
             let notFound = true;
@@ -103,10 +103,10 @@ export class ShopService implements OnDestroy {
           });
           this._shops.next(Object.assign({}, this.dataStore).shops);
         },
-        err => console.error(err)
-      );
+          err => console.error(err)
+        );
     });
-    return this.shops.pipe(map(shops =>shops.filter(shop => this.ids.includes(shop._id))));
+    return this.shops.pipe(map(shops => shops.filter(shop => this.ids.includes(shop._id))));
   }
 
   ngOnDestroy(): void {
