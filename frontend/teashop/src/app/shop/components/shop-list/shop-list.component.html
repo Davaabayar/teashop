@@ -3,19 +3,24 @@
     <a [routerLink]="['detail', shop._id]">
       <mat-card class="z-depth">
         <mat-card-header>
-          <!--        <div mat-card-avatar class="example-header-image"></div>-->
           <mat-card-title>{{shop.name}}</mat-card-title>
           <mat-card-subtitle>{{shop.contacts.address}}</mat-card-subtitle>
         </mat-card-header>
         <div id="container">
-          <img *ngIf="shop.thumbnail" mat-card-image
-               src="{{serverURL + shop.thumbnail}}"
-               alt="{{shop.name}}"/>
+          <img *ngIf="shop.thumbnail" mat-card-image src="{{serverURL + shop.thumbnail}}" alt="{{shop.name}}" />
         </div>
         <mat-card-content>
-          <p>Phone: {{shop.contacts.phone}}</p>
-          <p>Longitude: {{shop.location[0]}} Latitude: {{shop.location[1]}} </p>
-          <span *ngFor="let tag of shop.tags">{{tag}} </span>
+          <p><i class="material-icons dark-primary">
+              schedule
+            </i> <span class="ml">{{shop.workHours.open}} - {{shop.workHours.open}}</span></p>
+          <p><i class="material-icons" color="dark-primary">
+              location_on
+            </i><span class="ml">{{shop.contacts.address}}</span></p>
+          <p><i class="material-icons" color="accent">
+              grade
+            </i><span class="ml">
+              <span *ngFor="let tag of shop.tags">{{tag}} </span>
+            </span></p>
         </mat-card-content>
       </mat-card>
     </a>
