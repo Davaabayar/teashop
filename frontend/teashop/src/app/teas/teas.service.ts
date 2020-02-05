@@ -56,12 +56,12 @@ export class TeasService {
       "Reduce inflammation", "Anti-ageing", "Relieve stress and anxiety", "Lower blood pressure", "Skin health"];
   }
 
-  addReview(review: Review) {
-    this.http
-      .post<{ message: string, body: Review }>('http://localhost:3000/api/teas/', review)
-      .subscribe(responseData => {
-        // const id = responseData.body._id;
-      });
+  addReview(reviewBody) {
+
+    return this.http.post('http://localhost:3000/api/teas/addreview', reviewBody);
+    // .subscribe(responseData => {
+    //   console.log('Review Added', responseData);
+    // });
   }
 
 

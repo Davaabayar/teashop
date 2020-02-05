@@ -20,9 +20,10 @@ import {
   MatDialogModule,
   MatDatepickerModule,
   MatFormFieldModule,
-  MatStepperModule,
+  MatStepperModule
 } from "@angular/material";
 
+import { MatSliderModule } from '@angular/material/slider';
 const modules = [
   CommonModule,
   MatInputModule,
@@ -43,7 +44,8 @@ const modules = [
   MatDatepickerModule,
   MatDialogModule,
   MatFormFieldModule,
-  MatStepperModule
+  MatStepperModule,
+  MatSliderModule
 ];
 
 @NgModule({

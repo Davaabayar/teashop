@@ -1,4 +1,5 @@
 export interface Review {
     start: number,
-    comment: string
+    comment: string,
+    teaId: string
 }
