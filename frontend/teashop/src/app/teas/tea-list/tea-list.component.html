@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="teaCard" *ngFor="let tea of teas">
+    <div class="teaCard" *ngFor="let tea of teas$ | async">
         <a [routerLink]="[tea._id]">
             <mat-card class="z-depth">
                 <img *ngIf="tea.thumbnail" mat-card-image src="{{serverURL + tea.thumbnail}}" alt="{{tea.teaName}}" />

@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
 
   signOut() {
-    this.tokenService.clearToken()
+    this.tokenService.clearToken();
     this.shared.signIn(false)
     this.shared.isUserOnline.subscribe((res) => {
       this.isSignedIn = res
