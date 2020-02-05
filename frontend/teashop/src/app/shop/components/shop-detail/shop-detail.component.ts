@@ -3,9 +3,11 @@ import { FormArray, FormBuilder, Validators } from "@angular/forms";
 import { TeasService } from "../../services/teas.service";
 import { ActivatedRoute } from "@angular/router";
 import { ShopService } from "../../services/shop.service";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { Shop } from "../../models/shop";
 import { environment } from "../../../../environments/environment";
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { TeaAddDialogComponent } from '../tea/tea-add-dialog/tea-add-dialog.component';
 
 @Component({
   selector: 'app-shop-detail',
@@ -27,20 +29,22 @@ export class ShopDetailComponent implements OnInit, OnDestroy {
       this.fb.control('')
     ])
   });
-  tagTypes;
-  shopId;
+  tagTypes: string[];
+  shopId: string;
   shop$: Observable<Shop>;
-  readonly sub$;
+  readonly sub$: Subscription;
   serverURL: string = environment.serverURL;
 
   constructor(private fb: FormBuilder,
     private teasService: TeasService,
     private shopService: ShopService,
+    private dialog: MatDialog,
     private router: ActivatedRoute) {
     this.sub$ = this.router.params.subscribe(params => {
       this.shopId = params.id;
     });
   }
+
   ngOnInit() {
     this.shopService.loadShop(this.shopId);
     this.shop$ = this.shopService.getShop(this.shopId);
@@ -56,6 +60,18 @@ export class ShopDetailComponent implements OnInit, OnDestroy {
 
   get tags() {
     return this.shopDetailForm.get('tags') as FormArray;
+  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.autoFocus = true;
+
+    const dialogRef = this.dialog.open(TeaAddDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('add tea dialog closed');
+    });
   }
 
   ngOnDestroy(): void {

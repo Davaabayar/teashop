@@ -22,5 +22,4 @@ export class ShopListComponent implements OnInit {
     this.shops$ = this.shopService.shops;
   }
 
-
 }

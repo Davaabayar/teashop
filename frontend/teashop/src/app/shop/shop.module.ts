@@ -14,7 +14,8 @@ import { TeaCreateReactiveComponent } from './components/tea/tea-create-reactive
 import { TeaCardComponent } from './components/tea/tea-list/tea-card.component';
 import { TeaDetailComponent } from './components/tea/tea-detail/tea-detail.component';
 import { ReviewAddDialogComponent } from './components/review-add-dialog/review-add-dialog.component';
-
+import { TeaAddDialogComponent } from './components/tea/tea-add-dialog/tea-add-dialog.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 const MY_ROUTES = [
   { path: '', component: ShopListComponent },
@@ -33,7 +34,8 @@ const MY_ROUTES = [
     TeaDetailComponent,
     TeaCreateReactiveComponent,
     TeaCardComponent,
-    ReviewAddDialogComponent
+    ReviewAddDialogComponent,
+    TeaAddDialogComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ const MY_ROUTES = [
     MaterialModule,
     ReactiveFormsModule,
     MatTableModule,
-    SharedModule
+    SharedModule,
+    AngularEditorModule
   ],
   bootstrap: [ShopListComponent],
 })

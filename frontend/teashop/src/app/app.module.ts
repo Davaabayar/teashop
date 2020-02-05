@@ -14,6 +14,7 @@ import { SharedModule } from './shared.module';
 import { ReviewAddDialogComponent } from './shop/components/review-add-dialog/review-add-dialog.component';
 import { AppHttpInterceptor } from "./app.http.interceptor";
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { ShopModule } from './shop/shop.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     AppRoutingModule,
     MaterialModule,
     BlogModule,
+    ShopModule,
     SharedModule,
     UsersModule,
     AngularEditorModule
@@ -36,7 +38,11 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
   entryComponents: [
     ReviewAddDialogComponent
   ],
-  providers: [[{ provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true }]],
+  providers: [
+    [
+      { provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true }
+    ]
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
 import { Tea } from '../models/tea';
 import { environment } from 'src/environments/environment';
-import { Review } from '../components/review-add-dialog/reivew.model';
 
 @Injectable({
   providedIn: 'root'
@@ -50,17 +48,13 @@ export class TeasService {
       "Reduce inflammation", "Anti-ageing", "Relieve stress and anxiety", "Lower blood pressure", "Skin health"];
   }
 
-  getTags() {
+  getTags(): string[] {
     return ['Cold', "Improve digestion", "Boost immune system",
       "Reduce inflammation", "Anti-ageing", "Relieve stress and anxiety", "Lower blood pressure", "Skin health"];
   }
 
   addReview(reviewBody) {
-
     return this.http.post('http://localhost:3000/api/teas/addreview', reviewBody);
-    // .subscribe(responseData => {
-    //   console.log('Review Added', responseData);
-    // });
   }
 
 
