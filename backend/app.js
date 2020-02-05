@@ -39,6 +39,7 @@ app.use(async (req, res, next) => {
 				.then(client => {
 					console.log("Db connection successful");
 					db = client.db();
+					db.collection("shops").createIndex({location:'2dsphere'});
 				});
 		}
 		req.db = db;
@@ -54,9 +55,12 @@ function tokenCheck(req, res, next) {
 		let bearer = bearerHeader.split(" ");
 		req.token = bearer[1];
 		let token = bearer[1];
-		jwt.verify(token, 'privateKey', function (err, decoded) {
+		jwt.verify(token, process.env.privateKey, function (err, decoded) {
 			if (err) res.status(400).send(err);
-			else return next();
+			else {
+				req.decoded = decoded;
+				return next();
+			}
 		});
 	} else {
 		res.send(403);
@@ -65,7 +69,7 @@ function tokenCheck(req, res, next) {
 app.use('/', indexRouter);
 app.use('/api/teas', teasRouter);
 app.use('/users', usersRouter);
-app.use('/shop', shopRoute);
+app.use('/api/shop', shopRoute);
 app.use('/api/blog', blogRouter);
 app.use('/user', usersRouter);
 app.use('/api/upload', uploadRouter);
