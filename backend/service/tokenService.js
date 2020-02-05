@@ -14,4 +14,23 @@ function getUser(token) {
 	return userInfo
 }
 
-module.exports = {"signToken": signToken, 'getUser': getUser};
+function tokenCheck(req, res, next) {
+	console.log(req.headers["authorization"]);
+	let bearerHeader = req.headers["authorization"];
+	if (typeof bearerHeader !== 'undefined') {
+		let bearer = bearerHeader.split(" ");
+		req.token = bearer[1];
+		let token = bearer[1];
+		jwt.verify(token, process.env.privateKey, function (err, decoded) {
+			if (err) res.status(400).send(err);
+			else {
+				req.decoded = decoded;
+				return next();
+			}
+		});
+		return next();
+	} else {
+		res.send(403);
+	}
+}
+module.exports = {"signToken": signToken, 'getUser': getUser, 'tokenCheck': tokenCheck};

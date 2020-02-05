@@ -1,8 +1,29 @@
 const express = require('express');
 const router = express.Router();
 const ObjectId = require('mongodb').ObjectID;
+const jwt = require('jsonwebtoken');
+const tokenService = require('../service/tokenService');
 
-router.post('/add', async (req, res, next) => {
+function tokenCheck(req, res, next) {
+	console.log(req.headers["Authorization"]);
+	console.log(req.headers);
+	let bearerHeader = req.headers["authorization"];
+	if (typeof bearerHeader !== 'undefined') {
+		let bearer = bearerHeader.split(" ");
+		req.token = bearer[1];
+		let token = bearer[1];
+		jwt.verify(token, process.env.privateKey, function (err, decoded) {
+			if (err) res.status(400).send(err);
+			else {
+				req.decoded = decoded;
+				next();
+			}
+		});
+	} else {
+		res.send(403);
+	}
+}
+router.post('/add', tokenCheck, async (req, res, next) => {
 	let shop = req.body;
 	shop.location = [parseFloat(req.body.location.long), parseFloat(req.body.location.lat)];
 	await req.db.collection("shops").insert(shop, function (err, doc) {
