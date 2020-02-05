@@ -19,7 +19,7 @@ import {TokenCheckGuard} from "../token-check.guard";
 
 const MY_ROUTES = [
   { path: '', component: ShopListComponent },
-  { path: 'detail/:id', component: ShopDetailComponent, canActivate:[TokenCheckGuard]},
+  { path: 'detail/:id', component: ShopDetailComponent},
   { path: 'add', component: ShopAddComponent, canActivate:[TokenCheckGuard] },
   { path: 'nearest', component: ShopFindNearestComponent, canActivate:[TokenCheckGuard] },
 ];

@@ -66,6 +66,9 @@ export class ShopService implements OnDestroy {
         } else console.error(res);
       });
   }
+  getShops(){
+    return this.shops.pipe();
+  }
 
   getShop(id: string): Observable<Shop> {
     return this.shops.pipe(map(shops => shops.find(shop => shop._id = id)));
@@ -84,6 +87,7 @@ export class ShopService implements OnDestroy {
 
 
   async loadNearestShops(limit, maxDistance): Promise<Observable<Shop[]>> {
+    if(this.ids.length != 0){ this.ids = []}
     await this.getPosition().then(pos => {
       this.subForShop$ = this.http.get<Shop[]>('http://localhost:3000/api/shop/nearest'
         + "?limit=" + limit
@@ -95,7 +99,6 @@ export class ShopService implements OnDestroy {
           res.forEach(s => {
             this.ids.push(s._id);
             let notFound = true;
-            console.log(this.ids);
             this.dataStore.shops.forEach((shop, index) => {
               if (shop._id === s._id) {
                 this.dataStore.shops[index] = s;

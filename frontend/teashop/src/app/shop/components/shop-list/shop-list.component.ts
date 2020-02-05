@@ -19,7 +19,7 @@ export class ShopListComponent implements OnInit {
 
   ngOnInit() {
     this.shopService.loadShops();
-    this.shops$ = this.shopService.shops;
+    this.shops$ = this.shopService.getShops();
   }
 
 }

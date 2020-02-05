@@ -57,7 +57,7 @@
 
     </div>
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions *ngIf="userType == 1">
     <button mat-raised-button color="accent" (click)="openDialog()">Add tea</button>
   </mat-card-actions>
 </mat-card>

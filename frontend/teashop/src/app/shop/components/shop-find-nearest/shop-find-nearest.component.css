@@ -28,13 +28,15 @@
   text-decoration: none;
 }
 
-#container {
-  height: 350px;
-  margin: 7px;
-  text-align: center;
+.mat-card-content p{
+  position: relative;
 }
-#container img{
-  height: 95%;
-  width: auto;
-  margin: 5px;
+.mat-card-content p i{
+  position: absolute;
+  top:-4px;
+  color:#ff4081;
+}
+.mat-card-content p span.ml{
+  margin-left: 30px;
+  display: block;
 }

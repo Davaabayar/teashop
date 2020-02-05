@@ -44,7 +44,7 @@ router.get('/has', tokenService.tokenCheck, async (req, res, next) => {
 	const {decoded} = req;
 	try {
 		const result = await req.db.collection('shops').findOne({"user.email": decoded.username}, {"_id": 1});
-		res.status(200).json(result);
+		res.json(result);
 	} catch (e) {
 		return next(e);
 	}

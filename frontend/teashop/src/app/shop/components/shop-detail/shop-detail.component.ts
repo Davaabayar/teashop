@@ -1,14 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from "@angular/forms";
-import { TeasService } from "../../services/teas.service";
-import { ActivatedRoute } from "@angular/router";
-import { ShopService } from "../../services/shop.service";
-import { Observable, Subscription } from "rxjs";
-import { Shop } from "../../models/shop";
-import { environment } from "../../../../environments/environment";
-import { MatDialog, MatDialogConfig } from '@angular/material';
-import { TeaAddDialogComponent } from '../tea/tea-add-dialog/tea-add-dialog.component';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, Validators} from "@angular/forms";
+import {TeasService} from "../../services/teas.service";
+import {ActivatedRoute} from "@angular/router";
+import {ShopService} from "../../services/shop.service";
+import {Observable, Subscription} from "rxjs";
+import {Shop} from "../../models/shop";
+import {environment} from "../../../../environments/environment";
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {TeaAddDialogComponent} from '../tea/tea-add-dialog/tea-add-dialog.component';
 import {Tea} from "../../models/tea";
+import {TokenService} from "../../../token.service";
 
 @Component({
   selector: 'app-shop-detail',
@@ -35,13 +36,15 @@ export class ShopDetailComponent implements OnInit, OnDestroy {
   shop$: Observable<Shop>;
   tea$: Observable<Tea[]>;
   readonly sub$: Subscription;
+  userType : number = 0 ;
   serverURL: string = environment.serverURL;
 
   constructor(private fb: FormBuilder,
-    private teasService: TeasService,
-    private shopService: ShopService,
-    private dialog: MatDialog,
-    private router: ActivatedRoute) {
+              private teasService: TeasService,
+              private shopService: ShopService,
+              private tokenService: TokenService,
+              private dialog: MatDialog,
+              private router: ActivatedRoute) {
     this.sub$ = this.router.params.subscribe(params => {
       this.shopId = params.id;
     });
@@ -53,6 +56,9 @@ export class ShopDetailComponent implements OnInit, OnDestroy {
 
     this.teasService.loadTeaByShop(this.shopId);
     this.tea$ = this.teasService.getTeasByShop(this.shopId);
+    this.tokenService.hasShop().subscribe(r => {
+      if (r && r["_id"] == this.shopId) this.userType = 1;
+    });
   }
 
   onSubmit() {
