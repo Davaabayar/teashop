@@ -4,10 +4,6 @@
     position: relative;
 }
 
-.post p {    
-    color: #777;
-}
-
 .post .article-inner {
     transition: opacity .3s,box-shadow .5s,transform .3s;
 }
@@ -91,7 +87,7 @@
 }
 
 .post .badge.post-date {
-    top: 20%;
+    top: 5%;
 }
 
 .post .posted-on p {
