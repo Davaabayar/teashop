@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
@@ -9,7 +9,7 @@ import {environment} from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class TeasService {
+export class TeasService implements OnDestroy{
 
   private _teas: BehaviorSubject<Tea[]> = new BehaviorSubject([]);
   public readonly teas: Observable<Tea[]> = this._teas.asObservable();
@@ -49,9 +49,8 @@ export class TeasService {
     this.http.get<Tea>(environment.serverURL + '/api/teas/' + id)
     .subscribe(res => {
         let notFound = true;
-
-        this.dataStore.teas.forEach((shop, index) => {
-          if (shop._id === res._id) {
+        this.dataStore.teas.forEach((tea, index) => {
+          if (tea._id === res._id) {
             this.dataStore.teas[index] = res;
             notFound = false;
           }
@@ -70,8 +69,8 @@ export class TeasService {
   loadTeaByShop(shopId: string) {
     this.http.get<Tea[]>(environment.serverURL + '/api/teas/shop/' + shopId)
     .subscribe(res => {
-        let notFound = true;
         res.forEach(t => {
+          let notFound = true;
           this.dataStore.teas.forEach((tea, index) => {
             if (tea._id == t._id) {
               this.dataStore.teas[index] = t;
@@ -90,11 +89,20 @@ export class TeasService {
   }
 
   getTeasByShop(shopId: string) {
+    // console.log(this.teas.pipe(map(teas => {
+    //   console.log(teas);
+    //   console.log("++++++++++++++");
+    //   return teas.filter(tea => {
+    //     console.log(tea.shop["id"]);
+    //     console.log("-----------------");
+    //     return tea.shop["id"] == shopId
+    //   })
+    // })));
     return this.teas.pipe(map(teas => teas.filter(tea => tea.shop["id"] == shopId)));
   }
 
   getTea(teaId: string) {
-    return this.teas.pipe(map(teas => teas.find(tea => tea._id = teaId)));
+    return this.teas.pipe(map(teas => teas.find(tea => tea._id == teaId)));
   }
 
   async deleteTea(teaId: string) {
@@ -132,5 +140,9 @@ export class TeasService {
     this.http
     .put<{ message: string }>(environment.serverURL + '/api/teas/' + tea._id, tea)
     .subscribe(response => console.log(response));
+  }
+
+  ngOnDestroy(): void {
+    this._teas.unsubscribe();
   }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d53c960-29bd-4c89-a7d4-192d76a36352" name="Default Changelist" comment="">
+    <list default="true" id="6d53c960-29bd-4c89-a7d4-192d76a36352" name="Default Changelist" comment="[IMP] remove logs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-add/shop-add.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-add/shop-add.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/services/teas.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/services/teas.service.ts" afterDir="false" />
     </list>
     <list id="cfad5a5c-d4b6-486c-84a2-2df9008f285f" name="gggg" comment="">
       <change beforePath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/app/app.http-interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/client/hw14/src/app/app.http-interceptor.ts" afterDir="false" />
@@ -170,7 +170,7 @@
       <workItem from="1580716935968" duration="15535000" />
       <workItem from="1580770911971" duration="18376000" />
       <workItem from="1580844903168" duration="56107000" />
-      <workItem from="1580905986077" duration="3734000" />
+      <workItem from="1580905986077" duration="7949000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD] Connect to atlas, .env,  shop add">
       <created>1580613792965</created>
@@ -277,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580909611491</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="[IMP] remove logs">
+      <created>1580909872071</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1580909872071</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,7 +306,8 @@
     <MESSAGE value="[IMP] all" />
     <MESSAGE value="[IMP] hide add tea from other users" />
     <MESSAGE value="[IMP] website" />
-    <option name="LAST_COMMIT_MESSAGE" value="[IMP] website" />
+    <MESSAGE value="[IMP] remove logs" />
+    <option name="LAST_COMMIT_MESSAGE" value="[IMP] remove logs" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="41" key="#Scopes" timestamp="1580765154080">
@@ -314,18 +322,18 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="456" y="173" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1580611284520" />
-    <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser" timestamp="1580845748485">
+    <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser" timestamp="1580913477515">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1580845748485" />
+    <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1580913477515" />
     <state x="413" y="130" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580896005204">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="413" y="130" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768@0.0.1366.768" timestamp="1580896005204" />
-    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2" timestamp="1580909761884">
+    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2" timestamp="1580913937488">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1580909761884" />
+    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1580913937488" />
     <state x="129" y="58" width="1092" height="644" key="DiffContextDialog" timestamp="1580904146109">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -374,10 +382,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="652" y="289" key="VCS.ChangelistChooser/0.0.1366.768@0.0.1366.768" timestamp="1580891393620" />
-    <state x="275" y="112" key="Vcs.Push.Dialog.v2" timestamp="1580909612152">
+    <state x="275" y="112" key="Vcs.Push.Dialog.v2" timestamp="1580910670075">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="112" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1580909612152" />
+    <state x="275" y="112" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1580910670075" />
     <state x="0" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1580884582330">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
