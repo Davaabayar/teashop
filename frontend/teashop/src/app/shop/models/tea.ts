@@ -22,5 +22,9 @@ export interface Tea {
       username: string
     }
   }]
-  category: string
+  category: string,
+  shop: {
+    _id: string,
+    name: string
+  }
 }

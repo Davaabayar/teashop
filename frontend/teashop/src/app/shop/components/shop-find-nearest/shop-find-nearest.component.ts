@@ -17,7 +17,7 @@ export class ShopFindNearestComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.shopService.loadNearestShops(5, 50000).then(r => this.shops$ = r);
+    this.shopService.loadNearestShops(5, 50000000).then(r => this.shops$ = r);
   }
 
 }

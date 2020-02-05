@@ -8,9 +8,13 @@
       <a mat-button routerLink="/teas">Teas</a>
     </li>
     <li>
+      <a mat-button routerLink="/shop">All shops</a>
+    </li>
+    <li *ngIf="userType == 0">
       <a mat-button routerLink="/shop/nearest">Nearest shops</a>
     </li>
-    <li *ngIf="(userType$ | async)?.userType == 1">
+    |
+    <li *ngIf="userType == 1">
       <a mat-button routerLink="/shop/add">My shop</a>
     </li>
     <li *ngIf="isSignedIn === false">

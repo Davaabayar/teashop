@@ -8,11 +8,13 @@ import { SignIn } from './components/signIn.components';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MaterialModule } from "../app-material.module";
 import {MatRadioModule} from "@angular/material/radio";
+import {ShopDetailComponent} from "../shop/components/shop-detail/shop-detail.component";
+import {TokenCheckGuard} from "../token-check.guard";
 
 const routes: Routes = [
   { path: '', component: UsersComponent},
   { path: 'signup', component: SignUp},
-  { path: 'quiz', component: Quiz},
+  { path: 'quiz', component: Quiz, canActivate:[TokenCheckGuard]},
   { path: 'signin', component: SignIn}
 ];
 

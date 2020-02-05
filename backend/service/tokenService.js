@@ -24,7 +24,7 @@ function tokenCheck(req, res, next) {
 			if (err) res.status(400).send(err);
 			else {
 				req.decoded = decoded;
-				return next();
+				next();
 			}
 		});
 	} else {
