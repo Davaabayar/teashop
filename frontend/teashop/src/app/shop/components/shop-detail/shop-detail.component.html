@@ -1,5 +1,8 @@
 <mat-card>
-  <h1>{{(shop$ | async)?.name}}</h1>
+  <h1>{{(shop$ | async)?.name}}
+    <div *ngIf="userType == 1"><button mat-raised-button color="accent" (click)="openDialog()" class="fright">Add
+        tea</button></div>
+  </h1>
   <mat-card-header>
     <mat-card-title>{{(shop$ | async)?.contacts.address}}</mat-card-title><br />
   </mat-card-header>
@@ -51,7 +54,4 @@
 
     </div>
   </mat-card-content>
-  <mat-card-actions *ngIf="userType == 1">
-    <button mat-raised-button color="accent" (click)="openDialog()">Add tea</button>
-  </mat-card-actions>
 </mat-card>
