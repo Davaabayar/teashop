@@ -5,6 +5,7 @@ import { Post } from '../../models/post';
 import { Observable, Subscription } from 'rxjs';
 import { of } from 'rxjs';
 import { PostAddDialogComponent } from '../post-add-dialog/post-add-dialog.component';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-blog',
@@ -17,24 +18,25 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   posts$: Observable<Post[]>;
 
-  pageEvent: PageEvent;
+  // pageEvent: PageEvent;
 
-  length: number;
-  pageSize = 3;
+  // length: number;
+  // pageSize = 3;
 
   constructor(
     private postService: PostService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private sharedService: SharedService
   ) {
-    this.subscription = this.postService.getPostCount().subscribe(res => {
-      this.length = res['count'];
-    });
   }
 
   ngOnInit() {
-    this.subscription = this.postService.getPosts(1).subscribe(posts => {
+    this.subscription = this.postService.getPosts().subscribe(posts => {
       let json = JSON.parse(JSON.stringify(posts));
-      this.posts$ = of(json);
+      this.sharedService.changePosts(json);
+      this.sharedService.currentPosts.subscribe((res) => {
+        this.posts$ = of(res);
+      });
     });
   }
 
