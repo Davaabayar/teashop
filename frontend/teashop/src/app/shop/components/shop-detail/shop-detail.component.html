@@ -5,14 +5,9 @@
     <mat-card-subtitle>{{(shop$ | async)?.contacts.address}}</mat-card-subtitle>
   </mat-card-header>
   <div id="container">
-    <img *ngIf="(shop$ | async)?.thumbnail" mat-card-image
-         src="{{serverURL + (shop$ | async)?.thumbnail}}"
-         alt="{{(shop$ | async)?.name}}"/>
+    <img *ngIf="(shop$ | async)?.thumbnail" mat-card-image src="{{serverURL + (shop$ | async)?.thumbnail}}" alt="{{(shop$ | async)?.name}}" />
   </div>
   <mat-card-content>
-    <!--    <mat-form-field class="full-width">-->
-    <!--      <input matInput type="text" required placeholder="Shop Name" [value]="(shop$ | async)?.name">-->
-    <!--    </mat-form-field>-->
     <div>
       <h3>Contacts</h3>
       <mat-form-field>
@@ -23,12 +18,8 @@
       </mat-form-field>
     </div>
 
-    <!--    <h3>Tags-->
-    <!--      <button (click)="addTag()" mat-button color="accent" type="button">Add Tag</button>-->
-    <!--    </h3>-->
     <div *ngFor="let tag of (shop$ | async)?.tags; let i = index">
       <mat-form-field>
-        <!-- <input matInput type="text" [formControlName]="i" placeholder="Tag"> -->
         <input matInput type="text" placeholder="Tag" [value]="tag">
       </mat-form-field>
     </div>
@@ -46,17 +37,7 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button color="secondary">Edit</button>
-    <button mat-raised-button color="secondary">Add tea</button>
+    <button mat-raised-button color="secondary" (click)="openDialog()">Add tea</button>
   </mat-card-actions>
   <hr>
-
-
-  <!--  <p>-->
-  <!--    Form Value: {{ shopDetailForm.value | json }}-->
-  <!--  </p>-->
-
-
-  <p>
-    Form Status: {{ shopDetailForm.status }}
-  </p>
 </mat-card>

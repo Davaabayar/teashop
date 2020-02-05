@@ -112,8 +112,6 @@ export class Quiz implements OnInit {
         }
     }
     ngOnInit() {
-        // this.Subscription = this.userService.getQuiz(0).subscribe(res => {
-        //     console.log(res)
-        // })
+      
     }
 }

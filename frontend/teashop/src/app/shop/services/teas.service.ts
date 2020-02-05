@@ -1,11 +1,10 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 import { Tea } from '../models/tea';
 import { environment } from 'src/environments/environment';
-import { Review } from '../components/review-add-dialog/reivew.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,7 @@ export class TeasService {
 
   private _teas: BehaviorSubject<Tea[]> = new BehaviorSubject([]);
   public readonly teas: Observable<Tea[]> = this._teas.asObservable();
-  private dataStore: { teas: Tea[] } = {teas: []};
+  private dataStore: { teas: Tea[] } = { teas: [] };
 
   // teas: any[] = [];
   tea: any = null;
@@ -29,26 +28,26 @@ export class TeasService {
 
   loadTeas() {
     this.http.get<any>('http://localhost:3000/api/teas')
-    .subscribe(res => {
-        this.dataStore = {teas: res};
+      .subscribe(res => {
+        this.dataStore = { teas: res };
         this._teas.next(Object.assign({}, this.dataStore).teas);
       },
-      err => console.error(err));
+        err => console.error(err));
   }
 
   addTea(tea: Tea) {
     this.http
-    .post<{ message: string, body: Tea }>(environment.serverURL + '/api/teas', tea)
-    .subscribe(responseData => {
-      const id = responseData.body._id;
-      this.dataStore.teas.push(tea);
-      this._teas.next(Object.assign({}, this.dataStore).teas);
-    });
+      .post<{ message: string, body: Tea }>(environment.serverURL + '/api/teas', tea)
+      .subscribe(responseData => {
+        const id = responseData.body._id;
+        this.dataStore.teas.push(tea);
+        this._teas.next(Object.assign({}, this.dataStore).teas);
+      });
   }
 
   loadTea(id: string) {
     this.http.get<Tea>(environment.serverURL + '/api/teas/' + id)
-    .subscribe(res => {
+      .subscribe(res => {
         let notFound = true;
 
         this.dataStore.teas.forEach((shop, index) => {
@@ -64,8 +63,8 @@ export class TeasService {
 
         this._teas.next(Object.assign({}, this.dataStore).teas);
       },
-      err => console.error(err)
-    );
+        err => console.error(err)
+      );
   }
 
   getTea(teaId: string) {
@@ -74,14 +73,14 @@ export class TeasService {
 
   async deleteTea(teaId: string) {
     await this.http.delete(environment.serverURL + '/api/teas/' + teaId)
-    .subscribe((res) => {
-      this.dataStore.teas.forEach((t, i) => {
-        if (t._id === teaId) {
-          this.dataStore.teas.splice(i, 1);
-        }
+      .subscribe((res) => {
+        this.dataStore.teas.forEach((t, i) => {
+          if (t._id === teaId) {
+            this.dataStore.teas.splice(i, 1);
+          }
+        });
+        this._teas.next(Object.assign({}, this.dataStore).teas);
       });
-      this._teas.next(Object.assign({}, this.dataStore).teas);
-    });
     return this.teas.pipe(map(teas => teas.filter(tea => tea._id != teaId)));
   }
 
@@ -90,18 +89,14 @@ export class TeasService {
       "Reduce inflammation", "Anti-ageing", "Relieve stress and anxiety", "Lower blood pressure", "Skin health"];
   }
 
-  getTags() {
+  getTags(): string[] {
     return ['Cold', "Improve digestion", "Boost immune system",
       "Reduce inflammation", "Anti-ageing", "Relieve stress and anxiety", "Lower blood pressure", "Skin health"];
   }
 
   addReview(reviewBody) {
     return this.http.post(environment.serverURL + '/api/teas/addreview', reviewBody);
-    // .subscribe(responseData => {
-    //   console.log('Review Added', responseData);
-    // });
   }
-
 
   getTeasUpdateListener() {
     return this.teasUpdated.asObservable();
@@ -109,7 +104,7 @@ export class TeasService {
 
   updateTea(tea: Tea) {
     this.http
-    .put<{ message: string }>('http://localhost:3000/api/teas/' + tea._id, tea)
-    .subscribe(response => console.log(response));
+      .put<{ message: string }>(environment.serverURL + '/api/teas/' + tea._id, tea)
+      .subscribe(response => console.log(response));
   }
 }

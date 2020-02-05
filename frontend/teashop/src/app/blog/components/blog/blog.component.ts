@@ -18,11 +18,6 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   posts$: Observable<Post[]>;
 
-  // pageEvent: PageEvent;
-
-  // length: number;
-  // pageSize = 3;
-
   constructor(
     private postService: PostService,
     private dialog: MatDialog,
