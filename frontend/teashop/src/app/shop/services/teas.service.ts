@@ -3,9 +3,9 @@ import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-import { Tea } from './tea.model';
+import { Tea } from '../models/tea';
 import { environment } from 'src/environments/environment';
-import { Review } from './review-add-dialog/reivew.model';
+import { Review } from '../components/review-add-dialog/reivew.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,6 @@ export class TeasService {
   teas: any[] = [];
   tea: any = null;
   private teasUpdated = new Subject<Tea[]>();
-  private categories = [];
   constructor(private http: HttpClient) { }
 
   getTeas() {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
-import { TeasService } from '../teas.service';
+import { TeasService } from '../../../services/teas.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { environment } from 'src/environments/environment';
 

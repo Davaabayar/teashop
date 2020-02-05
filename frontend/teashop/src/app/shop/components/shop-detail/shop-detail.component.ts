@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from "@angular/forms";
-import { TeasService } from "../../../teas/teas.service";
+import { TeasService } from "../../services/teas.service";
 import { ActivatedRoute } from "@angular/router";
 import { ShopService } from "../../services/shop.service";
 import { Observable } from "rxjs";
