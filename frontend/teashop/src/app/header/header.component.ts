@@ -1,7 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {TokenService} from '../token.service'
-import {Observable} from 'rxjs'
-import {SharedService} from '../users/shared.service'
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { TokenService } from '../token.service'
+import { Observable } from 'rxjs'
+import { SharedService } from '../users/shared.service'
 
 @Component({
   selector: 'app-header',
@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.shared.signIn((this.tokenService.getToken()) ? true : false);
     this.shared.isUserOnline.subscribe((res) => {
       this.isSignedIn = res
-      this.tokenService.getUserType().subscribe(user=> {
+      this.tokenService.getUserType().subscribe(user => {
         this.userType = parseInt(user["userType"])
       });
     });

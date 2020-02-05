@@ -16,11 +16,13 @@ import { AppHttpInterceptor } from "./app.http.interceptor";
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { ShopModule } from './shop/shop.module';
 import { TeaAddDialogComponent } from './shop/components/tea/tea-add-dialog/tea-add-dialog.component';
+import { SearchComponent } from './search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
