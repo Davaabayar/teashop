@@ -36,7 +36,7 @@ import { SharedService } from '../shared.service'
 export class SignIn implements OnInit {
     form: FormGroup
     private Subscription: Subscription
-    private failed
+    failed
     constructor(private fb: FormBuilder, private tokenService: TokenService, private userService: UserService, private router: Router, private shared: SharedService) {
         this.form = fb.group({
             'email': ['', Validators.required],
