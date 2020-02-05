@@ -15,7 +15,7 @@ import {TokenService} from '../../token.service'
           <h2 id="card-title-user">Sign Up</h2>
           <form [formGroup]="myForm" id="signup-form" (ngSubmit)="onSubmit()">
             <div class="input-group">
-              <input class="input-style" type="text" name="name" placeholder="FullName"
+              <input class="input-style" type="text" name="name" placeholder="Name"
                      [formControl]="myForm.get('fullname')">
             </div>
             <div class="input-group" [ngClass]="{'error': myForm.get('email').hasError('invalid') == true}">
@@ -69,11 +69,12 @@ export class SignUp implements OnInit {
 
   onSubmit() {
     this.Subscription = this.userService.signUp(this.myForm.value).subscribe(response => {
+        console.log(response)
       if (response.success == 1) {
         this.tokenService.setToken(response.token)
         if (response.userType == 1) this.router.navigateByUrl('/shop/add')
         else this.router.navigateByUrl('/users/quiz')
-
+        console.log('working')
       }
     })
   }

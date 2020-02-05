@@ -155,14 +155,66 @@
     margin-bottom: 30px;
 }
 .quiz-h-1{
-    background: url(/assets/quiz/5.jpg) top left/cover no-repeat;
+    background: url(/assets/quiz/cold.jpg) top left/cover no-repeat;
 }
 .quiz-h-2{
-    background: url(/assets/quiz/6.jpg) top left/cover no-repeat;
+    background: url(/assets/quiz/digestion.jpg) top left/cover no-repeat;
 }
 .quiz-h-3{
-    background: url(/assets/quiz/2.jpg) top left/cover no-repeat;
+    background: url(/assets/quiz/immune.jpg) top left/cover no-repeat;
 }
 .quiz-h-4{
     background: url(/assets/quiz/3.jpg) top left/cover no-repeat;
+}
+.quiz-h-5{
+    background: url(/assets/quiz/anti-ageing.jpg) top left/cover no-repeat;
+}
+.quiz-h-6{
+    background: url(/assets/quiz/calm.jpg) top left/cover no-repeat;
+}
+.quiz-h-7{
+    background: url(/assets/quiz/heart.jpg) top left/cover no-repeat;
+}
+.quiz-h-8{
+    background: url(/assets/quiz/skin.jpg) top left/cover no-repeat;
+}
+.quiz-h-9{
+    background: url(/assets/quiz/2.jpg) top left/cover no-repeat;
+}
+.quiz-h-10{
+    background: url(/assets/quiz/calm.jpg) top left/cover no-repeat;
+}
+.quiz-h-11{
+    background: url(/assets/quiz/fruity.jpg) top left/cover no-repeat;
+}
+.quiz-h-12{
+    background: url(/assets/quiz/3.jpg) top left/cover no-repeat;
+}
+
+#type-text{
+    height: 30px;
+    margin-bottom: 75px
+}
+#done-btn{
+    float: right;
+    cursor: pointer;
+}
+#benefits .ben-div{
+    border-bottom: solid 1px;
+}
+#benefits .ben-div-text{
+    height: 20px;
+}
+#benefits{
+    margin-bottom: 15px;
+}
+
+#flavors .flav-div{
+    border-bottom: solid 1px;
+}
+#flavors .flav-div-text{
+    height: 20px;
+}
+#flavors{
+    margin-bottom: 15px;
 }

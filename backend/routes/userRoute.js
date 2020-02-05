@@ -20,9 +20,11 @@ router.post('/signUp', async (req, res, next) => {
 			"username": email,
 			"fullname": fullname,
 			"userType": userType
-		}, process.env.privateKey, {expiresIn: process.env.tokenDuration});
+    }, process.env.privateKey, {expiresIn: process.env.tokenDuration});
+    console.log('working')
 		res.json({"success": 1, "token": token, "userType": userType})
 	} catch (err) {
+    console.log(err)
 		res.json(err)
 	}
 })
