@@ -38,7 +38,6 @@ export class TeaListComponent implements OnInit {
         total += r["star"];
       });
       this.average = total / reviews.length;
-      console.log('Reviews', reviews, 'avegrage ', this.average);
       return total / reviews.length;
     } else return 0;
   }

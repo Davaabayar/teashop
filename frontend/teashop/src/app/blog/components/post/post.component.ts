@@ -51,7 +51,6 @@ export class PostComponent implements OnInit, OnDestroy {
   delete(title: string, id: string) {
     if (confirm("Are you sure to delete " + title)) {
       this.postService.deletePost(id).subscribe(res => {
-        console.log(res);
         this.subscription = this.postService.getPosts().subscribe(posts => {
           let json = JSON.parse(JSON.stringify(posts));
           this.sharedService.changePosts(json);

@@ -50,7 +50,7 @@ export class SignIn implements OnInit {
                 this.tokenService.setToken(response.token)
                 this.shared.signIn(true)
                 this.shared.isUserOnline.subscribe((res) => {
-                    console.log('res : ' + res)
+                    // console.log('res : ' + res)
                 });
                 this.router.navigateByUrl('/blog')
             } else {

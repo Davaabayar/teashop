@@ -42,7 +42,7 @@ export class ShopAddComponent implements OnInit {
 
   ngOnInit() {
     this.tokenService.hasShop().subscribe(r => {
-      if (r["_id"]) this.router.navigateByUrl("shop/detail/" + r["_id"]);
+      if (r && r["_id"]) this.router.navigateByUrl("shop/detail/" + r["_id"]);
     });
     this.tagTypes = this.teasService.getTags();
   }

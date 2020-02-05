@@ -8,7 +8,6 @@ function getUser(token) {
 	let userInfo
 	jwt.verify(token, process.env.privateKey, function (err, decode) {
 		if (err) console.log(err)
-		console.log(decode)
 		userInfo = decode
 	})
 	return userInfo

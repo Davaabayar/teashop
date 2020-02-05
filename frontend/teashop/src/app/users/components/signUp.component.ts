@@ -69,12 +69,10 @@ export class SignUp implements OnInit {
 
   onSubmit() {
     this.Subscription = this.userService.signUp(this.myForm.value).subscribe(response => {
-        console.log(response)
       if (response.success == 1) {
         this.tokenService.setToken(response.token)
         if (response.userType == 1) this.router.navigateByUrl('/shop/add')
         else this.router.navigateByUrl('/users/quiz')
-        console.log('working')
       }
     })
   }
