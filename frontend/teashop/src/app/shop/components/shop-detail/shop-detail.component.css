@@ -1,0 +1,9 @@
+#container {
+  height: 350px;
+  margin: 0 auto;
+  text-align: center;
+}
+#container img{
+  height: 100%;
+  width: auto;
+}

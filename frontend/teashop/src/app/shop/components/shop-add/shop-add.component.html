@@ -4,6 +4,7 @@
     <mat-form-field class="full-width">
       <input matInput type="text" formControlName="name" required placeholder="Shop Name">
     </mat-form-field>
+    <app-upload [formGroup]="shopForm"></app-upload>
     <div formGroupName="contacts">
       <h3>Contacts</h3>
       <mat-form-field>

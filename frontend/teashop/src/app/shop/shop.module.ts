@@ -6,20 +6,26 @@ import { ShopDetailComponent } from './components/shop-detail/shop-detail.compon
 import {RouterModule} from "@angular/router";
 import {MaterialModule} from "../app-material.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatTableModule} from "@angular/material/table";
+import {SharedModule} from "../shared.module";
+import { ShopFindNearestComponent } from './components/shop-find-nearest/shop-find-nearest.component';
 
 const MY_ROUTES = [
   { path: '', component: ShopListComponent },
   { path: 'detail/:id', component: ShopDetailComponent },
   { path: 'add', component: ShopAddComponent },
+  { path: 'nearest', component: ShopFindNearestComponent },
 ];
 
 @NgModule({
-  declarations: [ShopListComponent, ShopAddComponent, ShopDetailComponent],
+  declarations: [ShopListComponent, ShopAddComponent, ShopDetailComponent, ShopFindNearestComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(MY_ROUTES),
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    SharedModule
   ],
   bootstrap: [ShopListComponent],
 })

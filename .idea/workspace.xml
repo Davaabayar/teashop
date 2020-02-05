@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6d53c960-29bd-4c89-a7d4-192d76a36352" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-detail/shop-detail.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-detail/shop-detail.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-list/shop-list.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/models/shop.ts" afterDir="false" />
+    <list default="true" id="6d53c960-29bd-4c89-a7d4-192d76a36352" name="Default Changelist" comment="[FIX]">
+      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-find-nearest/shop-find-nearest.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-find-nearest/shop-find-nearest.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-find-nearest/shop-find-nearest.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mwa-homework-08-mongodb-02-Orshih71/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-08-mongodb-02-Orshih71/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mwa-homework-08-mongodb-02-Orshih71/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-08-mongodb-02-Orshih71/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mwa-homework-08-mongodb-02-Orshih71/bin/www" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-08-mongodb-02-Orshih71/bin/www" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mwa-homework-08-mongodb-02-Orshih71/routes/locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-08-mongodb-02-Orshih71/routes/locations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mwa-homework-08-mongodb-02-Orshih71/testGet.http" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-08-mongodb-02-Orshih71/testGet.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../mwa-homework-14-angular-04-Orshih71/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/teashop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/teashop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/shopRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/shopRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/routes/userRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/routes/userRoute.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/service/tokenService.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/service/tokenService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/header/header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/header/header.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-add/shop-add.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-add/shop-add.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-add/shop-add.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-add/shop-add.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-add/shop-add.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-add/shop-add.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-add/shop-add.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-list/shop-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-detail/shop-detail.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-list/shop-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-list/shop-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-list/shop-list.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop-list/shop-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-list/shop-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-add/shop-add.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-add/shop-add.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-add/shop-add.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-add/shop-add.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-detail/shop-detail.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-detail/shop-detail.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-detail/shop-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-detail/shop-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-detail/shop-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-detail/shop-detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-list/shop-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-list/shop-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-list/shop-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-list/shop-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-list/shop-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/components/shop-list/shop-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/models/shop.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/models/shop.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/services/shop.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/services/shop.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/shop/shop.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/shop/services/shop.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/teashop/src/app/teas/tea-list/tea-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/teashop/src/app/teas/tea-list/tea-list.component.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,21 +63,21 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.13.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mwa-homework06-expressjs-02-Orshih71" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mwa-homework-08-mongodb-02-Orshih71" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="ts.external.directory.path" value="C:\Users\Dios\WebstormProjects\mwa-homework-14-angular-04-Orshih71\client\hw14\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Dios\WebstormProjects\teashop\frontend\teashop\src\app\shop\services" />
-      <recent name="C:\Users\Dios\WebstormProjects\teashop\frontend\teashop\src\app\shop\components" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Dios\WebstormProjects\teashop\backend\service" />
       <recent name="C:\Users\Dios\WebstormProjects\teashop\frontend\teashop\src\app" />
       <recent name="C:\Users\Dios\WebstormProjects\teashop\backend" />
       <recent name="C:\Users\Dios\WebstormProjects\teashop\backend\routes" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dios\WebstormProjects\teashop\frontend\teashop\src\app\shop\services" />
+      <recent name="C:\Users\Dios\WebstormProjects\teashop\frontend\teashop\src\app\shop\components" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -184,7 +195,8 @@
       <workItem from="1580617703611" duration="6954000" />
       <workItem from="1580696378434" duration="628000" />
       <workItem from="1580716935968" duration="15535000" />
-      <workItem from="1580770911971" duration="7686000" />
+      <workItem from="1580770911971" duration="18376000" />
+      <workItem from="1580844903168" duration="24021000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD] Connect to atlas, .env,  shop add">
       <created>1580613792965</created>
@@ -207,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580759856469</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[FIX]">
+      <created>1580784004615</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1580784004616</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +237,8 @@
     <MESSAGE value="[ADD] Connect to atlas, .env,  shop add" />
     <MESSAGE value="[ADD] Token and shop" />
     <MESSAGE value="[ADD] Token service" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ADD] Token service" />
+    <MESSAGE value="[FIX]" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FIX]" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="41" key="#Scopes" timestamp="1580765154080">
@@ -233,38 +253,38 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="456" y="173" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1580611284520" />
-    <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser" timestamp="1580775217221">
+    <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser" timestamp="1580845748485">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1580775217221" />
-    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2" timestamp="1580759855487">
+    <state x="488" y="99" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1580845748485" />
+    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2" timestamp="1580873841931">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1580759855487" />
+    <state x="306" y="0" width="998" height="768" key="CommitChangelistDialog2/0.0.1366.768@0.0.1366.768" timestamp="1580873841931" />
     <state x="129" y="58" width="1092" height="644" key="DiffContextDialog" timestamp="1580782946853">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="129" y="58" width="1092" height="644" key="DiffContextDialog/0.0.1366.768@0.0.1366.768" timestamp="1580782946853" />
-    <state x="463" y="138" key="FileChooserDialogImpl" timestamp="1580770329340">
+    <state x="463" y="138" key="FileChooserDialogImpl" timestamp="1580861906031">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="463" y="138" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1580770329340" />
-    <state width="1323" height="171" key="GridCell.Tab.0.bottom" timestamp="1580782983899">
+    <state x="463" y="138" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1580861906031" />
+    <state width="1323" height="171" key="GridCell.Tab.0.bottom" timestamp="1580854922653">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="171" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1580782983899" />
-    <state width="1323" height="171" key="GridCell.Tab.0.center" timestamp="1580782983899">
+    <state width="1323" height="171" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1580854922653" />
+    <state width="1323" height="171" key="GridCell.Tab.0.center" timestamp="1580854922653">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="171" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1580782983899" />
-    <state width="1323" height="171" key="GridCell.Tab.0.left" timestamp="1580782983898">
+    <state width="1323" height="171" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1580854922653" />
+    <state width="1323" height="171" key="GridCell.Tab.0.left" timestamp="1580854922652">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="171" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1580782983898" />
-    <state width="1323" height="171" key="GridCell.Tab.0.right" timestamp="1580782983899">
+    <state width="1323" height="171" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1580854922652" />
+    <state width="1323" height="171" key="GridCell.Tab.0.right" timestamp="1580854922653">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="171" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1580782983899" />
+    <state width="1323" height="171" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1580854922653" />
     <state x="32" y="24" width="1200" height="652" key="MergeDialog" timestamp="1580613901262">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -273,10 +293,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="387" y="90" key="MultipleFileMergeDialog/0.0.1366.768@0.0.1366.768" timestamp="1580613901282" />
-    <state x="481" y="9" key="RollbackChangesDialog" timestamp="1580782959643">
+    <state x="481" y="9" key="RollbackChangesDialog" timestamp="1580857087734">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="481" y="9" key="RollbackChangesDialog/0.0.1366.768@0.0.1366.768" timestamp="1580782959642" />
+    <state x="481" y="9" key="RollbackChangesDialog/0.0.1366.768@0.0.1366.768" timestamp="1580857087734" />
     <state x="212" y="51" key="SettingsEditor" timestamp="1580770594047">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -285,22 +305,26 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="503" y="5" key="VCS.ChangeListViewerDialog/0.0.1366.768@0.0.1366.768" timestamp="1580783152231" />
-    <state x="275" y="112" key="Vcs.Push.Dialog.v2" timestamp="1580759899896">
+    <state x="275" y="112" key="Vcs.Push.Dialog.v2" timestamp="1580784024193">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="275" y="112" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1580759899896" />
-    <state x="370" y="105" width="626" height="558" key="find.popup" timestamp="1580762004148">
+    <state x="275" y="112" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1580784024193" />
+    <state x="0" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1580855118500">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="370" y="105" width="626" height="558" key="find.popup/0.0.1366.768@0.0.1366.768" timestamp="1580762004148" />
-    <state x="409" y="156" key="git4idea.merge.GitPullDialog" timestamp="1580782963251">
+    <state x="0" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.768@0.0.1366.768" timestamp="1580855118500" />
+    <state x="370" y="105" width="757" height="628" key="find.popup" timestamp="1580856347861">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="409" y="156" key="git4idea.merge.GitPullDialog/0.0.1366.768@0.0.1366.768" timestamp="1580782963251" />
-    <state x="339" y="172" key="run.anything.popup" timestamp="1580765225552">
+    <state x="370" y="105" width="757" height="628" key="find.popup/0.0.1366.768@0.0.1366.768" timestamp="1580856347861" />
+    <state x="409" y="156" key="git4idea.merge.GitPullDialog" timestamp="1580853598733">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1580765225552" />
+    <state x="409" y="156" key="git4idea.merge.GitPullDialog/0.0.1366.768@0.0.1366.768" timestamp="1580853598733" />
+    <state x="339" y="172" key="run.anything.popup" timestamp="1580863098397">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1580863098397" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1580767940592">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

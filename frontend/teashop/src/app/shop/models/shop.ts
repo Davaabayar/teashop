@@ -5,13 +5,15 @@ export interface Shop {
   name: string,
   image: string,
   logo: string,
-  tag: [string],
-  contacts : [{
+  tags: [string],
+  rate: number,
+  contacts : {
     address: string,
     phone : string,
-  }],
-  location: [{
-    long: string,
-    lat : string,
-  }]
+  },
+  location: [
+    string,
+    string,
+  ],
+  thumbnail: string
 }

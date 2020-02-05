@@ -1,6 +1,6 @@
 <div class="container">
   <div class="shopCard" *ngFor="let shop of shops$ | async">
-    <a [routerLink]="['detail', shop._id]">
+    <a [routerLink]="['../detail', shop._id]">
       <mat-card class="z-depth">
         <mat-card-header>
           <!--        <div mat-card-avatar class="example-header-image"></div>-->
@@ -14,7 +14,8 @@
         </div>
         <mat-card-content>
           <p>Phone: {{shop.contacts.phone}}</p>
-          <p>Longitude: {{shop.location[0]}} Latitude: {{shop.location[1]}} </p>
+          <p>Longitude: {{shop.location[0]}} </p>
+          <p>Latitude: {{shop.location[1]}}</p>
           <span *ngFor="let tag of shop.tags">{{tag}} </span>
         </mat-card-content>
         <mat-card-actions>
