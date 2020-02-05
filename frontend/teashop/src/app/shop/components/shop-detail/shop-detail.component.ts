@@ -1,11 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, Validators} from "@angular/forms";
-import {TeasService} from "../../../teas/teas.service";
-import {ActivatedRoute} from "@angular/router";
-import {ShopService} from "../../services/shop.service";
-import {Observable} from "rxjs";
-import {Shop} from "../../models/shop";
-import {environment} from "../../../../environments/environment";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, Validators } from "@angular/forms";
+import { TeasService } from "../../../teas/teas.service";
+import { ActivatedRoute } from "@angular/router";
+import { ShopService } from "../../services/shop.service";
+import { Observable } from "rxjs";
+import { Shop } from "../../models/shop";
+import { environment } from "../../../../environments/environment";
 
 @Component({
   selector: 'app-shop-detail',
@@ -13,7 +13,7 @@ import {environment} from "../../../../environments/environment";
   styleUrls: ['./shop-detail.component.css']
 })
 export class ShopDetailComponent implements OnInit, OnDestroy {
-  private shopDetailForm = this.fb.group({
+  shopDetailForm = this.fb.group({
     name: ['', Validators.required],
     contacts: this.fb.group({
       address: [''],
@@ -27,16 +27,16 @@ export class ShopDetailComponent implements OnInit, OnDestroy {
       this.fb.control('')
     ])
   });
-  private tagTypes;
-  private shopId;
-  private shop$  : Observable<Shop>;
-  private readonly sub$;
-  private serverURL: string = environment.serverURL;
+  tagTypes;
+  shopId;
+  shop$: Observable<Shop>;
+  readonly sub$;
+  serverURL: string = environment.serverURL;
 
   constructor(private fb: FormBuilder,
-              private teasService: TeasService,
-              private shopService: ShopService,
-              private router: ActivatedRoute) {
+    private teasService: TeasService,
+    private shopService: ShopService,
+    private router: ActivatedRoute) {
     this.sub$ = this.router.params.subscribe(params => {
       this.shopId = params.id;
     });

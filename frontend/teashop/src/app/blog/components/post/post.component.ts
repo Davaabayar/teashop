@@ -27,7 +27,7 @@ export class PostComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
-  createURLPost(id: number) {
+  createURLPost(id: string) {
     return 'posts/' + id;
   }
 

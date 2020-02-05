@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, Validators} from "@angular/forms";
-import {TeasService} from "../../../teas/teas.service";
-import {ShopService} from "../../services/shop.service";
-import {TokenService} from "../../../token.service";
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, Validators } from "@angular/forms";
+import { TeasService } from "../../../teas/teas.service";
+import { ShopService } from "../../services/shop.service";
+import { TokenService } from "../../../token.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -12,7 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ShopAddComponent implements OnInit {
 
-  private shopForm = this.fb.group({
+  shopForm = this.fb.group({
     name: ['', Validators.required],
     contacts: this.fb.group({
       address: [''],
@@ -31,7 +31,7 @@ export class ShopAddComponent implements OnInit {
     thumbnail: [''],
     tags: ['']
   });
-  private tagTypes;
+  tagTypes;
 
   constructor(private fb: FormBuilder,
               private shopService: ShopService,

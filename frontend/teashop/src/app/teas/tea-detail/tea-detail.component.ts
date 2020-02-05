@@ -33,8 +33,8 @@ export class TeaDetailComponent implements OnInit, OnDestroy {
     this.tea$ = this.teasService.getTea(this.teaId);
     let total = 0, n = 0, avg = 0;
     this.tea$.subscribe((t) => {
-      if (t.reviews != null) {
-        t.reviews.forEach(r => {
+      if (t['reviews'] != null) {
+        t['reviews'].forEach(r => {
           total += r.star;
           n++;
         });
