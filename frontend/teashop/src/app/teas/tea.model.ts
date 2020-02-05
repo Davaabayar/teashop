@@ -14,5 +14,13 @@ export interface Tea {
     time: string,
     direction: string
   },
+  reviews: [{
+    start: number,
+    comment: string,
+    user: {
+      _id: string,
+      username: string
+    }
+  }]
   category: string
 }

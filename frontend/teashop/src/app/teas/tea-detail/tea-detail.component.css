@@ -1,0 +1,15 @@
+.tea-container{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap:20px;
+}
+.review{
+    padding:10px 0;
+    border-bottom:1px solid #ccc;
+}
+.mt20{
+    margin-top:20px;
+}
+.center{
+    text-align: center;
+}
